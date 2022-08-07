@@ -1,7 +1,6 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Sora:wght@100;200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@200');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://src.simplecyber.org/fonts/quicksand.css');
+@import url('https://src.simplecyber.org/fonts/sora.css');
 
 /* Colour variables */
 body {
@@ -54,7 +53,7 @@ body {
 }
 
 * {
-    max-height: 1000000px;
+    max-height: 1000000px; /* This is to prevent mobile font boosting */
     box-sizing: border-box;
 }
 
