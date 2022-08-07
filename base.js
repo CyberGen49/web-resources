@@ -1,6 +1,4 @@
 
-// Utility functions and other global functionality
-
 function _id(id, ancestor = document) {
     return ancestor.getElementById(id);
 }
