@@ -81,6 +81,66 @@ function isValidIp(string) {
     return string.match(/((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/) && !string.match(/(^127\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^192\.168\.)/) && !string.match(/^::1$/);
 }
 
+const updateEls = () => {
+    [..._qsa('textarea')].forEach((el) => {
+        if (el.dataset.mod) return;
+        el.dataset.mod = true;
+        el.addEventListener('resize', () => {
+            el.style.height = ``;
+            el.style.height = `${el.scrollHeight-32}px`;
+        });
+        el.addEventListener('input', () => {
+            el.dispatchEvent(new Event('resize'));
+        });
+        setTimeout(() => {
+            if (el.value)
+                el.dispatchEvent(new Event('input'));
+        }, 500);
+    });
+    [..._qsa('.slider:not(.custom)')].forEach((el) => {
+        if (el.dataset.mod) return;
+        el.dataset.mod = true;
+        const range = _qs('input[type="range"]', el);
+        const progress = _qs('progress', el);
+        progress.min = range.min;
+        progress.max = range.max;
+        const valueInto = _id(el.dataset.valueInto);
+        if (valueInto) valueInto.addEventListener('input', () => {
+            range.value = valueInto.value;
+            progress.value = valueInto.value;
+        });
+        range.addEventListener('input', () => {
+            progress.value = range.value;
+            if (valueInto) valueInto.value = range.value;
+        });
+        range.dispatchEvent(new Event('input'));
+    });
+    [..._qsa('[data-copy-el]')].forEach((el) => {
+        if (el.dataset.mod) return;
+        el.dataset.mod = true;
+        el.addEventListener('click', () => {
+            let text = _id(el.dataset.copyEl).innerText;
+            if (!text) text = _id(el.dataset.copyEl).value;
+            navigator.clipboard.writeText(text);
+        });
+    });
+    [..._class('copyable')].forEach((el) => {
+        if (el.dataset.mod) return;
+        el.dataset.mod = true;
+        el.addEventListener('click', () => {
+            let text = el.innerText;
+            navigator.clipboard.writeText(text);
+        });
+    });
+}
+
+document.addEventListener('domChange', () => {
+    updateEls();
+});
+window.addEventListener('load', () => {
+    updateEls();
+});
+
 const params = new Proxy(new URLSearchParams(window.location.search), {
     get: (searchParams, prop) => searchParams.get(prop),
 });
