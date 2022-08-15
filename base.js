@@ -62,6 +62,9 @@ function localStorageObjGet(name) {
     if (data) return JSON.parse(data);
     return {};
 }
+function localStorageWipe() {
+    window.localStorage.clear();
+}
 
 function isValidUrl(string) {
     let url;
