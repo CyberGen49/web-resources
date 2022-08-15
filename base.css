@@ -346,7 +346,7 @@ select.textbox option:focus {
 .btn:focus-visible:not(:disabled) {
     background: var(--f90);
     box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.3);
-    color: inherit;
+    color: var(--b15);
 }
 .btn:active:not(:disabled),
 .btn.active {
@@ -356,6 +356,7 @@ select.textbox option:focus {
 .canHover .btn.alt:hover:not(:disabled),
 .btn.alt:focus-visible:not(:disabled) {
     background: var(--b50);
+    color: var(--b95);
 }
 .btn.alt:active:not(:disabled),
 .btn.alt.active {
@@ -365,6 +366,7 @@ select.textbox option:focus {
 .btn.alt2:focus-visible:not(:disabled) {
     background: var(--b25);
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+    color: var(--f90);
 }
 .btn.alt2:active:not(:disabled),
 .btn.alt2.active {
