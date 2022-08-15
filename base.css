@@ -52,6 +52,7 @@ body {
     --f85: hsl(var(--brightHue), var(--brightSat), 85%);
     --f90: hsl(var(--brightHue), var(--brightSat), 90%);
     --f95: hsl(var(--brightHue), var(--brightSat), 95%);
+    --danger: hsl(0, 100%, 75%);
 }
 
 * {
