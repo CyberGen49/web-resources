@@ -372,6 +372,11 @@ select.textbox option:focus {
 .btn.alt2.active {
     background: var(--b35) !important;
 }
+.btn.noShadow,
+.canHover .btn.noShadow:hover:not(:disabled),
+.btn.noShadow:focus-visible:not(:disabled) {
+    box-shadow: none;
+}
 
 .selectGroup {
     padding: 10px 12px;
@@ -517,6 +522,56 @@ progress.bar::-moz-progress-bar,
 .canHover .slider input[type="range"]::-moz-range-thumb:hover,
 .slider input[type="range"]::-moz-range-thumb:active {
     transform: scale(1.15);
+}
+
+.popupCont {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+    transition: 0.15s ease-in-out;
+    opacity: 0;
+}
+.popupCont.visible {
+    opacity: 1;
+}
+.popupCont .popup {
+    margin: auto;
+    max-width: 500px;
+    background: var(--b15);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0px 6px 15px 5px rgba(0, 0, 0, 0.2);
+    scale: 1.1;
+    transition: 0.15s ease-in-out;
+}
+.popupCont.visible .popup {
+    scale: 1;
+}
+.popup .title {
+    padding: 20px 15px 15px 15px;
+    padding-bottom: 0px;
+    font-family: 'Quicksand';
+    font-size: 28px;
+    font-weight: bold;
+}
+.popup .body {
+    padding: 15px 15px 20px 15px;
+    line-height: 1.2;
+}
+.popup .actions {
+    width: 100%;
+    padding: 10px 16px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    background: var(--b12);
 }
 
 ::placeholder {

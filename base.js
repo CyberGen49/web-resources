@@ -84,6 +84,48 @@ function isValidIp(string) {
     return string.match(/((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/) && !string.match(/(^127\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^192\.168\.)/) && !string.match(/^::1$/);
 }
 
+function showPopup(title, body, actions) {
+    const id = randomHex();
+    document.body.insertAdjacentHTML('beforeend', `
+        <div id="${id}" class="popupCont">
+            <div id="${id}-inner" class="popup">
+                <div class="title">${title}</div>
+                <div class="body">${body}</div>
+                <div id="${id}-actions" class="actions"></div>
+            </div>
+        </div>
+    `);
+    actions.forEach((action) => {
+        const actionId = randomHex();
+        _id(`${id}-actions`).insertAdjacentHTML('beforeend', `
+            <button id="${actionId}" class="btn noShadow ${(!action.primary) ? 'alt':''}">
+                ${(action.icon) ? `<div class="icon">${action.icon}</div>`:''}
+                <div>${action.label}</div>
+            </button>
+        `);
+        _id(actionId).addEventListener('click', () => {
+            if (action.action) action.action();
+            hidePopup(id);
+        });
+        if (action.escape) _id(id).addEventListener('click', () => {
+            _id(actionId).click();
+        });
+    });
+    _id(`${id}-inner`).addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+    setTimeout(() => {
+        _id(id).classList.add('visible');
+    }, 50);
+    return id;
+}
+function hidePopup(id) {
+    _id(id).classList.remove('visible');
+    setTimeout(() => {
+        _id(id).remove();
+    }, 300);
+}
+
 const updateEls = () => {
     [..._qsa('textarea')].forEach((el) => {
         if (el.dataset.mod) return;
