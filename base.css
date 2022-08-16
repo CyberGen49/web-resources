@@ -571,6 +571,7 @@ progress.bar::-moz-progress-bar,
     display: flex;
     gap: 10px;
     justify-content: flex-end;
+    flex-wrap: wrap;
     background: var(--b12);
 }
 
