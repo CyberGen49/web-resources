@@ -558,7 +558,7 @@ progress.bar::-moz-progress-bar,
     padding: 20px 15px 15px 15px;
     padding-bottom: 0px;
     font-family: 'Quicksand';
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
 }
 .popup .body {
