@@ -1,12 +1,12 @@
 @font-face {
-    font-family: 'Material Symbols Outlined';
+    font-family: 'Material Symbols';
     font-style: normal;
     font-weight: 200;
     src: url(https://src.simplecyber.org/fonts/MaterialSymbols-w200.woff2) format('woff2');
 }
   
 .material-symbols-outlined {
-    font-family: 'Material Symbols Outlined';
+    font-family: 'Material Symbols';
     font-weight: normal;
     font-style: normal;
     font-size: 24px;
