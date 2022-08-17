@@ -84,6 +84,7 @@ function isValidIp(string) {
     return string.match(/((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/) && !string.match(/(^127\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^192\.168\.)/) && !string.match(/^::1$/);
 }
 
+let popupFocus = [];
 function showPopup(title, body, actions) {
     const id = randomHex();
     document.body.insertAdjacentHTML('beforeend', `
@@ -107,24 +108,39 @@ function showPopup(title, body, actions) {
             if (action.action) action.action();
             hidePopup(id);
         });
-        if (action.escape) _id(id).addEventListener('click', () => {
-            _id(actionId).click();
-        });
+        if (action.escape) {
+            _id(id).addEventListener('click', () => {
+                _id(actionId).click();
+            });
+            escapeQueue.push(() => {
+                _id(actionId).click();
+            });
+        }
     });
     _id(`${id}-inner`).addEventListener('click', (e) => {
         e.stopPropagation();
     });
     setTimeout(() => {
         _id(id).classList.add('visible');
+        popupFocus[id] = focusTrap.createFocusTrap(_id(id));
+        popupFocus[id].activate();
     }, 50);
     return id;
 }
 function hidePopup(id) {
     _id(id).classList.remove('visible');
     setTimeout(() => {
+        popupFocus[id].deactivate();
         _id(id).remove();
     }, 300);
 }
+
+let escapeQueue = [];
+window.addEventListener('keyup', (e) => {
+    if (e.code == 'Escape') {
+        (escapeQueue.pop())();
+    }
+});
 
 const updateEls = () => {
     [..._qsa('textarea')].forEach((el) => {

@@ -4,14 +4,15 @@
 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('tabbable')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'tabbable'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (function () {
-    var current = global.focusTrap;
-    var exports = global.focusTrap = {};
-    factory(exports, global.tabbable);
-    exports.noConflict = function () { global.focusTrap = current; return exports; };
-  })());
-})(this, (function (exports, tabbable) { 'use strict';
+    typeof define === 'function' && define.amd ? define(['exports', 'tabbable'], factory) :
+      (global = typeof globalThis !== 'undefined' ? globalThis : global || self, (function () {
+        var current = global.focusTrap;
+        var exports = global.focusTrap = {};
+        factory(exports, global.tabbable);
+        exports.noConflict = function () { global.focusTrap = current; return exports; };
+      })());
+})(this, (function (exports, tabbable) {
+  'use strict';
 
   function ownKeys(object, enumerableOnly) {
     var keys = Object.keys(object);
@@ -220,14 +221,14 @@
       //  and we still need to find the element in there
       return state.containerGroups.findIndex(function (_ref) {
         var container = _ref.container,
-            tabbableNodes = _ref.tabbableNodes;
+          tabbableNodes = _ref.tabbableNodes;
         return container.contains(element) || // fall back to explicit tabbable search which will take into consideration any
-        //  web components if the `tabbableOptions.getShadowRoot` option was used for
-        //  the trap, enabling shadow DOM support in tabbable (`Node.contains()` doesn't
-        //  look inside web components even if open)
-        tabbableNodes.find(function (node) {
-          return node === element;
-        });
+          //  web components if the `tabbableOptions.getShadowRoot` option was used for
+          //  the trap, enabling shadow DOM support in tabbable (`Node.contains()` doesn't
+          //  look inside web components even if open)
+          tabbableNodes.find(function (node) {
+            return node === element;
+          });
       });
     };
     /**
