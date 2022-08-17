@@ -266,7 +266,7 @@ select.textbox option:focus {
     top: 18px;
     right: 10px;
     display: flex;
-    font-family: 'Material Symbols Outlined';
+    font-family: 'Material Symbols';
     font-display: fallback;
     font-size: 32px;
     color: var(--b60);
@@ -314,7 +314,7 @@ select.textbox option:focus {
     font-size: 18px;
 }
 .btn .icon {
-    font-family: 'Material Symbols Outlined';
+    font-family: 'Material Symbols';
     font-display: fallback;
     font-size: 28px;
     margin: 0px -5px;
@@ -406,7 +406,7 @@ select.textbox option:focus {
 input[type="radio"],
 input[type="checkbox"] {
     appearance: none;
-    font-family: "Material Symbols Outlined";
+    font-family: "Material Symbols";
     font-display: fallback;
     font-size: 2em;
     color: var(--b65);
