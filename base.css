@@ -538,6 +538,7 @@ progress.bar::-moz-progress-bar,
     background: rgba(0, 0, 0, 0.5);
     transition: 0.15s ease-in-out;
     opacity: 0;
+    overflow-y: auto;
 }
 .popupCont.visible {
     opacity: 1;
