@@ -576,6 +576,7 @@ progress.bar::-moz-progress-bar,
     justify-content: flex-end;
     flex-wrap: wrap;
     background: var(--b12);
+    border-radius: 12px 12px 0px 0px;
 }
 
 ::placeholder {
