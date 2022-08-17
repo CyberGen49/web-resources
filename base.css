@@ -1,6 +1,6 @@
 
 @import 'https://src.simplecyber.org/fonts/quicksand.css';
-@import 'https://src.simplecyber.org/fonts/sora.css';
+@import 'https://src.simplecyber.org/fonts/poppins.css';
 @import 'https://src.simplecyber.org/fonts/symbols-200.css';
 @import 'https://src.simplecyber.org/fonts/icons.css';
 
@@ -113,7 +113,7 @@ body {
     margin: 0px;
     padding: 0px;
     background: var(--b15);
-    font-family: 'Sora', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     color: var(--b95);
     line-height: 1;
