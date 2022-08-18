@@ -6,12 +6,12 @@
 
 /* Colour variables */
 body {
-    --bgHue: 220;
+    --bgHue: 230;
     --bgSat: 8%;
     --fgHue: 320;
     --fgSat: 75%;
     --b5:  hsl(var(--bgHue), var(--bgSat), 5%);
-    --b5:  hsl(var(--bgHue), var(--bgSat), 8%);
+    --b8:  hsl(var(--bgHue), var(--bgSat), 8%);
     --b10: hsl(var(--bgHue), var(--bgSat), 10%);
     --b12: hsl(var(--bgHue), var(--bgSat), 12%);
     --b15: hsl(var(--bgHue), var(--bgSat), 15%);
@@ -55,12 +55,12 @@ body {
     --danger: hsl(0, 100%, 75%);
 }
 .changeColours {
-    --bgHue: 220;
+    --bgHue: 230;
     --bgSat: 8%;
     --fgHue: 320;
     --fgSat: 75%;
     --b5:  hsl(var(--bgHue), var(--bgSat), 5%);
-    --b5:  hsl(var(--bgHue), var(--bgSat), 8%);
+    --b8:  hsl(var(--bgHue), var(--bgSat), 8%);
     --b10: hsl(var(--bgHue), var(--bgSat), 10%);
     --b12: hsl(var(--bgHue), var(--bgSat), 12%);
     --b15: hsl(var(--bgHue), var(--bgSat), 15%);
