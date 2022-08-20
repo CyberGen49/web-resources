@@ -92,7 +92,7 @@ function showPopup(title, body, actions) {
             <div id="${id}-inner" class="popup">
                 <div class="title">${title}</div>
                 <div class="body">${body}</div>
-                <div id="${id}-actions" class="actions"></div>
+                ${(actions.length > 0) ? `<div id="${id}-actions" class="actions"></div>`:''}
             </div>
         </div>
     `);
