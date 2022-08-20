@@ -84,6 +84,36 @@ function isValidIp(string) {
     return string.match(/((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/) && !string.match(/(^127\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^192\.168\.)/) && !string.match(/^::1$/);
 }
 
+function posElRelToCursor(el) {
+    const offsetX = 5;
+    const offsetY = 5;
+    const rect = el.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const gapX = (window.innerWidth-10)-mouse.x;
+    const gapY = (window.innerHeight-10)-mouse.y;
+    let x = mouse.x+offsetX;
+    let y = mouse.y+offsetY;
+    if (width > gapX)
+        x = clamp((x-width-(offsetX*2)), 0, Infinity);
+    if (height > gapY)
+        y = clamp((y-height-(offsetY*2)), 0, Infinity);
+    return { left: x, top: y };
+}
+
+let tooltipTimeout;
+let tooltipResetTimeout;
+let mouse = { x: 0, y: 0 };
+const hideTooltip = () => {
+    clearTimeout(tooltipTimeout);
+    clearTimeout(tooltipResetTimeout);
+    _id('tooltip').classList.remove('visible');
+    tooltipResetTimeout = setTimeout(() => {
+        _id('tooltip').style.left = `0px`;
+        _id('tooltip').style.top = `0px`;
+    }, 150);
+}
+
 let popupFocus = [];
 function showPopup(title, body, actions = []) {
     const id = randomHex();
@@ -143,6 +173,13 @@ window.addEventListener('keyup', (e) => {
     }
 });
 
+window.addEventListener('mousemove', (e) => {
+    mouse = {
+        x: e.clientX,
+        y: e.clientY
+    }
+});
+
 const updateEls = () => {
     [..._qsa('textarea')].forEach((el) => {
         if (el.dataset.mod) return;
@@ -193,6 +230,27 @@ const updateEls = () => {
             let text = el.innerText;
             navigator.clipboard.writeText(text);
         });
+    });
+    [..._qsa('[title]')].forEach((el) => {
+        const title = el.title;
+        el.addEventListener('mousemove', () => {
+            if (!document.body.classList.contains('canHover')) return;
+            hideTooltip();
+            tooltipTimeout = setTimeout(() => {
+                _id('tooltip').innerHTML = title;
+                const coords = posElRelToCursor(_id('tooltip'));
+                _id('tooltip').style.left = `${coords.left}px`;
+                _id('tooltip').style.top = `${coords.top}px`;
+                _id('tooltip').classList.add('visible');
+            }, 750);
+        });
+        el.addEventListener('mouseleave', () => {
+            hideTooltip();
+        });
+        el.addEventListener('click', () => {
+            hideTooltip();
+        });
+        el.removeAttribute('title');
     });
 }
 

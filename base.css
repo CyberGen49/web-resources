@@ -585,6 +585,29 @@ progress.bar::-moz-progress-bar,
     background: var(--b12);
 }
 
+#tooltip {
+    position: fixed;
+    max-width: 500px;
+    padding: 6px 12px;
+    background: var(--b10);
+    color: var(--b80);
+    font-size: 15px;
+    line-height: 1.2;
+    border-radius: 16px;
+    opacity: 0;
+    transform: scale(0.95);
+    transition-property: opacity, transform;
+    transition: 0.1s var(--bezier);
+    pointer-events: none;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+}
+#tooltip.visible {
+    opacity: 1;
+    transform: none;
+    transition-property: opacity, transform;
+}
+
 ::placeholder {
     color: var(--b70);
     user-select: none;
