@@ -607,6 +607,9 @@ progress.bar::-moz-progress-bar,
     transform: none;
     transition-property: opacity, transform;
 }
+#tooltip .small {
+    color: var(--b60);
+}
 
 ::placeholder {
     color: var(--b70);
