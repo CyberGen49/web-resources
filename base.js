@@ -237,6 +237,8 @@ const updateEls = () => {
             if (!document.body.classList.contains('canHover')) return;
             hideTooltip();
             tooltipTimeout = setTimeout(() => {
+                if (!_id('tooltip'))
+                    document.body.insertAdjacentHTML('beforeend', `<div id="tooltip"></div>`);
                 _id('tooltip').innerHTML = title;
                 const coords = posElRelToCursor(_id('tooltip'));
                 _id('tooltip').style.left = `${coords.left}px`;
