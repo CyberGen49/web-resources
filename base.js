@@ -138,7 +138,8 @@ function hidePopup(id) {
 let escapeQueue = [];
 window.addEventListener('keyup', (e) => {
     if (e.code == 'Escape') {
-        (escapeQueue.pop())();
+        const func = escapeQueue.pop();
+        if (func) func();
     }
 });
 
