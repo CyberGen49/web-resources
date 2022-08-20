@@ -85,7 +85,7 @@ function isValidIp(string) {
 }
 
 let popupFocus = [];
-function showPopup(title, body, actions) {
+function showPopup(title, body, actions = []) {
     const id = randomHex();
     document.body.insertAdjacentHTML('beforeend', `
         <div id="${id}" class="popupCont">
