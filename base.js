@@ -60,7 +60,7 @@ function localStorageObjSet(name, obj) {
 function localStorageObjGet(name) {
     const data = window.localStorage.getItem(name);
     if (data) return JSON.parse(data);
-    return {};
+    return false;
 }
 function localStorageWipe() {
     window.localStorage.clear();
