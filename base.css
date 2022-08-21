@@ -149,8 +149,11 @@ a:focus-visible {
 }
 
 p {
-    line-height: 1.5;
+    line-height: 1.4;
     margin: 0.3em 0px 0.5em 0px;
+}
+p:last-child {
+    margin-bottom: 0px;
 }
 
 small {
@@ -551,7 +554,7 @@ progress.bar::-moz-progress-bar,
 }
 .popupCont .popup {
     margin: auto;
-    max-width: 500px;
+    max-width: 600px;
     background: var(--b15);
     border-radius: 16px;
     display: flex;
