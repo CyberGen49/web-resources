@@ -614,12 +614,14 @@ progress.bar::-moz-progress-bar,
     color: var(--b60);
 }
 
-[placeholder]:empty::before {
-    content: attr(placeholder);
+[placeholder]:empty {
     color: var(--b70); 
 }
-[placeholder]:empty:focus::before {
-    content: '';
+[placeholder]:empty:not(:focus)::before {
+    content: attr(placeholder);
+}
+[placeholder]:empty:focus::after {
+    content: attr(placeholder);
 }
 
 ::placeholder {
