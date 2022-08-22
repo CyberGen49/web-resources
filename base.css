@@ -614,7 +614,8 @@ progress.bar::-moz-progress-bar,
     color: var(--b60);
 }
 
-[placeholder]:empty {
+[placeholder]:empty::before,
+[placeholder]:empty::after {
     color: var(--b70); 
 }
 [placeholder]:empty:not(:focus)::before {
