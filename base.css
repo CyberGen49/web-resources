@@ -573,6 +573,7 @@ progress.bar::-moz-progress-bar,
     font-family: 'Quicksand';
     font-size: 24px;
     font-weight: bold;
+    user-select: none;
 }
 .popup .body {
     padding: 15px 15px 20px 15px;
