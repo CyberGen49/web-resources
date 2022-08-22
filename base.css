@@ -659,9 +659,14 @@ progress.bar::-moz-progress-bar,
     display: flex;
     align-items: center;
     gap: 10px;
-    border-radius: 12px;
     transition: 0.1s ease-in-out;
     background: var(--b12);
+}
+.contextCont .context .item:first-child {
+    border-radius: 12px 12px 6px 6px;
+}
+.contextCont .context .item:last-child {
+    border-radius: 6px 6px 12px 12px;
 }
 .canHover .contextCont .context .item:hover,
 .contextCont .context .item:focus-visible {
@@ -685,7 +690,7 @@ progress.bar::-moz-progress-bar,
     text-overflow: ellipsis;
 }
 .contextCont .context .sep {
-    margin: 6px 10px;
+    margin: 4px 10px;
     height: 1px;
     background: var(--b30);
 }
