@@ -622,6 +622,7 @@ progress.bar::-moz-progress-bar,
 [placeholder]:empty::before,
 [placeholder]:empty::after {
     color: var(--b70); 
+    pointer-events: none;
 }
 [placeholder]:empty:not(:focus)::before {
     content: attr(placeholder);
