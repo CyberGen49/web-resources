@@ -167,6 +167,72 @@ function hidePopup(id) {
     }, 300);
 }
 
+function showContext(items) {
+    const id = randomHex();
+    document.body.insertAdjacentHTML('beforeend', `
+        <div id="${id}" class="contextCont">
+            <div id="${id}-inner" class="context"></div>
+        </div>
+    `);
+    items.forEach((item) => {
+        const itemId = randomHex();
+        switch (item.type) {
+            case 'sep':
+                _id(`${id}-inner`).insertAdjacentHTML('beforeend', `
+                    <div class="sep"></div>
+                `);
+                break;
+            case 'header':
+                _id(`${id}-inner`).insertAdjacentHTML('beforeend', `
+                    <div class="header">${item.name}</div>
+                `);
+                break;
+            case 'item':
+                _id(`${id}-inner`).insertAdjacentHTML('beforeend', `
+                    <button id="${itemId}" class="item" ${(item.tooltip) ? `title="${item.tooltip}"`:''}>
+                        ${(item.icon) ? `<div class="icon">${item.icon}</div>`:''}
+                        <div class="label">
+                            <div class="name">${item.name}</div>
+                            ${(item.desc) ? `<div class="desc">${item.desc}</div>`:''}
+                        </div>
+                    </button>
+                `);
+                _id(itemId).addEventListener('click', () => {
+                    _id(id).click();
+                    if (item.action) item.action();
+                });
+                break;
+        }
+    });
+    _id(id).addEventListener('click', () => {
+        hideContext();
+    });
+    _id(`${id}-inner`).addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+    const coords = posElRelToCursor(_id(`${id}-inner`));
+    _id(`${id}-inner`).style.left = `${coords.left}px`;
+    _id(`${id}-inner`).style.top = `${coords.top}px`;
+    escapeQueue.push(() => {
+        _id(id).click();
+    });
+    setTimeout(() => {
+        _id(id).classList.add('visible');
+        popupFocus[id] = focusTrap.createFocusTrap(_id(id));
+        popupFocus[id].activate();
+    }, 50);
+    return id;
+}
+function hideContext() {
+    [..._class('contextCont')].forEach((el) => {
+        el.classList.remove('visible');
+        popupFocus[el.id].deactivate();
+        setTimeout(() => {
+            el.remove();
+        }, 200)
+    });
+}
+
 let escapeQueue = [];
 window.addEventListener('keyup', (e) => {
     if (e.code == 'Escape') {
