@@ -635,10 +635,10 @@ progress.bar::-moz-progress-bar,
     position: fixed;
     max-width: 300px;
     max-height: 500px;
-    padding: 8px 2px;
+    padding: 4px;
     background: var(--b12);
     color: var(--b90);
-    border-radius: 12px;
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
@@ -659,7 +659,7 @@ progress.bar::-moz-progress-bar,
     display: flex;
     align-items: center;
     gap: 10px;
-    border-radius: 8px;
+    border-radius: 12px;
     transition: 0.1s ease-in-out;
     background: var(--b12);
 }
