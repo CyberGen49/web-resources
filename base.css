@@ -685,9 +685,9 @@ progress.bar::-moz-progress-bar,
     text-overflow: ellipsis;
 }
 .contextCont .context .sep {
-    margin: 3px 10px;
+    margin: 6px 10px;
     height: 1px;
-    background: var(--b50);
+    background: var(--b30);
 }
 
 [placeholder]:empty::before,
