@@ -655,7 +655,7 @@ progress.bar::-moz-progress-bar,
 }
 .contextCont .context .item {
     all: unset;
-    padding: 8px 12px;
+    padding: 7px 12px;
     display: flex;
     align-items: center;
     gap: 10px;
