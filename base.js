@@ -129,9 +129,9 @@ function showPopup(title, body, actions = []) {
         </div>
     `);
     actions.forEach((action) => {
-        const actionId = randomHex();
+        const actionId = action.id || randomHex();
         _id(`${id}-actions`).insertAdjacentHTML('beforeend', `
-            <button id="${actionId}" class="btn noShadow ${(!action.primary) ? 'alt':''}">
+            <button id="${actionId}" class="btn noShadow ${(!action.primary) ? 'alt':''}" ${(action.disabled) ? `disabled`:''}>
                 ${(action.icon) ? `<div class="icon">${action.icon}</div>`:''}
                 <div>${action.label}</div>
             </button>
