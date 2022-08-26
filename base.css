@@ -655,8 +655,8 @@ progress.bar::-moz-progress-bar,
 }
 .contextCont .context .item {
     all: unset;
-    padding: 0px 12px;
-    height: 40px;
+    padding: 0px 10px;
+    height: 44px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -665,6 +665,7 @@ progress.bar::-moz-progress-bar,
     background: var(--b12);
 }
 .isTouch .contextCont .context .item {
+    padding: 0px 12px;
     height: 48px;
 }
 .canHover .contextCont .context .item:hover,
