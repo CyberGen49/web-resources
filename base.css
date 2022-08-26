@@ -688,6 +688,7 @@ progress.bar::-moz-progress-bar,
     font-size: 32px;
 }
 .contextCont .context .item .label .name {
+    padding: 3px 0px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
