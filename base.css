@@ -656,7 +656,7 @@ progress.bar::-moz-progress-bar,
 .contextCont .context .item {
     all: unset;
     padding: 0px 10px;
-    height: 44px;
+    height: 40px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -679,10 +679,13 @@ progress.bar::-moz-progress-bar,
     display: flex;
     justify-content: center;
     font-family: 'Material Symbols';
-    font-size: 32px;
+    font-size: 28px;
     color: var(--b80);
     content: 'list';
     margin-top: -2px;
+}
+.isTouch .contextCont .context .item .icon {
+    font-size: 32px;
 }
 .contextCont .context .item .label .name {
     overflow: hidden;
