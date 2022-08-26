@@ -85,9 +85,9 @@ function isValidIp(string) {
 }
 
 function escapeHTML(text) {
-    let escape = document.createElement('textarea');
-    escape.textContent = html;
-    return escape.innerHTML;
+    let escape = document.createElement('span');
+    escape.innerText = text;
+    return escape.innerText;
 }
 
 function posElRelToCursor(el) {
