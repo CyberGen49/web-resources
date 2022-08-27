@@ -339,9 +339,7 @@ window.addEventListener('load', () => {
     updateEls();
 });
 
-const params = new Proxy(new URLSearchParams(window.location.search), {
-    get: (searchParams, prop) => searchParams.get(prop),
-});
+const params = new URLSearchParams(window.location.search);
 
 // Handle disabling hover if the device doesn't support it
 const canHover = window.matchMedia('(hover: none)');
