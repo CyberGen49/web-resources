@@ -15,6 +15,11 @@ function _qsa(selector, ancestor = document) {
     return ancestor.querySelectorAll(selector);
 }
 
+/**
+ * Generates a pseudorandom hexodecimal string of a desired length using `Math.random()`.
+ * @param {int} length The length of the random
+ * @returns 
+ */
 function randomHex(length = 8) {
     let chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
     let str = '';
@@ -24,31 +29,78 @@ function randomHex(length = 8) {
     return str;
 }
 
+/**
+ * Generates a pseudorandom integer between a minimum and maximum.
+ * @param {int} min The minimum
+ * @param {int} max The maximum
+ * @returns 
+ */
+function randomInt(min, max) { 
+    return Math.round(Math.random() * (max - min) + min);
+}
+
+/**
+ * Keeps a number within a range by preventing it from going above/below its maximum/minimum.
+ * @param {integer|float} num The input number
+ * @param {integer|float} min The minimum number
+ * @param {integer|float} max The maximum number
+ * @returns 
+ */
 function clamp(num, min, max) {
     if (num < min) return min;
     if (num > max) return max;
     return num;
 }
 
-function randomInt(min, max) { 
-    return Math.round(Math.random() * (max - min) + min);
+/**
+ * Keeps a number within a range by underflowing/overflowing.
+ * @param {integer|float} num The input number
+ * @param {integer|float} min The minimum number
+ * @param {integer|float} max The maximum number
+ * @returns 
+ */
+function overflow(num, min, max) {
+    if (num < min) return max;
+    if (num > max) return min;
+    return num;
 }
 
+/**
+ * Rounds a float to the desired amount of decimal places, clipping any trailing zeros.
+ * @param {int|float} number The input number
+ * @param {int} decimalPlaces The maximum number of decimal places
+ * @returns 
+ */
 function roundSmart(number, decimalPlaces = 0) {
     const factorOfTen = Math.pow(10, decimalPlaces);
     return Math.round(number * factorOfTen) / factorOfTen;
 }
 
+/**
+ * Separates a string into its words and returns an array of those words.
+ * @param {string} s The input string
+ * @returns 
+ */
 function getWords(s){
     s = s.replace(/(^\s*)|(\s*$)/gi, '');
     s = s.replace(/[ ]{2,}/gi, ' ');
     s = s.replace(/\n/g, ' ');
     return s.split(' ').filter(String);
 }
+/**
+ * Returns the number of words in a string.
+ * @param {string} s The input string
+ * @returns 
+ */
 function countWords(s){
     return getWords(s).length;
 }
 
+/**
+ * Pause execution for a desired amount of time. Use this in `async` functions with `await sleep(ms)`.
+ * @param {int} ms The number of milliseconds to sleep for
+ * @returns 
+ */
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
