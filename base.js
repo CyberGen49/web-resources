@@ -105,6 +105,23 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+/**
+ * Shuffles an array using `Math.random()` to swap elements and returns the result.
+ * @param {array} arr The input array
+ * @returns The shuffled array
+ */
+function shuffle(arr) {
+    let i = 0;
+    while (i < arr.length) {
+        let tmp = arr[i];
+        let num = Math.round(Math.random()*(arr.length-1));
+        arr[i] = arr[num];
+        arr[num] = tmp;
+        i++;
+    }
+    return arr;
+}
+
 function localStorageObjSet(name, obj) {
     window.localStorage.setItem(name, JSON.stringify(obj));
     console.log(`Saved localStorage object '${name}':`, obj);
