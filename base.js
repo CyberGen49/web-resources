@@ -213,6 +213,9 @@ function showContext(items) {
     _id(id).addEventListener('click', () => {
         hideContext();
     });
+    _id(id).addEventListener('contextmenu', () => {
+        hideContext();
+    });
     _id(`${id}-inner`).addEventListener('click', (e) => {
         e.stopPropagation();
     });
