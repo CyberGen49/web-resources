@@ -213,7 +213,8 @@ function showContext(items) {
     _id(id).addEventListener('click', () => {
         hideContext();
     });
-    _id(id).addEventListener('contextmenu', () => {
+    _id(id).addEventListener('contextmenu', (e) => {
+        e.preventDefault();
         hideContext();
     });
     _id(`${id}-inner`).addEventListener('click', (e) => {
