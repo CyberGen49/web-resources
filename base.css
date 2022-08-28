@@ -381,7 +381,7 @@ select.textbox option:focus {
 .btn.alt2:focus-visible:not(:disabled) {
     background: var(--b25);
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
-    color: var(--f90);
+    color: var(--b90);
 }
 .btn.alt2:active:not(:disabled),
 .btn.alt2.active {
