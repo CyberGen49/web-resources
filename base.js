@@ -164,6 +164,15 @@ function loop(count = 1, callback) {
 }
 
 /**
+ * An alternative syntax for the `*.forEach()` method.
+ * @param {array} array The array to loop through
+ * @param {function} callback A function that's called for every element in the array. The function is passed the current element of the array.
+ */
+function loopEach(array, callback) {
+    [...array].forEach(callback);
+}
+
+/**
  * A shortcut for storing objects in LocalStorage.
  * @param {string} name The name of the local storage entry
  * @param {any} obj An object to be converted to JSON and stored
