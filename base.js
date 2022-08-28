@@ -154,12 +154,12 @@ function shuffle(arr) {
 
 /**
  * A for loop using callbacks. If the callback returns `false`, the loop is terminated.
- * @param {int} count The number of times to loop
+ * @param {number} count The number of times to loop
  * @param {function} callback A function that's called for every iteration of the loop. The function is passed an integer indicating the current index.
  */
-function loop(count, callback) {
+function loop(count = 1, callback) {
     for (let i = 0; i < count; i++) {
-        if (!callback(i)) return;
+        if (callback(i) === false) return;
     }
 }
 
