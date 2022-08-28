@@ -1,16 +1,46 @@
 
+/**
+ * A shortcut for `*.getElementById()`.
+ * @param {string} id The target element ID
+ * @param {HTMLElement} ancestor The ancestor element to start from
+ * @returns 
+ */
 function _id(id, ancestor = document) {
     return ancestor.getElementById(id);
 }
+/**
+ * A shortcut for `*.getElementsByClassName()`.
+ * @param {string} id The target class name
+ * @param {HTMLElement} ancestor The ancestor element to start from
+ * @returns 
+ */
 function _class(id, ancestor = document) {
     return ancestor.getElementsByClassName(id);
 }
+/**
+ * A shortcut for `*.getElementsByTagName()`.
+ * @param {string} id The target tag name
+ * @param {HTMLElement} ancestor The ancestor element to start from
+ * @returns 
+ */
 function _tag(tag, ancestor = document) {
     return ancestor.getElementsByTagName(tag);
 }
+/**
+ * A shortcut for `*.querySelector()`.
+ * @param {string} id The target query selector
+ * @param {HTMLElement} ancestor The ancestor element to start from
+ * @returns 
+ */
 function _qs(selector, ancestor = document) {
     return ancestor.querySelector(selector);
 }
+/**
+ * A shortcut for `*.querySelectorAll()`.
+ * @param {string} id The target query selector
+ * @param {HTMLElement} ancestor The ancestor element to start from
+ * @returns 
+ */
 function _qsa(selector, ancestor = document) {
     return ancestor.querySelectorAll(selector);
 }
@@ -122,19 +152,37 @@ function shuffle(arr) {
     return arr;
 }
 
+/**
+ * A shortcut for storing objects in LocalStorage.
+ * @param {string} name The name of the local storage entry
+ * @param {any} obj An object to be converted to JSON and stored
+ */
 function localStorageObjSet(name, obj) {
     window.localStorage.setItem(name, JSON.stringify(obj));
     console.log(`Saved localStorage object '${name}':`, obj);
 }
+/**
+ * Retrieves and JSON-decodes a LocalStorage entry.
+ * @param {string} name The name of the local storage entry
+ * @returns 
+ */
 function localStorageObjGet(name) {
     const data = window.localStorage.getItem(name);
     if (data) return JSON.parse(data);
     return false;
 }
+/**
+ * Deletes all contents of LocalStorage.
+ */
 function localStorageWipe() {
     window.localStorage.clear();
 }
 
+/**
+ * Determines of an input string is a valid URL.
+ * @param {string} string The input string
+ * @returns 
+ */
 function isValidUrl(string) {
     let url;
     try {
@@ -145,20 +193,40 @@ function isValidUrl(string) {
     return url.protocol === "http:" || url.protocol === "https:";
 }
 
+/**
+ * Determines if a string is a valid hostname.
+ * @param {string} string The input string
+ * @returns 
+ */
 function isValidHostname(string) {
     return string.match(/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/) && !string.match(/^localhost$/);
 }
 
+/**
+ * Determines if a string is a valid IPv4 or IPv6 address.
+ * @param {string} string The input string
+ * @returns 
+ */
 function isValidIp(string) {
     return string.match(/((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/) && !string.match(/(^127\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^192\.168\.)/) && !string.match(/^::1$/);
 }
 
+/**
+ * Escapes HTML entities present in the input string and returns the result.
+ * @param {string} text The input string
+ * @returns 
+ */
 function escapeHTML(text) {
     let escape = document.createElement('span');
     escape.innerText = text;
     return escape.innerText;
 }
 
+/**
+ * Positions an HTML element relative to the mouse cursor's position.
+ * @param {HTMLElement} el The element to position
+ * @returns 
+ */
 function posElRelToCursor(el) {
     const offsetX = 5;
     const offsetY = 5;
@@ -192,6 +260,13 @@ const hideTooltip = () => {
 }
 
 let popupFocus = [];
+/**
+ * Shows a popup.
+ * @param {string} title The popup title
+ * @param {string} body The popup body, can contain HTML
+ * @param {*} actions An array containing popup action objects
+ * @returns The resulting popup's element ID
+ */
 function showPopup(title, body, actions = []) {
     const id = randomHex();
     document.body.insertAdjacentHTML('beforeend', `
@@ -234,6 +309,10 @@ function showPopup(title, body, actions = []) {
     }, 50);
     return id;
 }
+/**
+ * Hides an existing popup.
+ * @param {*} id The popup ID returned from `showPopup()`
+ */
 function hidePopup(id) {
     _id(id).classList.remove('visible');
     setTimeout(() => {
@@ -242,6 +321,11 @@ function hidePopup(id) {
     }, 300);
 }
 
+/**
+ * Shows a custom context menu at the cursor's position.
+ * @param {*} items An array of context menu elements
+ * @returns The resulting context menu's element ID
+ */
 function showContext(items) {
     const id = randomHex();
     document.body.insertAdjacentHTML('beforeend', `
