@@ -153,7 +153,7 @@ function shuffle(arr) {
 }
 
 /**
- * A for loop using callbacks. If the callback returns `false`, the loop is terminated.
+ * A for loop using callbacks. If the callback explicitly returns `false`, the loop is terminated.
  * @param {number} count The number of times to loop
  * @param {function} callback A function that's called for every iteration of the loop. The function is passed an integer indicating the current index.
  */
@@ -164,12 +164,17 @@ function loop(count = 1, callback) {
 }
 
 /**
- * An alternative syntax for the `*.forEach()` method.
+ * An alternative syntax for the `*.forEach()` method. If the callback explicitly returns `false`, the loop is terminated.
  * @param {array} array The array to loop through
  * @param {function} callback A function that's called for every element in the array. The function is passed the current element of the array.
  */
 function loopEach(array, callback) {
-    [...array].forEach(callback);
+    let error = false;
+    [...array].forEach((el) => {
+        if (!error) {
+            if (callback(el) === false) error = true;
+        }
+    });
 }
 
 /**
