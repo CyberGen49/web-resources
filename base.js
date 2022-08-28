@@ -178,6 +178,19 @@ function loopEach(array, callback) {
 }
 
 /**
+ * An alternative syntax for `element.addEventListener()`.
+ * @param {HTMLElement} el The HTML element to add the listener(s) to
+ * @param {string|array} type The event type(s) (single type or array of types) to add to the element
+ * @param {function} callback The function to cal when the event is dispatched
+ */
+function on(el, type, callback) {
+    if (!Array.isArray(type)) type = [type];
+    type.forEach((type) => {
+        el.addEventListener(type, callback);
+    });
+}
+
+/**
  * A shortcut for storing objects in LocalStorage.
  * @param {string} name The name of the local storage entry
  * @param {any} obj An object to be converted to JSON and stored
