@@ -153,6 +153,17 @@ function shuffle(arr) {
 }
 
 /**
+ * A for loop using callbacks.
+ * @param {int} count The number of times to loop
+ * @param {function} callback A function that's called for every iteration of the loop. The function is passed an integer indicating the current index.
+ */
+function loop(count, callback) {
+    for (let i = 0; i < count; i++) {
+        callback(i);
+    }
+}
+
+/**
  * A shortcut for storing objects in LocalStorage.
  * @param {string} name The name of the local storage entry
  * @param {any} obj An object to be converted to JSON and stored
