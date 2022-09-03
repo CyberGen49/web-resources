@@ -257,7 +257,7 @@ function isValidIp(string) {
 function escapeHTML(text) {
     let escape = document.createElement('span');
     escape.innerText = text;
-    return escape.innerText;
+    return escape.innerText.replace('"', '&quot;');
 }
 
 /**
