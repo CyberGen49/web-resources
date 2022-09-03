@@ -463,7 +463,7 @@ function selectDateTime(callback, includeDate = true, includeTime = true, starti
                         el.classList.add('alt2');
                     });
                     _id(dayId).classList.remove('alt2');
-                    selDate = day;
+                    selDate.setFullYear(day.getFullYear(), day.getMonth(), day.getDate());
                 });
             });
         };
