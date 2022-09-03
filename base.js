@@ -710,6 +710,7 @@ const updateEls = () => {
         if (el.dataset.mod) return;
         el.dataset.mod = true;
         const head = _qs('.head', el);
+        head.setAttribute('tabindex', '0');
         on(head, 'click', () => {
             el.classList[el.classList.contains('visible') ? 'remove':'add']('visible');
         });

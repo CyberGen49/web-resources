@@ -819,6 +819,7 @@ progress.bar::-moz-progress-bar,
 .canHover .spoiler .head:hover,
 .spoiler .head:focus-visible {
     background: var(--b25);
+    outline: none;
 }
 .spoiler.visible .head {
     background: var(--b25);
@@ -842,11 +843,17 @@ progress.bar::-moz-progress-bar,
     content: 'expand_less';
 }
 .spoiler .body {
-    display: none;
-    padding: 15px;
+    visibility: hidden;
+    height: 0px;
+    transition: 0.2s var(--bezier);
+    transition-property: opacity;
+    opacity: 0;
 }
 .spoiler.visible .body {
-    display: block;
+    visibility: visible;
+    height: auto;
+    opacity: 1;
+    padding: 15px;
 }
 
 [placeholder]:empty::before,
