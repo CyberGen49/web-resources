@@ -138,22 +138,22 @@ h2 {
 }
 h3 {
     font-size: 30px;
-    color: var(--b90);
+    color: var(--b80);
 }
 h4 {
     font-size: 26px;
     font-weight: 700;
-    color: var(--b85);
+    color: var(--b75);
 }
 h5 {
     font-size: 22px;
     font-weight: 700;
-    color: var(--b80);
+    color: var(--b70);
 }
 h6 {
     font-size: 18px;
     font-weight: 700;
-    color: var(--b80);
+    color: var(--b70);
 }
 h1:first-child, 
 h2:first-child, 
@@ -313,9 +313,9 @@ select.textbox {
 select.textbox option:focus {
     background: #000;
 }
-.input.labeled.dropdown::after {
+.input.dropdown::after {
     position: absolute;
-    top: 18px;
+    top: 12px;
     right: 10px;
     display: flex;
     font-family: 'Material Symbols';
@@ -326,6 +326,9 @@ select.textbox option:focus {
     pointer-events: none;
 }
 .input.labeled.dropdown::after {
+    top: 18px;
+}
+.input.dropdown::after {
     content: "expand_more";
 }
 
@@ -664,6 +667,31 @@ progress.bar::-moz-progress-bar,
 }
 .dateSelect .calendar .days .day.alt2.outside {
     color: var(--b65);
+}
+.dateSelect .clock {
+    font-family: 'Quicksand';
+    font-weight: 600;
+    font-size: 26px;
+}
+.dateSelect .input {
+    width: 50px;
+    font-family: 'Quicksand';
+    font-weight: 600;
+    font-size: 26px;
+}
+.dateSelect .input.dropdown {
+    width: 84px;
+}
+.dateSelect .input.dropdown::after {
+    top: 6px;
+    right: 3px;
+}
+.dateSelect .input input {
+    padding: 8px;
+    text-align: center;
+}
+.dateSelect .input select {
+    padding: 8px 10px;
 }
 
 #tooltip {

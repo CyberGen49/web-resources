@@ -380,29 +380,58 @@ function selectDateTime(callback, includeDate = true, includeTime = true, starti
         days: randomHex(),
         prev: randomHex(),
         next: randomHex(),
+        calendar: randomHex(),
+        clock: randomHex(),
+        hours: randomHex(),
+        mins: randomHex(),
+        secs: randomHex(),
+        p: randomHex(),
     }
     id.popup = showPopup(title.join(' '), `
-        <div class="col gap-10 dateSelect">
-            <div class="row gap-10 align-center no-wrap">
-                <button id="${id.prev}" class="btn alt2 noShadow iconOnly">
-                    <div class="icon">arrow_back</div>
-                </button>
-                <div id="${id.title}" class="text-center flex-grow monthTitle"></div>
-                <button id="${id.next}" class="btn alt2 noShadow iconOnly">
-                    <div class="icon">arrow_forward</div>
-                </button>
-            </div>
-            <div class="calendar col gap-8 no-wrap">
-                <div class="weekdays">
-                    <span>S</span>
-                    <span>M</span>
-                    <span>T</span>
-                    <span>W</span>
-                    <span>T</span>
-                    <span>F</span>
-                    <span>S</span>
+        <div class="col dateSelect">
+            <div id="${id.calendar}" class="col gap-10">
+                <div class="row gap-10 align-center no-wrap">
+                    <button id="${id.prev}" class="btn alt2 noShadow iconOnly">
+                        <div class="icon">arrow_back</div>
+                    </button>
+                    <div id="${id.title}" class="text-center flex-grow monthTitle"></div>
+                    <button id="${id.next}" class="btn alt2 noShadow iconOnly">
+                        <div class="icon">arrow_forward</div>
+                    </button>
                 </div>
-                <div id="${id.days}" class="days"></div>
+                <div class="calendar col gap-8 no-wrap">
+                    <div class="weekdays">
+                        <span>S</span>
+                        <span>M</span>
+                        <span>T</span>
+                        <span>W</span>
+                        <span>T</span>
+                        <span>F</span>
+                        <span>S</span>
+                    </div>
+                    <div id="${id.days}" class="days"></div>
+                </div>
+            </div>
+            <div id="${id.clock}" class="clock row gap-10 justify-center align-center no-wrap">
+                <div class="row gap-8 align-center no-wrap">
+                    <div class="input custom">
+                        <input id="${id.hours}" type="number" class="textbox custom">
+                    </div>
+                    :
+                    <div class="input custom">
+                        <input id="${id.mins}" type="number" class="textbox custom">
+                    </div>
+                    :
+                    <div class="input custom">
+                        <input id="${id.secs}" type="number" class="textbox custom">
+                    </div>
+                </div>
+                <div class="input dropdown custom">
+                    <select id="${id.p}" class="textbox">
+                        <option>AM</option>
+                        <option>PM</option>
+                    </select>
+                </div>
             </div>
         </div>
     `, [{
@@ -415,51 +444,105 @@ function selectDateTime(callback, includeDate = true, includeTime = true, starti
             callback(selDate);
         }
     }]);
-    const changeMonth = () => {
-        const date = new Date(`${dayjs(navDate).format('YYYY-MM')}-01T12:00:00`);
-        _id(id.title).innerText = dayjs(date).format('MMMM YYYY');
-        let timestamp = (date.getTime()-(1000*60*60*24*(date.getDay())));
-        _id(id.days).innerHTML = '';
-        loop(35, (i) => {
-            const dayId = randomHex();
-            const day = new Date(timestamp+(1000*60*60*24*i));
-            _id(id.days).insertAdjacentHTML('beforeend', `
-                <button id="${dayId}" class="btn ${(dayjs(day).format('YYYY-MM-DD') == dayjs(selDate).format('YYYY-MM-DD')) ? '':'alt2'} iconOnly noShadow day ${(day.getMonth() != date.getMonth()) ? 'outside':''}" data-date="${dayjs(day).format('YYYY-MM-DD')}">
-                    ${day.getDate()}
-                </button>
-            `);
-            on(_id(dayId), 'click', () => {
-                loopEach(_qsa(':not(.alt2)', _id(id.days)), (el) => {
-                    el.classList.add('alt2');
+    if (includeDate) {
+        const changeMonth = () => {
+            const date = new Date(`${dayjs(navDate).format('YYYY-MM')}-01T12:00:00`);
+            _id(id.title).innerText = dayjs(date).format('MMMM YYYY');
+            let timestamp = (date.getTime()-(1000*60*60*24*(date.getDay())));
+            _id(id.days).innerHTML = '';
+            loop(42, (i) => {
+                const dayId = randomHex();
+                const day = new Date(timestamp+(1000*60*60*24*i));
+                _id(id.days).insertAdjacentHTML('beforeend', `
+                    <button id="${dayId}" class="btn ${(dayjs(day).format('YYYY-MM-DD') == dayjs(selDate).format('YYYY-MM-DD')) ? '':'alt2'} iconOnly noShadow day ${(day.getMonth() != date.getMonth()) ? 'outside':''}" data-date="${dayjs(day).format('YYYY-MM-DD')}">
+                        ${day.getDate()}
+                    </button>
+                `);
+                on(_id(dayId), 'click', () => {
+                    loopEach(_qsa(':not(.alt2)', _id(id.days)), (el) => {
+                        el.classList.add('alt2');
+                    });
+                    _id(dayId).classList.remove('alt2');
+                    selDate = day;
                 });
-                _id(dayId).classList.remove('alt2');
-                selDate = day;
             });
+        };
+        changeMonth();
+        on(_id(id.prev), 'click', () => {
+            let month = navDate.getMonth();
+            let year = navDate.getFullYear();
+            month--;
+            if (month < 0) {
+                month = 11;
+                year--;
+            }
+            navDate.setFullYear(year, month, 1);
+            changeMonth();
         });
-    };
-    changeMonth();
-    on(_id(id.prev), 'click', () => {
-        let month = navDate.getMonth();
-        let year = navDate.getFullYear();
-        month--;
-        if (month < 0) {
-            month = 11;
-            year--;
-        }
-        navDate.setFullYear(year, month, 1);
-        changeMonth();
-    });
-    on(_id(id.next), 'click', () => {
-        let month = navDate.getMonth();
-        let year = navDate.getFullYear();
-        month++;
-        if (month > 11) {
-            month = 0;
-            year++;
-        }
-        navDate.setFullYear(year, month, 1);
-        changeMonth();
-    });
+        on(_id(id.next), 'click', () => {
+            let month = navDate.getMonth();
+            let year = navDate.getFullYear();
+            month++;
+            if (month > 11) {
+                month = 0;
+                year++;
+            }
+            navDate.setFullYear(year, month, 1);
+            changeMonth();
+        });
+        let down = false;
+        on(_id(id.popup), 'keydown', (e) => {
+            if (down) return;
+            down = true;
+            if (e.code == 'ArrowLeft')
+                _id(id.prev).click();
+            if (e.code == 'ArrowRight')
+                _id(id.next).click();
+        });
+        on(_id(id.popup), 'keyup', () => {
+            down = false;
+        });
+    } else _id(id.calendar).style.display = 'none';
+    if (includeTime) {
+        _id(id.p).value = dayjs(selDate).format('A');
+        on(_id(id.hours), 'input', () => {
+            const el = _id(id.hours);
+            let value = parseInt(el.value);
+            const period = _id(id.p).value;
+            console.log(period)
+            el.value = clamp(value, 1, 12);
+            value = parseInt(el.value);
+            if (period == 'PM') value += 12;
+            selDate.setHours(value);
+        });
+        on(_id(id.mins), 'input', () => {
+            const el = _id(id.mins);
+            const value = parseInt(el.value);
+            el.value = clamp(value, 1, 59);
+            selDate.setMinutes(el.value);
+        });
+        on(_id(id.secs), 'input', () => {
+            const el = _id(id.secs);
+            const value = parseInt(el.value);
+            el.value = clamp(value, 1, 59);
+            selDate.setSeconds(el.value);
+        });
+        on(_id(id.p), 'change', () => {
+            _id(id.hours).dispatchEvent(new Event('input'));
+        });
+        on(_id(id.hours), 'change', () => {
+            _id(id.hours).value = dayjs(selDate).format('h');
+        });
+        on(_id(id.mins), 'change', () => {
+            _id(id.mins).value = dayjs(selDate).format('mm');
+        });
+        on(_id(id.secs), 'change', () => {
+            _id(id.secs).value = dayjs(selDate).format('ss');
+        });
+        _id(id.hours).dispatchEvent(new Event('change'));
+        _id(id.mins).dispatchEvent(new Event('change'));
+        _id(id.secs).dispatchEvent(new Event('change'));
+    } else _id(id.clock).style.display = 'none';
 }
 
 /**
