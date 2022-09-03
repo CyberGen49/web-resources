@@ -123,21 +123,38 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Quicksand';
-    font-weight: 500;
+    font-weight: 600;
     padding: 0px;
-    margin: 0.7em 0px 0.5em 0px;
+    margin: 0.6em 0px 0.4em 0px;
     line-height: 1.2;
 }
-h3, h4, h5 {
-    font-weight: 700;
+h1 {
+    font-size: 42px;
+    color: var(--f80);
 }
-
-h1 { font-size: 36px } 
-h2 { font-size: 30px } 
-h3 { font-size: 26px } 
-h4 { font-size: 22px } 
-h5 { font-size: 18px } 
-h6 { font-size: 16px } 
+h2 {
+    font-size: 36px;
+    color: var(--f90);
+}
+h3 {
+    font-size: 30px;
+    color: var(--b90);
+}
+h4 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--b85);
+}
+h5 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--b80);
+}
+h6 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--b80);
+}
 
 a {
     color: var(--f85);
@@ -150,7 +167,7 @@ a:focus-visible {
 
 p {
     line-height: 1.5;
-    margin: 0.3em 0px 0.5em 0px;
+    margin: 0px 0px 0.5em 0px;
 }
 p:first-child {
     margin-top: 0px;
@@ -167,6 +184,12 @@ small {
 
 *:focus-visible {
     outline: 1px solid var(--f60);
+}
+
+.container {
+    width: 1000px;
+    width: attr(data-width length);
+    margin: 0px auto;
 }
 
 .input {

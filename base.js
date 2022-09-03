@@ -360,6 +360,109 @@ function hidePopup(id) {
 }
 
 /**
+ * Prompts the user to select a date and time.
+ * @param {function} callback The function to call with the resulting date object, not called if the user doesn't select a date
+ * @param {boolean} includeDate If false, the calendar will be hidden
+ * @param {boolean} includeTime If false, the clock will be hidden
+ * @param {Date} startingDate The date at which to start from
+ */
+function selectDateTime(callback, includeDate = true, includeTime = true, startingDate = new Date()) {
+    let title = ['Select'];
+    if (includeDate) title.push('date');
+    if (includeDate && includeTime) title.push('and');
+    if (includeTime) title.push('time');
+    const today = new Date();
+    if (!startingDate || !startingDate.getTime()) startingDate = new Date();
+    let navDate = new Date(startingDate.getTime());
+    let selDate = new Date(startingDate.getTime());
+    let id = {
+        title: randomHex(),
+        days: randomHex(),
+        prev: randomHex(),
+        next: randomHex(),
+    }
+    id.popup = showPopup(title.join(' '), `
+        <div class="col gap-10 dateSelect">
+            <div class="row gap-10 align-center no-wrap">
+                <button id="${id.prev}" class="btn alt2 noShadow iconOnly">
+                    <div class="icon">arrow_back</div>
+                </button>
+                <div id="${id.title}" class="text-center flex-grow monthTitle"></div>
+                <button id="${id.next}" class="btn alt2 noShadow iconOnly">
+                    <div class="icon">arrow_forward</div>
+                </button>
+            </div>
+            <div class="calendar col gap-8 no-wrap">
+                <div class="weekdays">
+                    <span>S</span>
+                    <span>M</span>
+                    <span>T</span>
+                    <span>W</span>
+                    <span>T</span>
+                    <span>F</span>
+                    <span>S</span>
+                </div>
+                <div id="${id.days}" class="days"></div>
+            </div>
+        </div>
+    `, [{
+        label: 'Cancel',
+        escape: true
+    }, {
+        label: 'Select',
+        primary: true,
+        action: () => {
+            callback(selDate);
+        }
+    }]);
+    const changeMonth = () => {
+        const date = new Date(`${dayjs(navDate).format('YYYY-MM')}-01T12:00:00`);
+        _id(id.title).innerText = dayjs(date).format('MMMM YYYY');
+        let timestamp = (date.getTime()-(1000*60*60*24*(date.getDay())));
+        _id(id.days).innerHTML = '';
+        loop(35, (i) => {
+            const dayId = randomHex();
+            const day = new Date(timestamp+(1000*60*60*24*i));
+            _id(id.days).insertAdjacentHTML('beforeend', `
+                <button id="${dayId}" class="btn ${(dayjs(day).format('YYYY-MM-DD') == dayjs(selDate).format('YYYY-MM-DD')) ? '':'alt2'} iconOnly noShadow day ${(day.getMonth() != date.getMonth()) ? 'outside':''}" data-date="${dayjs(day).format('YYYY-MM-DD')}">
+                    ${day.getDate()}
+                </button>
+            `);
+            on(_id(dayId), 'click', () => {
+                loopEach(_qsa(':not(.alt2)', _id(id.days)), (el) => {
+                    el.classList.add('alt2');
+                });
+                _id(dayId).classList.remove('alt2');
+                selDate = day;
+            });
+        });
+    };
+    changeMonth();
+    on(_id(id.prev), 'click', () => {
+        let month = navDate.getMonth();
+        let year = navDate.getFullYear();
+        month--;
+        if (month < 0) {
+            month = 11;
+            year--;
+        }
+        navDate.setFullYear(year, month, 1);
+        changeMonth();
+    });
+    on(_id(id.next), 'click', () => {
+        let month = navDate.getMonth();
+        let year = navDate.getFullYear();
+        month++;
+        if (month > 11) {
+            month = 0;
+            year++;
+        }
+        navDate.setFullYear(year, month, 1);
+        changeMonth();
+    });
+}
+
+/**
  * Shows a custom context menu at the cursor's position.
  * @param {*} items An array of context menu elements
  * @returns The resulting context menu's element ID
