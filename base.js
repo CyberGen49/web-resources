@@ -509,7 +509,6 @@ function selectDateTime(callback, includeDate = true, includeTime = true, starti
             const el = _id(id.hours);
             let value = parseInt(el.value);
             const period = _id(id.p).value;
-            console.log(period)
             el.value = clamp(value, 1, 12);
             value = parseInt(el.value);
             if (period == 'PM') value += 12;
