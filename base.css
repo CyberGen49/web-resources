@@ -800,6 +800,55 @@ progress.bar::-moz-progress-bar,
     background: var(--b30);
 }
 
+.spoiler {
+    display: flex;
+    flex-direction: column;
+    background: var(--b20);
+    border-radius: 20px;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+.spoiler .head {
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: 0.1s var(--bezier);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.canHover .spoiler .head:hover,
+.spoiler .head:focus-visible {
+    background: var(--b25);
+}
+.spoiler.visible .head {
+    background: var(--b25);
+}
+.canHover .spoiler.visible .head:hover,
+.spoiler.visible .head:focus-visible {
+    background: var(--b30);
+}
+.spoiler .head > * {
+    flex-grow: 1;
+}
+.spoiler .head::after {
+    margin-top: 3px;
+    font-family: 'Material Symbols';
+    font-size: 48px;
+    content: 'expand_more';
+    color: var(--b60);
+    flex-shrink: 0;
+}
+.spoiler.visible .head::after {
+    content: 'expand_less';
+}
+.spoiler .body {
+    display: none;
+    padding: 15px;
+}
+.spoiler.visible .body {
+    display: block;
+}
+
 [placeholder]:empty::before,
 [placeholder]:empty::after {
     color: var(--b70); 

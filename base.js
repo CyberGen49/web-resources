@@ -706,6 +706,17 @@ const updateEls = () => {
         });
         el.removeAttribute('title');
     });
+    [..._class('spoiler')].forEach((el) => {
+        if (el.dataset.mod) return;
+        el.dataset.mod = true;
+        const head = _qs('.head', el);
+        on(head, 'click', () => {
+            el.classList[el.classList.contains('visible') ? 'remove':'add']('visible');
+        });
+        on(head, 'keyup', (e) => {
+            if (e.code == 'Space') head.click();
+        });
+    });
 }
 
 document.addEventListener('domChange', () => {
