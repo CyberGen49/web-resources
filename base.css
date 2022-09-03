@@ -880,7 +880,7 @@ progress.bar::-moz-progress-bar,
 ::-webkit-scrollbar {
     width: 15px;
     height: 15px;
-    background: var(--b10);
+    background: transparent;
 }
 ::-webkit-resizer {
     background: rgba(0, 0, 0, 0);
