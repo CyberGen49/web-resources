@@ -47,7 +47,33 @@
     </div>
     <script>
         window.addEventListener('load', () => {
-            
+            on(_id('dateSelectDate'), 'click', () => {
+                selectDateTime((date) => {
+                    showPopup(`Selected date and time`, date.toString(), [{
+                        label: 'Okay',
+                        primary: true,
+                        escape: true
+                    }]);
+                }, true, false);
+            });
+            on(_id('dateSelectDateTime'), 'click', () => {
+                selectDateTime((date) => {
+                    showPopup(`Selected date and time`, date.toString(), [{
+                        label: 'Okay',
+                        primary: true,
+                        escape: true
+                    }]);
+                }, true, true);
+            });
+            on(_id('dateSelectTime'), 'click', () => {
+                selectDateTime((date) => {
+                    showPopup(`Selected date and time`, date.toString(), [{
+                        label: 'Okay',
+                        primary: true,
+                        escape: true
+                    }]);
+                }, false, true);
+            });
         });
     </script>
 </body>

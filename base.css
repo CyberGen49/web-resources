@@ -155,6 +155,22 @@ h6 {
     font-weight: 700;
     color: var(--b80);
 }
+h1:first-child, 
+h2:first-child, 
+h3:first-child, 
+h4:first-child, 
+h5:first-child, 
+h6:first-child {
+    margin-top: 0px;
+}
+h1:last-child, 
+h2:last-child, 
+h3:last-child, 
+h4:last-child, 
+h5:last-child, 
+h6:last-child {
+    margin-bottom: 0px;
+}
 
 a {
     color: var(--f85);
@@ -190,6 +206,7 @@ small {
     width: 1000px;
     width: attr(data-width length);
     margin: 0px auto;
+    padding: 20px 15px;
 }
 
 .input {
@@ -615,6 +632,38 @@ progress.bar::-moz-progress-bar,
     justify-content: flex-end;
     flex-wrap: wrap;
     background: var(--b12);
+}
+
+.dateSelect {
+    user-select: none;
+}
+.dateSelect .monthTitle {
+    font-family: 'Quicksand';
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--f85);
+}
+.dateSelect .calendar .weekdays span {
+    font-family: 'Quicksand';
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    color: var(--f90);
+}
+.dateSelect .calendar .weekdays,
+.dateSelect .calendar .days {
+    display: grid;
+    grid-template-columns: repeat(7, 40px);
+}
+.dateSelect .calendar .days .day {
+    font-size: 18px;
+    font-weight: 600;
+}
+.dateSelect .calendar .days .day.alt2 {
+    color: var(--b100);
+}
+.dateSelect .calendar .days .day.alt2.outside {
+    color: var(--b65);
 }
 
 #tooltip {
