@@ -1,6 +1,7 @@
 
 @import 'https://src.simplecyber.org/fonts/quicksand.css';
 @import 'https://src.simplecyber.org/fonts/poppins.css';
+@import 'https://src.simplecyber.org/fonts/cascadia-code.css';
 @import 'https://src.simplecyber.org/fonts/symbols-200.css';
 @import 'https://src.simplecyber.org/fonts/icons.css';
 
@@ -130,11 +131,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
     font-size: 38px;
-    color: var(--f80);
+    color: var(--f75);
 }
 h2 {
     font-size: 32px;
-    color: var(--f90);
+    color: var(--f85);
 }
 h3 {
     font-size: 28px;
@@ -424,7 +425,6 @@ select.textbox option:focus {
 .btn.alt2:focus-visible:not(:disabled) {
     background: var(--b25);
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
-    color: var(--b90);
 }
 .btn.alt2:active:not(:disabled),
 .btn.alt2.active {
