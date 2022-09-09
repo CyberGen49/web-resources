@@ -810,7 +810,7 @@ progress.bar::-moz-progress-bar,
     overflow: hidden;
 }
 .spoiler .head {
-    padding: 8px 15px;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -837,6 +837,9 @@ progress.bar::-moz-progress-bar,
     flex-grow: 1;
 }
 .spoiler .head::after {
+    display: flex;
+    align-items: center;
+    height: 32px;
     margin-top: 3px;
     font-family: 'Material Symbols';
     font-size: 48px;
