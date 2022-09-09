@@ -830,7 +830,7 @@ progress.bar::-moz-progress-bar,
     background: var(--b30);
 }
 .spoiler.visible .onlyWhileClosed,
-.spoiler .onlyWhileOpen {
+.spoiler:not(.visible) .onlyWhileOpen {
     display: none;
 }
 .spoiler .head > * {
