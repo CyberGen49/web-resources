@@ -829,7 +829,8 @@ progress.bar::-moz-progress-bar,
 .spoiler.visible .head:focus-visible {
     background: var(--b30);
 }
-.spoiler.visible .onlyWhileClosed {
+.spoiler.visible .onlyWhileClosed,
+.spoiler .onlyWhileOpen {
     display: none;
 }
 .spoiler .head > * {
