@@ -54,6 +54,13 @@ body {
     --f90: hsl(var(--fgHue), var(--fgSat), 90%);
     --f95: hsl(var(--fgHue), var(--fgSat), 95%);
     --danger: hsl(0, 100%, 75%);
+    --codeYellow: #fff897;
+    --codePurple: #ae97ff;
+    --codePink: #ff97bf;
+    --codeBlue: #97e2ff;
+    --codeGreen: #9aff97;
+    --codeWhite: #fff;
+    --codeMuted: #747da1;
     --bezier: cubic-bezier(0.1, 0.3, 0.3, 1);
 }
 .changeColours {
@@ -126,36 +133,15 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Quicksand';
     font-weight: 600;
     padding: 0px;
-    margin: 0.5em 0px 0.2em 0px;
+    margin: 0.7em 0px 0.3em 0px;
     line-height: 1.2;
 }
-h1 {
-    font-size: 38px;
-    color: var(--f65);
-}
-h2 {
-    font-size: 32px;
-    color: var(--f75);
-}
-h3 {
-    font-size: 28px;
-    color: var(--b80);
-}
-h4 {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--b75);
-}
-h5 {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--b70);
-}
-h6 {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--b70);
-}
+h1 { font-size: 36px; color: var(--f65); }
+h2 { font-size: 32px; color: var(--f75); }
+h3 { font-size: 28px; color: var(--b80); }
+h4 { font-size: 24px; color: var(--b75); font-weight: 700; }
+h5 { font-size: 20px; color: var(--b70); font-weight: 700; }
+h6 { font-size: 18px; color: var(--b70); font-weight: 700; }
 h1:first-child, 
 h2:first-child, 
 h3:first-child, 
@@ -202,6 +188,60 @@ small {
 *:focus-visible {
     outline: 1px solid var(--f60);
 }
+
+/* Set up Prism syntax highlighting */
+.token.important,
+.token.builtin,
+.token.class-name,
+.token.property {
+    color: var(--codeBlue);
+}
+.token.function,
+.token.attr-name,
+.token.selector,
+.token.inserted {
+    color: var(--codeGreen);
+}
+.token.color,
+.token.boolean,
+.token.number,
+.token.symbol,
+.token.constant {
+    color: var(--codePurple);
+}
+.token.string,
+.token.char,
+.token.regex,
+.token.url,
+.token.attr-value {
+    color: var(--codeYellow);
+}
+.token.variable,
+.token.punctuation {
+    color: var(--codeWhite);
+}
+.token.keyword,
+.token.operator,
+.token.tag,
+.token.entity,
+.token.atrule,
+.token.unit,
+.token.interpolation-punctuation,
+.token.deleted {
+    color: var(--codePink);
+}
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: var(--codeMuted);
+}
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic { font-style: italic }
+.token.namespace { opacity: 0.6 }
 
 .container {
     max-width: 1000px;
