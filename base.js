@@ -255,7 +255,7 @@ function isValidIp(string) {
  * @returns 
  */
 function escapeHTML(text) {
-    return text.innerText
+    return text
         .replace(/"/g, '&quot;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
