@@ -131,11 +131,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
     font-size: 38px;
-    color: var(--f75);
+    color: var(--f65);
 }
 h2 {
     font-size: 32px;
-    color: var(--f85);
+    color: var(--f75);
 }
 h3 {
     font-size: 28px;
