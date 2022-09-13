@@ -133,7 +133,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Quicksand';
     font-weight: 600;
     padding: 0px;
-    margin: 0.7em 0px 0.3em 0px;
+    margin: 0.6em 0px 0.4em 0px;
     line-height: 1.2;
 }
 h1 { font-size: 36px; color: var(--f65); }
