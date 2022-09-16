@@ -572,7 +572,7 @@ function showContext(items) {
                 break;
             case 'item':
                 _id(`${id}-inner`).insertAdjacentHTML('beforeend', `
-                    <button id="${itemId}" class="item" ${(item.tooltip) ? `title="${item.tooltip}"`:''}>
+                    <button id="${itemId}" class="item" ${(item.tooltip) ? `title="${item.tooltip}"`:''} ${(item.disabled) ? 'disabled':''}>
                         ${(item.icon) ? `<div class="icon">${item.icon}</div>`:''}
                         <div class="label">
                             <div class="name">${item.name}</div>

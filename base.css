@@ -785,7 +785,7 @@ progress.bar::-moz-progress-bar,
     scale: 1;
     transition-property: opacity, transform;
 }
-#tooltip .small {
+#tooltip small {
     color: var(--b60);
 }
 
@@ -837,6 +837,9 @@ progress.bar::-moz-progress-bar,
 .isTouch .contextCont .context .item {
     padding: 0px 12px;
     height: 48px;
+}
+.isTouch .contextCont .context .item:disabled {
+    opacity: 50%;
 }
 .canHover .contextCont .context .item:hover,
 .contextCont .context .item:focus-visible {
