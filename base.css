@@ -838,14 +838,14 @@ progress.bar::-moz-progress-bar,
     padding: 0px 12px;
     height: 48px;
 }
-.isTouch .contextCont .context .item:disabled {
+.contextCont .context .item:disabled {
     opacity: 50%;
 }
-.canHover .contextCont .context .item:hover,
-.contextCont .context .item:focus-visible {
+.canHover .contextCont .context .item:hover:not(:disabled),
+.contextCont .context .item:focus-visible:not(:disabled) {
     background: var(--b20);
 }
-.contextCont .context .item:active {
+.contextCont .context .item:active:not(:disabled) {
     background: var(--b25) !important;
 }
 .contextCont .context .item .icon {
