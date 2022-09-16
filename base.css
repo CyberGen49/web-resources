@@ -499,6 +499,14 @@ select.textbox option:focus {
 .btn.alt2.active {
     background: var(--b35) !important;
 }
+.canHover .btn.alt2.brighter:hover:not(:disabled),
+.btn.alt2.brighter:focus-visible:not(:disabled) {
+    background: var(--b35);
+}
+.btn.alt2.brighter:active:not(:disabled),
+.btn.alt2.brighter.active {
+    background: var(--b45) !important;
+}
 .btn.noShadow,
 .canHover .btn.noShadow:hover:not(:disabled),
 .btn.noShadow:focus-visible:not(:disabled) {
