@@ -682,6 +682,8 @@ progress.bar::-moz-progress-bar,
 .popupCont .popup {
     margin: auto;
     max-width: 600px;
+    max-height: 100%;
+    min-height: 200px;
     background: var(--b15);
     border-radius: 16px;
     display: flex;
@@ -696,15 +698,16 @@ progress.bar::-moz-progress-bar,
 }
 .popup .title {
     padding: 20px 15px 15px 15px;
-    padding-bottom: 0px;
     font-family: 'Quicksand';
     font-size: 24px;
     font-weight: bold;
     user-select: none;
 }
 .popup .body {
-    padding: 15px 15px 20px 15px;
+    padding: 0px 15px 20px 15px;
     line-height: 1.2;
+    max-height: 99999px;
+    overflow-y: auto;
 }
 .popup .actions {
     width: 100%;
