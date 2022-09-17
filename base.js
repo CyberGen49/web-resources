@@ -632,7 +632,8 @@ window.addEventListener('mousemove', (e) => {
     mouse = {
         x: e.clientX,
         y: e.clientY
-    }
+    };
+    hideTooltip();
 });
 
 const updateEls = () => {
@@ -690,7 +691,6 @@ const updateEls = () => {
         const title = el.title;
         el.addEventListener('mousemove', () => {
             if (!document.body.classList.contains('canHover')) return;
-            hideTooltip();
             tooltipTimeout = setTimeout(() => {
                 _id('tooltip').innerHTML = title;
                 const coords = posElRelToCursor(_id('tooltip'));
