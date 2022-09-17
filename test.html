@@ -93,7 +93,20 @@
                 }, false, true);
             });
 
-            _id('dateSelectDate').click();
+            const id = showPopup('A big ol\' popup', `
+                <p>
+                    Accumsan luctus orci montes est nisl. Lorem proin nostra accumsan? Ipsum primis odio suscipit ornare sagittis vitae convallis sodales inceptos tempus iaculis? Est dui fringilla, potenti a pellentesque nam lacus curae;! Ultrices massa faucibus elit mi erat nunc accumsan. Ante maecenas lobortis amet montes. Lectus sodales lectus dui in litora fringilla. Condimentum quis sociosqu luctus euismod volutpat porta ante vel nascetur phasellus convallis? Nunc ultricies eu lacinia nostra ante felis; montes vulputate? Ipsum magnis rhoncus auctor amet. Blandit cras maecenas torquent justo. Bibendum!
+                </p><p>
+                    Taciti, turpis ridiculus consectetur ad potenti et nullam congue magna porttitor porta rhoncus. Cum metus a sollicitudin dictumst cursus venenatis ligula aliquam. Tellus euismod justo curae; blandit parturient etiam. Aptent sem nibh leo sollicitudin inceptos. Morbi vivamus maecenas lectus luctus nibh tincidunt consectetur enim vitae. Hac suspendisse scelerisque porta est turpis integer integer non cum eget risus? Vitae sem ullamcorper felis sodales pretium praesent ridiculus vulputate. Aliquam arcu per viverra nunc suscipit tempor sodales potenti vel ultricies. Mi ac eleifend vulputate. Sed sociis ultrices montes posuere arcu? Lectus vitae sodales mauris cum.
+                </p><p>
+                    Platea tristique sociis nulla bibendum taciti metus hac, amet ac? Malesuada mollis iaculis varius primis odio etiam. Sit vel lacus ad porta inceptos sed lobortis netus. Donec, ornare aptent cubilia penatibus bibendum dapibus aliquet fusce tortor at. Faucibus cursus laoreet velit euismod elit conubia nostra mus. Aliquet eget ligula tortor quam augue arcu malesuada a dictumst lacinia fames condimentum. Pulvinar cubilia lobortis diam varius id proin cras. Aliquam eleifend congue dapibus platea leo netus nisl neque urna pellentesque rutrum. Pulvinar et.
+                </p>
+            `, [{
+                label: 'Okay',
+                primary: true,
+                escape: true
+            }]);
+            _id(`${id}-inner`).style.maxWidth = '800px';
         });
     </script>
 </body>

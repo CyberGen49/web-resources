@@ -311,8 +311,8 @@ function showPopup(title, body, actions = []) {
     document.body.insertAdjacentHTML('beforeend', `
         <div id="${id}" class="popupCont">
             <div id="${id}-inner" class="popup">
-                <div class="title">${title}</div>
-                <div class="body">${body}</div>
+                <div id="${id}-title" class="title">${title}</div>
+                <div id="${id}-body" class="body">${body}</div>
                 ${(actions.length > 0) ? `<div id="${id}-actions" class="actions"></div>`:''}
             </div>
         </div>
@@ -340,6 +340,20 @@ function showPopup(title, body, actions = []) {
     });
     _id(`${id}-inner`).addEventListener('click', (e) => {
         e.stopPropagation();
+    });
+    _id(`${id}-body`).addEventListener('scroll', (e) => {
+        const inner = _id(`${id}-body`);
+        const title = _id(`${id}-title`);
+        const actions = _id(`${id}-actions`);
+        if (inner.scrollTop > 10)
+            title.classList.add('scrolled');
+        else
+            title.classList.remove('scrolled');
+        const rect = inner.getBoundingClientRect();
+        if ((inner.scrollHeight-(inner.scrollTop+rect.height)) > 10)
+            actions.classList.add('scrolled');
+        else
+            actions.classList.remove('scrolled');
     });
     setTimeout(() => {
         _id(id).classList.add('visible');
