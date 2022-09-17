@@ -696,7 +696,7 @@ progress.bar::-moz-progress-bar,
     scale: 1;
 }
 .popup .title {
-    padding: 20px 15px 15px 15px;
+    padding: 20px 15px 12px 15px;
     font-family: 'Quicksand';
     font-size: 24px;
     font-weight: bold;
@@ -707,10 +707,10 @@ progress.bar::-moz-progress-bar,
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
 }
 .popup .body {
-    padding: 0px 15px 20px 15px;
+    padding: 3px 15px 20px 15px;
     line-height: 1.2;
     max-height: 99999px;
-    min-height: 50px;
+    min-height: 23px;
     overflow-y: auto;
 }
 .popup .actions {
