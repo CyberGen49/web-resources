@@ -683,7 +683,6 @@ progress.bar::-moz-progress-bar,
     margin: auto;
     max-width: 600px;
     max-height: 100%;
-    min-height: 119px;
     background: var(--b15);
     border-radius: 16px;
     display: flex;
@@ -711,6 +710,7 @@ progress.bar::-moz-progress-bar,
     padding: 0px 15px 20px 15px;
     line-height: 1.2;
     max-height: 99999px;
+    min-height: 50px;
     overflow-y: auto;
 }
 .popup .actions {
