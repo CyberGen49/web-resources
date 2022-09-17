@@ -673,9 +673,11 @@ progress.bar::-moz-progress-bar,
     overflow-x: hidden;
     overflow-y: auto;
     z-index: 10;
+    pointer-events: none;
 }
 .popupCont.visible {
     opacity: 1;
+    pointer-events: all;
 }
 .popupCont .popup {
     margin: auto;
@@ -805,9 +807,11 @@ progress.bar::-moz-progress-bar,
     height: 100%;
     overflow: hidden;
     z-index: 15;
+    pointer-events: none;
 }
 .contextCont.visible {
     opacity: 1;
+    pointer-events: all;
 }
 .contextCont .context {
     position: fixed;
