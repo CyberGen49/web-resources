@@ -345,9 +345,6 @@ textarea.textbox {
     white-space: pre-wrap;
     word-break: break-word;
 }
-textarea.textbox::-webkit-scrollbar {
-    background: transparent;
-}
 .textbox::-webkit-inner-spin-button,
 .textbox::-webkit-outer-spin-button {
     appearance: none;
@@ -674,6 +671,12 @@ progress.bar::-moz-progress-bar,
     overflow-y: auto;
     z-index: 10;
     pointer-events: none;
+}
+.popupCont {
+    scrollbar-width: none;
+}
+.popupCont::-webkit-scrollbar { 
+    display: none;
 }
 .popupCont.visible {
     opacity: 1;
