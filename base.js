@@ -637,8 +637,14 @@ function hideContext() {
 let escapeQueue = [];
 window.addEventListener('keyup', (e) => {
     if (e.code == 'Escape') {
-        const func = escapeQueue.pop();
-        if (func) func();
+        while (true) {
+            const func = escapeQueue.pop();
+            if (!func) break;
+            try {
+                func();
+                break;
+            } catch (error) {}
+        }
     }
 });
 
