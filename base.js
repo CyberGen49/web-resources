@@ -355,6 +355,7 @@ function showPopup(title, body, actions = []) {
         else
             actions.classList.remove('scrolled');
     });
+    _id(`${id}-body`).dispatchEvent(new Event('scroll'));
     setTimeout(() => {
         _id(id).classList.add('visible');
         popupFocus[id] = focusTrap.createFocusTrap(_id(id));
