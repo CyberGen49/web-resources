@@ -999,6 +999,7 @@ progress.bar::-moz-progress-bar,
 .gap-8 { gap: 8px }
 .gap-5 { gap: 5px }
 .gap-3 { gap: 3px }
+.gap-2 { gap: 3px }
 .gap-0 { gap: 0px }
 .no-wrap { flex-wrap: nowrap }
 .flex-grow { flex-grow: 1 }
