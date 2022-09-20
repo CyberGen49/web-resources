@@ -408,6 +408,7 @@ select.textbox option:focus {
     font-weight: bold;
     font-size: 16px;
     color: var(--b15);
+    line-height: 1;
     background: var(--f85);
     transition: 0.1s var(--bezier);
     display: flex;
