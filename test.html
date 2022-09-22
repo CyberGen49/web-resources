@@ -6,14 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Resources Testing Area</title>
     <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./base.light.css">
     <script async defer src="./dayjs.min.js"></script>
     <script defer src="./tabbable.js"></script>
     <script defer src="./focus-trap.js"></script>
     <script async defer src="./Sortable.js"></script>
+    <script async defer src=".//prism.js" data-manual></script>
     <script async defer src="./base.js"></script>
 </head>
 <body>
     <div class="container col">
+        <label class="selectOption">
+            <input id="lightMode" type="checkbox">
+            Light mode
+        </label>
+        <div class="spoiler visible">
+            <div class="head">
+                <h3>Pallette</h3>
+            </div>
+            <div class="body">
+                <h5>Global hue</h5>
+                <div class="row no-wrap align-center">
+                    <div class="input" style="max-width: 70px">
+                        <input id="hue" class="textbox" type="number">
+                    </div>
+                    <div class="slider" data-value-into="hue">
+                        <progress></progress>
+                        <input id="hueRange" type="range" min="0" max="360" value="320">
+                    </div>
+                </div>
+                <h5>Foreground <code>var(--fgX)</code></h5>
+                <div id="fgColours" class="row gap-10"></div>
+                <h5>Background <code>var(--bgX)</code></h5>
+                <div id="bgColours" class="row gap-10"></div>
+
+                <h5></h5>
+                <div class="row">
+                    <button class="btn">
+                        <div class="icon">settings</div>
+                        .btn
+                    </button>
+                    <button class="btn alt">
+                        <div class="icon">settings</div>
+                        .btn.alt
+                    </button>
+                    <button class="btn alt2">
+                        <div class="icon">settings</div>
+                        .btn.alt2
+                    </button>
+                    <button class="btn" disabled>
+                        <div class="icon">settings</div>
+                        .btn:disabled
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="spoiler">
             <div class="head">
                 <h3>Headings</h3>
@@ -39,23 +86,191 @@
                 </p><p>
                     Platea tristique sociis nulla bibendum taciti metus hac, amet ac? Malesuada mollis iaculis varius primis odio etiam. Sit vel lacus ad porta inceptos sed lobortis netus. Donec, ornare aptent cubilia penatibus bibendum dapibus aliquet fusce tortor at. Faucibus cursus laoreet velit euismod elit conubia nostra mus. Aliquet eget ligula tortor quam augue arcu malesuada a dictumst lacinia fames condimentum. Pulvinar cubilia lobortis diam varius id proin cras. Aliquam eleifend congue dapibus platea leo netus nisl neque urna pellentesque rutrum. Pulvinar et.
                 </p>
+                <button id="bigPopup" class="btn">
+                    <div class="icon">open_in_new</div>
+                    View as popup...
+                </button>
+            </div>
+        </div>
+        <div class="spoiler">
+            <div class="head">
+                <h3>Code blocks</h3>
+            </div>
+            <div class="body">
+                <pre><code id="code" class="language-javascript"></code></pre>
             </div>
         </div>
         <div class="spoiler visible">
             <div class="head">
-                <h3>Date and Time Selection Popups</h3>
+                <h3>Form elements</h3>
+            </div>
+            <div class="body">
+                <div id="formElementBg" class="col">
+                    <!-- Text inputs -->
+                    <div class="row">
+                        <div class="input labeled" style="max-width: 250px">
+                            <label>Textbox label</label>
+                            <input class="textbox" type="text" placeholder="Text box">
+                        </div>
+                        <div class="input labeled" style="max-width: 180px">
+                            <label>Textbox label</label>
+                            <input class="textbox" type="number" placeholder="Text box (number)">
+                        </div>
+                        <div class="input labeled" style="max-width: 400px">
+                            <label>Textbox label (disabled)</label>
+                            <input disabled class="textbox" type="password" placeholder="Text box (password)">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input labeled flex-grow">
+                            <label>Text area label</label>
+                            <textarea class="textbox">Check out this super cool
+    multi-line text input!</textarea>
+                        </div>
+                    </div>
+                    <!-- Dropdowns -->
+                    <div class="row">
+                        <div class="input labeled dropdown" style="max-width: 300px">
+                            <label>Dropdown label</label>
+                            <select class="textbox">
+                                <option selected disabled>Dropdown</option>
+                                <option>Option 1</option>
+                                <option>Option 2</option>
+                                <option>Option 3</option>
+                            </select>
+                            <small>Pick one of the many super cool options.</small>
+                        </div>
+                    </div>
+                    <!-- Radio buttons -->
+                    <div class="row">
+                        <div class="selectGroup inline">
+                            <label>Single select</label>
+                            <label class="selectOption">
+                                <input type="radio" name="singleSelect" checked>
+                                Single option 1
+                            </label>
+                            <label class="selectOption">
+                                <input type="radio" name="singleSelect">
+                                Single option 2
+                            </label>
+                            <label class="selectOption">
+                                <input type="radio" name="singleSelect">
+                                Single option 3
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Checkboxes -->
+                    <div class="row">
+                        <div class="selectGroup inline">
+                            <label>Multiple select</label>
+                            <label class="selectOption">
+                                <input type="checkbox" name="multiSelect" checked>
+                                Multi option 1
+                            </label>
+                            <label class="selectOption">
+                                <input type="checkbox" name="multiSelect">
+                                Multi option 2
+                            </label>
+                            <label class="selectOption">
+                                <input type="checkbox" name="multiSelect" checked>
+                                Multi option 3
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Sliders -->
+                    <div class="col gap-8">
+                        <div class="input">
+                            <label>Range slider</label>
+                        </div>
+                        <div class="row no-wrap align-center">
+                            <div class="input" style="max-width: 70px">
+                                <input class="textbox" type="number" id="sliderValue">
+                            </div>
+                            <div class="slider" data-value-into="sliderValue">
+                                <progress></progress>
+                                <input type="range" min="0" max="1000" value="727">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Buttons -->
+                    <div class="row">
+                        <button class="btn small">
+                            <div class="icon">send</div>
+                            Button
+                        </button>
+                        <button class="btn small alt">Alternate Button</button>
+                        <button class="btn small" disabled>
+                            <div class="icon">thumb_down</div>
+                            Disabled Button
+                        </button>
+                        <button class="btn small alt2">
+                            <div class="icon">text_fields</div>
+                            Text only button
+                        </button>
+                        <button class="btn small alt2">
+                            <div class="icon">content_copy</div>
+                        </button>
+                    </div>
+                    <div class="row">
+                        <button class="btn">
+                            <div class="icon">send</div>
+                            Button
+                        </button>
+                        <button class="btn alt">Alternate Button</button>
+                        <button class="btn" disabled>
+                            <div class="icon">thumb_down</div>
+                            Disabled Button
+                        </button>
+                        <button class="btn alt2">
+                            <div class="icon">text_fields</div>
+                            Text only button
+                        </button>
+                        <button class="btn alt2">
+                            <div class="icon">content_copy</div>
+                        </button>
+                    </div>
+                    <div class="row">
+                        <button class="btn large">
+                            <div class="icon">send</div>
+                            Button
+                        </button>
+                        <button class="btn large alt">Alternate Button</button>
+                        <button class="btn large" disabled>
+                            <div class="icon">thumb_down</div>
+                            Disabled Button
+                        </button>
+                        <button class="btn large alt2">
+                            <div class="icon">text_fields</div>
+                            Text only button
+                        </button>
+                        <button class="btn large alt2">
+                            <div class="icon">content_copy</div>
+                        </button>
+                    </div>
+                    <div class="row">
+                        <button id="context" class="btn">
+                            <div class="icon">list</div>
+                            Context menu
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="spoiler">
+            <div class="head">
+                <h3>Date and time selection popups</h3>
             </div>
             <div class="body">
                 <div class="row">
-                    <button id="dateSelectDate" class="btn noShadow">
+                    <button id="dateSelectDate" class="btn">
                         <div class="icon">calendar_month</div>
                         Select date
                     </button>
-                    <button id="dateSelectDateTime" class="btn noShadow">
+                    <button id="dateSelectDateTime" class="btn">
                         <div class="icon">calendar_month</div>
                         Select date and time
                     </button>
-                    <button id="dateSelectTime" class="btn noShadow">
+                    <button id="dateSelectTime" class="btn">
                         <div class="icon">calendar_month</div>
                         Select time
                     </button>
@@ -63,8 +278,99 @@
             </div>
         </div>
     </div>
+    <style>
+        .swatch {
+            --w: 32px;
+            width: var(--w);
+            height: var(--w);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        #formElementBg {
+            padding: 10px;
+            border-radius: 20px;
+            background: var(--b15);
+        }
+        .light #formElementBg {
+            background: var(--b100);
+        }
+    </style>
     <script>
         window.addEventListener('load', () => {
+            on(_id('lightMode'), 'change', () => {
+                if (_id('lightMode').checked)
+                    document.body.classList.add('light');
+                else
+                    document.body.classList.remove('light');
+            });
+            _id('lightMode').checked = true;
+            _id('lightMode').dispatchEvent(new Event('change'));
+
+            on(_id('hueRange'), 'change', () => {
+                const value = hueRange.value;
+                document.body.classList.add('changeColours');
+                document.body.style.setProperty('--fgHue', value);
+            });
+
+            _id('code').innerHTML = 
+`// async/await can't be used in the global scope, so we need to create
+// an "Immediately-Invoked Function Expression" to run our async code
+(async() => {
+    const res = await fetch(\`https://tasks.simplecyber.org/lists/1662783520983/edit\`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'CyberTasks-Key': '34081b18dab4fc91be3a3e0cde724f12'
+        },
+        body: JSON.stringify({
+            name: 'Test List',
+            hue: 200
+        })
+    });
+    const json = await res.json();
+    console.log(json);
+    /*
+    {
+        success: true,
+        list: {
+            // See List data type below
+        }
+    }
+    */
+})();`;
+
+            on(_id('context'), 'click', () => {
+                showContext([{
+                    type: 'item',
+                    name: 'Sample item',
+                    icon: 'settings',
+                    action: () => {}
+                }, {
+                    type: 'item',
+                    name: 'Sample item disabled',
+                    icon: 'warning',
+                    disabled: true,
+                    action: () => {}
+                }, { type: 'sep' }, {
+                    type: 'item',
+                    name: 'Item with no icon',
+                    action: () => {}
+                }])
+            });
+
+            for (let i = 0; i <= 100; i+=5) {
+                _id('fgColours').insertAdjacentHTML('beforeend', `
+                    <div class="swatch" style="background: var(--f${i}); ${(i < 50) ? 'color: #fff':'color: #000'}">${i}</div>
+                `);
+                _id('bgColours').insertAdjacentHTML('beforeend', `
+                    <div class="swatch" style="background: var(--b${i}); ${(i < 50) ? 'color: #fff':'color: #000'}">${i}</div>
+                `);
+            }
+
             on(_id('dateSelectDate'), 'click', () => {
                 selectDateTime((date) => {
                     showPopup(`Selected date and time`, date.toString(), [{
@@ -92,21 +398,8 @@
                     }]);
                 }, false, true);
             });
-
-            const id = showPopup('A big ol\' popup', `
-                <p>
-                    Accumsan luctus orci montes est nisl. Lorem proin nostra accumsan? Ipsum primis odio suscipit ornare sagittis vitae convallis sodales inceptos tempus iaculis? Est dui fringilla, potenti a pellentesque nam lacus curae;! Ultrices massa faucibus elit mi erat nunc accumsan. Ante maecenas lobortis amet montes. Lectus sodales lectus dui in litora fringilla. Condimentum quis sociosqu luctus euismod volutpat porta ante vel nascetur phasellus convallis? Nunc ultricies eu lacinia nostra ante felis; montes vulputate? Ipsum magnis rhoncus auctor amet. Blandit cras maecenas torquent justo. Bibendum!
-                </p><p>
-                    Taciti, turpis ridiculus consectetur ad potenti et nullam congue magna porttitor porta rhoncus. Cum metus a sollicitudin dictumst cursus venenatis ligula aliquam. Tellus euismod justo curae; blandit parturient etiam. Aptent sem nibh leo sollicitudin inceptos. Morbi vivamus maecenas lectus luctus nibh tincidunt consectetur enim vitae. Hac suspendisse scelerisque porta est turpis integer integer non cum eget risus? Vitae sem ullamcorper felis sodales pretium praesent ridiculus vulputate. Aliquam arcu per viverra nunc suscipit tempor sodales potenti vel ultricies. Mi ac eleifend vulputate. Sed sociis ultrices montes posuere arcu? Lectus vitae sodales mauris cum.
-                </p><p>
-                    Platea tristique sociis nulla bibendum taciti metus hac, amet ac? Malesuada mollis iaculis varius primis odio etiam. Sit vel lacus ad porta inceptos sed lobortis netus. Donec, ornare aptent cubilia penatibus bibendum dapibus aliquet fusce tortor at. Faucibus cursus laoreet velit euismod elit conubia nostra mus. Aliquet eget ligula tortor quam augue arcu malesuada a dictumst lacinia fames condimentum. Pulvinar cubilia lobortis diam varius id proin cras. Aliquam eleifend congue dapibus platea leo netus nisl neque urna pellentesque rutrum. Pulvinar et.
-                </p>
-            `, [{
-                label: 'Okay',
-                primary: true,
-                escape: true
-            }]);
-            _id(`${id}-inner`).style.maxWidth = '800px';
+            
+            Prism.highlightAll();
         });
     </script>
 </body>

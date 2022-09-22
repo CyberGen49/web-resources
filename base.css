@@ -11,6 +11,8 @@ body {
     --bgSat: 8%;
     --fgHue: 320;
     --fgSat: 75%;
+    --fgSatSub: 60%;
+    --b0:  #000;
     --b5:  hsl(var(--bgHue), var(--bgSat), 5%);
     --b8:  hsl(var(--bgHue), var(--bgSat), 8%);
     --b10: hsl(var(--bgHue), var(--bgSat), 10%);
@@ -34,17 +36,18 @@ body {
     --b90: hsl(var(--bgHue), var(--bgSat), 90%);
     --b95: hsl(var(--bgHue), var(--bgSat), 95%);
     --b100: #fff;
-    --f5:  hsl(var(--fgHue), var(--fgSat), 5%);
-    --f10: hsl(var(--fgHue), var(--fgSat), 10%);
-    --f15: hsl(var(--fgHue), var(--fgSat), 15%);
-    --f20: hsl(var(--fgHue), var(--fgSat), 20%);
-    --f25: hsl(var(--fgHue), var(--fgSat), 25%);
-    --f30: hsl(var(--fgHue), var(--fgSat), 30%);
-    --f35: hsl(var(--fgHue), var(--fgSat), 35%);
-    --f40: hsl(var(--fgHue), var(--fgSat), 40%);
-    --f45: hsl(var(--fgHue), var(--fgSat), 45%);
-    --f50: hsl(var(--fgHue), var(--fgSat), 50%);
-    --f55: hsl(var(--fgHue), var(--fgSat), 55%);
+    --f0:  #000;
+    --f5:  hsl(var(--fgHue), var(--fgSatSub), 5%);
+    --f10: hsl(var(--fgHue), var(--fgSatSub), 10%);
+    --f15: hsl(var(--fgHue), var(--fgSatSub), 15%);
+    --f20: hsl(var(--fgHue), var(--fgSatSub), 20%);
+    --f25: hsl(var(--fgHue), var(--fgSatSub), 25%);
+    --f30: hsl(var(--fgHue), var(--fgSatSub), 30%);
+    --f35: hsl(var(--fgHue), var(--fgSatSub), 35%);
+    --f40: hsl(var(--fgHue), var(--fgSatSub), 40%);
+    --f45: hsl(var(--fgHue), var(--fgSatSub), 45%);
+    --f50: hsl(var(--fgHue), var(--fgSatSub), 50%);
+    --f55: hsl(var(--fgHue), var(--fgSatSub), 55%);
     --f60: hsl(var(--fgHue), var(--fgSat), 60%);
     --f65: hsl(var(--fgHue), var(--fgSat), 65%);
     --f70: hsl(var(--fgHue), var(--fgSat), 70%);
@@ -53,14 +56,15 @@ body {
     --f85: hsl(var(--fgHue), var(--fgSat), 85%);
     --f90: hsl(var(--fgHue), var(--fgSat), 90%);
     --f95: hsl(var(--fgHue), var(--fgSat), 95%);
+    --f100: #fff;
     --danger: hsl(0, 100%, 75%);
-    --codeYellow: #fff897;
-    --codePurple: #ae97ff;
-    --codePink: #ff97bf;
-    --codeBlue: #97e2ff;
-    --codeGreen: #9aff97;
-    --codeWhite: #fff;
-    --codeMuted: #747da1;
+    --codeYellow: hsl(50, 100%, 80%);
+    --codePurple: hsl(255, 100%, 80%);
+    --codePink: hsl(340, 100%, 80%);
+    --codeBlue: hsl(200, 100%, 80%);
+    --codeGreen: hsl(120, 100%, 80%);
+    --codeWhite: hsl(0, 0%, 100%);
+    --codeMuted: hsl(230, 20%, 55%);
     --bezier: cubic-bezier(0.1, 0.3, 0.3, 1);
 }
 .changeColours {
@@ -90,7 +94,6 @@ body {
     --b85: hsl(var(--bgHue), var(--bgSat), 85%);
     --b90: hsl(var(--bgHue), var(--bgSat), 90%);
     --b95: hsl(var(--bgHue), var(--bgSat), 95%);
-    --b100: #fff;
     --f5:  hsl(var(--fgHue), var(--fgSat), 5%);
     --f10: hsl(var(--fgHue), var(--fgSat), 10%);
     --f15: hsl(var(--fgHue), var(--fgSat), 15%);
@@ -303,7 +306,7 @@ pre:last-child {
     width: 100%;
     height: 40px;
     padding: 0px 12px;
-    background: var(--b15);
+    /* background: var(--b15); */
     line-height: 1.1;
     border-radius: 12px;
     border: 1px solid var(--b30);
@@ -514,7 +517,7 @@ select.textbox option:focus {
 .selectGroup {
     padding: 10px 12px;
     border-radius: 12px;
-    background: var(--b15);
+    /* background: var(--b15); */
     border: 1px solid var(--b30);
     display: flex;
     flex-direction: column;
@@ -633,7 +636,7 @@ progress.bar::-moz-progress-bar,
     width: 24px;
     height: 24px;
     background: var(--thumbFill);
-    border: 4px solid var(--b100);
+    border: 3px solid var(--b100);
     border-radius: 100px;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
     transition: 0.1s var(--bezier);
@@ -644,10 +647,10 @@ progress.bar::-moz-progress-bar,
 }
 .slider input[type="range"]::-moz-range-thumb {
     appearance: none;
-    width: 17px;
-    height: 17px;
+    width: 24px;
+    height: 24px;
     background: var(--thumbFill);
-    border: 4px solid var(--b100);
+    border: 3px solid var(--b100);
     border-radius: 100px;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
     transition: 0.1s var(--bezier);

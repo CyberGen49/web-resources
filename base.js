@@ -689,6 +689,7 @@ const updateEls = () => {
         if (valueInto) valueInto.addEventListener('input', () => {
             range.value = valueInto.value;
             progress.value = valueInto.value;
+            range.dispatchEvent(new Event('input'));
         });
         range.addEventListener('input', () => {
             progress.value = range.value;
@@ -711,6 +712,19 @@ const updateEls = () => {
         el.addEventListener('click', () => {
             let text = el.innerText;
             navigator.clipboard.writeText(text);
+        });
+    });
+    [..._class('spoiler')].forEach((el) => {
+        if (el.dataset.mod) return;
+        el.dataset.mod = true;
+        const head = _qs('.head', el);
+        head.setAttribute('tabindex', '0');
+        head.title = `Reveal/hide spoiler`
+        on(head, 'click', () => {
+            el.classList[el.classList.contains('visible') ? 'remove':'add']('visible');
+        });
+        on(head, 'keyup', (e) => {
+            if (e.code == 'Space') head.click();
         });
     });
     [..._qsa('[title]')].forEach((el) => {
@@ -736,18 +750,6 @@ const updateEls = () => {
             hideTooltip();
         });
         el.removeAttribute('title');
-    });
-    [..._class('spoiler')].forEach((el) => {
-        if (el.dataset.mod) return;
-        el.dataset.mod = true;
-        const head = _qs('.head', el);
-        head.setAttribute('tabindex', '0');
-        on(head, 'click', () => {
-            el.classList[el.classList.contains('visible') ? 'remove':'add']('visible');
-        });
-        on(head, 'keyup', (e) => {
-            if (e.code == 'Space') head.click();
-        });
     });
 }
 
