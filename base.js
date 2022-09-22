@@ -349,17 +349,23 @@ function showPopup(title, body, actions = []) {
             title.classList.add('scrolled');
         else
             title.classList.remove('scrolled');
-        const rect = inner.getBoundingClientRect();
-        if ((inner.scrollHeight-(inner.scrollTop+rect.height)) > 10)
-            actions.classList.add('scrolled');
-        else
-            actions.classList.remove('scrolled');
+        if (actions.length > 0) {
+            const rect = inner.getBoundingClientRect();
+            if ((inner.scrollHeight-(inner.scrollTop+rect.height)) > 10)
+                actions.classList.add('scrolled');
+            else
+                actions.classList.remove('scrolled');
+        }
     });
     _id(`${id}-body`).dispatchEvent(new Event('scroll'));
     setTimeout(() => {
         _id(id).classList.add('visible');
-        popupFocus[id] = focusTrap.createFocusTrap(_id(id));
-        popupFocus[id].activate();
+        try {
+            popupFocus[id] = focusTrap.createFocusTrap(_id(id));
+            popupFocus[id].activate();
+        } catch (error) {
+            console.error(`Failed to trap focus inside popup`);
+        }
     }, 50);
     return id;
 }
