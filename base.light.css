@@ -125,7 +125,7 @@ body.light {
 .light .btn.alt2:active:not(:disabled),
 .light .btn.alt2.active {
     color: var(--f35) !important;
-    background: var(--f75) !important;
+    background: var(--f70) !important;
 }
 .light.canHover .btn.alt2.brighter:hover:not(:disabled),
 .light .btn.alt2.brighter:focus-visible:not(:disabled) {
