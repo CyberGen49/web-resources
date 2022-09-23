@@ -10,8 +10,8 @@ body {
     --bgHue: 230;
     --bgSat: 8%;
     --fgHue: 320;
-    --fgSat: 75%;
-    --fgSatSub: 50%;
+    --fgSat: 65%;
+    --fgSatSub: 45%;
     --b0:  #000;
     --b5:  hsl(var(--bgHue), var(--bgSat), 5%);
     --b8:  hsl(var(--bgHue), var(--bgSat), 8%);
