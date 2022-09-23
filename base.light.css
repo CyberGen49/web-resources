@@ -215,7 +215,7 @@ body.light {
     color: var(--b20);
 }
 .light .contextCont .context .item {
-    background: var(--b90);
+    background: transparent;
 }
 .light.canHover .contextCont .context .item:hover:not(:disabled),
 .light .contextCont .context .item:focus-visible:not(:disabled) {
