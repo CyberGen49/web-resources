@@ -203,7 +203,7 @@ body.light {
 }
 
 .light #tooltip {
-    background: var(--b90);
+    background: var(--b100);
     color: var(--b20);
 }
 .light #tooltip small {
@@ -211,7 +211,7 @@ body.light {
 }
 
 .light .contextCont .context {
-    background: var(--b90);
+    background: var(--b100);
     color: var(--b20);
 }
 .light .contextCont .context .item {
