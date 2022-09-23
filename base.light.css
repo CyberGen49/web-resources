@@ -219,10 +219,10 @@ body.light {
 }
 .light.canHover .contextCont .context .item:hover:not(:disabled),
 .light .contextCont .context .item:focus-visible:not(:disabled) {
-    background: var(--b80) !important;
+    background: var(--b90) !important;
 }
 .light .contextCont .context .item:active:not(:disabled) {
-    background: var(--b75) !important;
+    background: var(--b80) !important;
 }
 .light .contextCont .context .item .icon {
     color: var(--b35);
