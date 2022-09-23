@@ -344,7 +344,7 @@ function showPopup(title, body, actions = []) {
     _id(`${id}-body`).addEventListener('scroll', (e) => {
         const inner = _id(`${id}-body`);
         const title = _id(`${id}-title`);
-        const actions = _id(`${id}-actions`);
+        const actionsCont = _id(`${id}-actions`);
         if (inner.scrollTop > 10)
             title.classList.add('scrolled');
         else
@@ -352,9 +352,9 @@ function showPopup(title, body, actions = []) {
         if (actions.length > 0) {
             const rect = inner.getBoundingClientRect();
             if ((inner.scrollHeight-(inner.scrollTop+rect.height)) > 10)
-                actions.classList.add('scrolled');
+                actionsCont.classList.add('scrolled');
             else
-                actions.classList.remove('scrolled');
+                actionsCont.classList.remove('scrolled');
         }
     });
     _id(`${id}-body`).dispatchEvent(new Event('scroll'));
