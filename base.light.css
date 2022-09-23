@@ -8,7 +8,7 @@ Use your own logic to determine when to add this class
 */
 
 body.light {
-    --danger: hsl(0, 80%, 65%);
+    --danger: hsl(0, 70%, 40%);
     background: var(--b100);
     color: var(--b10);
 }
