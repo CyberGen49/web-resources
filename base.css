@@ -987,6 +987,12 @@ progress.bar::-moz-progress-bar,
     -webkit-user-select: none;
 }
 
+.materialSymbol {
+    font-family: 'Material Symbols';
+    font-size: 28px;
+    line-height: 1;
+}
+
 .row {
     display: flex;
     gap: 15px;
