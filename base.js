@@ -730,6 +730,9 @@ function hideContext() {
     });
 }
 
+window = window || {};
+document = document || {};
+
 let escapeQueue = [];
 window.addEventListener('keyup', (e) => {
     if (e.code == 'Escape') {
@@ -743,7 +746,6 @@ window.addEventListener('keyup', (e) => {
         }
     }
 });
-
 window.addEventListener('mousemove', (e) => {
     mouse = {
         x: e.clientX,
@@ -921,6 +923,7 @@ try {
         selectDateTime: selectDateTime,
         showContext: showContext,
         hideContext: hideContext,
+        escapeQueue: escapeQueue,
         params: params,
         canHover: canHover,
         isTouch: isTouch,
