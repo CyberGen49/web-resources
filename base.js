@@ -70,6 +70,54 @@ function randomInt(min, max) {
 }
 
 /**
+ * Generates a pseudorandom float between a minimum and maximum.
+ * @param {number} min The minimum
+ * @param {number} max The maximum
+ * @returns {number} The resulting float
+ */
+function randomFloat(min, max) {
+    return min+(Math.random()*(max-min));
+}
+
+/**
+ * Selects a random element from an array.
+ * @param {array} arr The input array
+ * @returns {*} A randomly selected array element
+ */
+const getRandomElement = (arr) => arr[(Math.ceil(Math.random()*arr.length)-1)];
+
+/**
+ * @typedef itemWithWeight
+ * @property {*} value The return value for this item
+ * @property {number} weight The weight of this item
+ */
+/**
+ * Selects a random item from a provided list, where each item has a specific weight.
+ * @param {itemWithWeight[]} args An array of items and their weights
+ * @returns A randomly selected value
+ */
+const getRandomWeighted = (args) => {
+    // Get the total weight
+    let total = 0;
+    args.forEach((arg) => {
+        total += arg.weight;
+    });
+    // Sort options from lightest to heaviest
+    args.sort((a, b) => {
+        return a.weight-b.weight;
+    });
+    // Get our random number
+    const rand = randomFloat(0, total);
+    // Iterate through options until the current weight (num)
+    // is greater than our number (rand)
+    let num = 0;
+    for (const arg of args) {
+        num += arg.weight;
+        if (rand < num) return arg.value;
+    }
+}
+
+/**
  * Keeps a number within a range by preventing it from going above/below its maximum/minimum.
  * @param {number} num The input number
  * @param {number} min The minimum number
@@ -912,6 +960,9 @@ try {
         _qsa: _qsa,
         randomHex: randomHex,
         randomInt: randomInt,
+        randomFloat: randomFloat,
+        getRandomElement: getRandomElement,
+        getRandomWeighted: getRandomWeighted,
         clamp: clamp,
         overflow: overflow,
         roundSmart: roundSmart,
