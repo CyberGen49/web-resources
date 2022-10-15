@@ -47,13 +47,13 @@ function _qsa(selector, ancestor = document) {
 
 /**
  * Generates a pseudorandom hexodecimal string of a desired length using `Math.random()`.
- * @param {int} length The length of the random
+ * @param {number} length The length of the random
  * @returns {String} The resulting string
  */
 function randomHex(length = 8) {
     let chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
     let str = '';
-    for (i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
         str += chars[Math.round(Math.random()*15)];
     }
     return str;
@@ -61,9 +61,9 @@ function randomHex(length = 8) {
 
 /**
  * Generates a pseudorandom integer between a minimum and maximum.
- * @param {int} min The minimum
- * @param {int} max The maximum
- * @returns {int} The resulting integer
+ * @param {number} min The minimum
+ * @param {number} max The maximum
+ * @returns {number} The resulting integer
  */
 function randomInt(min, max) { 
     return Math.round(min+(Math.random()*(max-min)));
@@ -71,10 +71,10 @@ function randomInt(min, max) {
 
 /**
  * Keeps a number within a range by preventing it from going above/below its maximum/minimum.
- * @param {integer|float} num The input number
- * @param {integer|float} min The minimum number
- * @param {integer|float} max The maximum number
- * @returns {integer|float} The resulting number
+ * @param {number} num The input number
+ * @param {number} min The minimum number
+ * @param {number} max The maximum number
+ * @returns {number} The resulting number
  */
 function clamp(num, min, max) {
     if (num < min) return min;
@@ -84,10 +84,10 @@ function clamp(num, min, max) {
 
 /**
  * Keeps a number within a range by underflowing/overflowing.
- * @param {integer|float} num The input number
- * @param {integer|float} min The minimum number
- * @param {integer|float} max The maximum number
- * @returns {integer|float} The resulting number
+ * @param {number} num The input number
+ * @param {number} min The minimum number
+ * @param {number} max The maximum number
+ * @returns {number} The resulting number
  */
 function overflow(num, min, max) {
     if (num < min) return max;
@@ -97,9 +97,9 @@ function overflow(num, min, max) {
 
 /**
  * Rounds a float to the desired amount of decimal places, clipping any trailing zeros.
- * @param {int|float} number The input number
- * @param {int} decimalPlaces The maximum number of decimal places
- * @returns {integer|float} The resulting number
+ * @param {number} number The input number
+ * @param {number} decimalPlaces The maximum number of decimal places
+ * @returns {number} The resulting number
  */
 function roundSmart(number, decimalPlaces = 0) {
     const factorOfTen = Math.pow(10, decimalPlaces);
@@ -120,7 +120,7 @@ function getWords(s){
 /**
  * Returns the number of words in a string.
  * @param {string} s The input string
- * @returns {int} The number of words
+ * @returns {number} The number of words
  */
 function countWords(s){
     return getWords(s).length;
@@ -154,7 +154,7 @@ function shuffle(arr) {
 
 /**
  * @callback loopCallback
- * @param {int} i The current loop index
+ * @param {number} i The current loop index
  */
 /**
  * A for loop using callbacks. If the callback explicitly returns `false`, the loop is terminated.
@@ -169,8 +169,8 @@ function loop(count = 1, callback) {
 
 /**
  * @callback loopEachCallback
- * @param {int} el The current element
- * @param {int} i The current loop index
+ * @param {number} el The current element
+ * @param {number} i The current loop index
  */
 /**
  * An alternative syntax for the `*.forEach()` method. If the callback explicitly returns `false`, the loop is terminated.
@@ -179,9 +179,9 @@ function loop(count = 1, callback) {
  */
 function loopEach(array, callback) {
     let error = false;
-    [...array].forEach((el) => {
+    [...array].forEach((el, i) => {
         if (!error) {
-            if (callback(el) === false) error = true;
+            if (callback(el, i) === false) error = true;
         }
     });
 }
@@ -203,7 +203,7 @@ function downloadFile(url) {
 
 /**
  * Converts a number of seconds into `[hh]:[m]m:ss` format.
- * @param {int} s The number of seconds to format
+ * @param {number} s The number of seconds to format
  * @returns {String}
  */
 function formatSeconds(s) {
@@ -306,8 +306,8 @@ function escapeHTML(text) {
 /**
  * @typedef leftTopPosition
  * @type {object}
- * @property {float} left
- * @property {float} top
+ * @property {number} left
+ * @property {number} top
  */
 /**
  * Returns `top` and `left` pixel coordinates that, when used, will position the target element relative to the cursor.
@@ -824,6 +824,7 @@ const updateEls = () => {
 let escapeQueue = [];
 let canHover;
 let isTouch;
+let params;
 try {
     window.addEventListener('keyup', (e) => {
         if (e.code == 'Escape') {
@@ -854,7 +855,7 @@ try {
      * A `URLSearchParams` object created using `window.location.search`.
      * @type {URLSearchParams}
      */
-    const params = new URLSearchParams(window.location.search);
+    params = new URLSearchParams(window.location.search);
     
     // Handle disabling hover if the device doesn't support it
     canHover = window.matchMedia('(hover: none)');
@@ -889,7 +890,7 @@ try {
 } catch (error) {}
 
 try {
-    module.exports({
+    module.exports = {
         _id: _id,
         _class: _class,
         _tag: _tag,
@@ -927,5 +928,5 @@ try {
         params: params,
         canHover: canHover,
         isTouch: isTouch,
-    });
+    };
 } catch (error) {}
