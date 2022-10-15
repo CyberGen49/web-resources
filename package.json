@@ -1,0 +1,19 @@
+{
+  "name": "web-resources",
+  "version": "1.0.0",
+  "description": "A collection of custom base CSS and Javascript for use in my web projects",
+  "main": "base.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CyberGen49/web-resources.git"
+  },
+  "author": "CyberGen49",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CyberGen49/web-resources/issues"
+  },
+  "homepage": "https://github.com/CyberGen49/web-resources#readme"
+}

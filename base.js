@@ -317,7 +317,7 @@ function escapeHTML(text) {
  * @property {float} top
  */
 /**
- * Positions an HTML element relative to the mouse cursor's position.
+ * Returns `top` and `left` pixel coordinates that, when used, will position the target element relative to the cursor.
  * @param {HTMLElement} el The element to position
  * @returns {leftTopPosition} The element's position
  */
@@ -892,3 +892,47 @@ mutationObs.observe(document.documentElement, {
     attributeOldValue: true,
     characterDataOldValue: true
 });
+
+replaceme
+
+try {
+    module.exports({
+        _id: _id,
+        _class: _class,
+        _tag: _tag,
+        _qs: _qs,
+        _qsa: _qsa,
+        randomHex: randomHex,
+        randomInt: randomInt,
+        clamp: clamp,
+        overflow: overflow,
+        roundSmart: roundSmart,
+        getWords: getWords,
+        countWords: countWords,
+        sleep: sleep,
+        shuffle: shuffle,
+        loop: loop,
+        loopEach: loopEach,
+        downloadFile: downloadFile,
+        formatSeconds: formatSeconds,
+        copyText: copyText,
+        on: on,
+        localStorageObjSet: localStorageObjSet,
+        localStorageObjGet: localStorageObjGet,
+        localStorageWipe: localStorageWipe,
+        isValidUrl: isValidUrl,
+        isValidHostname: isValidHostname,
+        isValidIp: isValidIp,
+        escapeHTML: escapeHTML,
+        posElRelToCursor: posElRelToCursor,
+        hideTooltip: hideTooltip,
+        showPopup: showPopup,
+        hidePopup: hidePopup,
+        selectDateTime: selectDateTime,
+        showContext: showContext,
+        hideContext: hideContext,
+        params: params,
+        canHover: canHover,
+        isTouch: isTouch,
+    });
+} catch (error) {}
