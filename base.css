@@ -445,6 +445,9 @@ select.textbox option:focus {
     font-size: 28px;
     margin: 0px -5px;
 }
+.btn .icon.old {
+    font-family: 'Material Icons';
+}
 .btn.small .icon {
     font-size: 22px;
 }
@@ -458,6 +461,11 @@ select.textbox option:focus {
 .btn.alt2 {
     background: transparent;
     color: var(--f90);
+    box-shadow: none;
+}
+.btn.transparent {
+    background: transparent;
+    color: var(--b100);
     box-shadow: none;
 }
 .btn:disabled {
@@ -501,13 +509,15 @@ select.textbox option:focus {
 .btn.alt2.active {
     background: var(--b35) !important;
 }
-.canHover .btn.alt2.brighter:hover:not(:disabled),
-.btn.alt2.brighter:focus-visible:not(:disabled) {
-    background: var(--b35);
+.canHover .btn.transparent:hover:not(:disabled),
+.btn.transparent:focus-visible:not(:disabled) {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
+    color: var(--f90);
 }
-.btn.alt2.brighter:active:not(:disabled),
-.btn.alt2.brighter.active {
-    background: var(--b45) !important;
+.btn.transparent:active:not(:disabled),
+.btn.transparent.active {
+    background: rgba(255, 255, 255, 0.4) !important;
 }
 .btn.noShadow,
 .canHover .btn.noShadow:hover:not(:disabled),
@@ -600,6 +610,7 @@ label.selectOption .innerLabel {
 }
 progress.bar,
 .slider progress {
+    --fill: var(--f85);
     appearance: none;
     background: var(--b40);
     width: 100%;
@@ -624,12 +635,12 @@ progress.bar::-webkit-progress-bar,
 }
 progress.bar::-webkit-progress-value,
 .slider progress::-webkit-progress-value {
-    background: var(--f85);
+    background: var(--fill);
     border-radius: 100px;
 }
 progress.bar::-moz-progress-bar,
 .slider progress::-moz-progress-bar { 
-    background: var(--f85);
+    background: var(--fill);
     border-radius: 100px;
 }
 .slider input[type="range"]::-webkit-slider-thumb {
@@ -838,7 +849,7 @@ progress.bar::-moz-progress-bar,
 .contextCont .context {
     position: fixed;
     max-width: 300px;
-    max-height: 500px;
+    max-height: 100%;
     padding: 4px;
     background: var(--b12);
     color: var(--b90);
@@ -852,6 +863,10 @@ progress.bar::-moz-progress-bar,
     box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.2);
     z-index: 16;
     user-select: none;
+    scrollbar-width: 0px;
+}
+.contextCont .context::-webkit-scrollbar {
+    display: none;
 }
 .contextCont.visible .context {
     scale: 1;
@@ -861,6 +876,7 @@ progress.bar::-moz-progress-bar,
     all: unset;
     padding: 0px 10px;
     height: 40px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -1007,6 +1023,7 @@ progress.bar::-moz-progress-bar,
     flex-direction: column;
     gap: 15px;
 }
+.gap-25 { gap: 25px }
 .gap-20 { gap: 20px }
 .gap-18 { gap: 18px }
 .gap-12 { gap: 12px }
@@ -1019,8 +1036,12 @@ progress.bar::-moz-progress-bar,
 .no-wrap { flex-wrap: nowrap }
 .flex-grow { flex-grow: 1 }
 .no-shrink { flex-shrink: 0 }
+.align-start { align-items: flex-start }
+.justify-start { justify-content: flex-start }
 .align-center { align-items: center }
 .justify-center { justify-content: center }
+.align-end { align-items: flex-end }
+.justify-end { justify-content: flex-end }
 .flex-1 { flex: 1 }
 .hidden { display: none }
 .text-center { text-align: center }
@@ -1084,4 +1105,91 @@ progress.bar::-moz-progress-bar,
     background-color: var(--f85) !important;
     background-clip: padding-box;
     border: 4px solid rgba(0, 0, 0, 0);
+}
+
+/* <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> */
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+.lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--f85);
+    margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+}
+.lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+}
+.lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+}
+.lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+}
+.lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+}
+.lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+}
+.lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+}
+.lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+}
+@keyframes lds-roller {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

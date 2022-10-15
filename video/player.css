@@ -1,0 +1,162 @@
+
+body {
+    overflow: hidden;
+    background: #000;
+    user-select: none;
+}
+
+#main {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#vid {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: none;
+}
+
+#controls {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 0.4s var(--bezier);
+    opacity: 0;
+    pointer-events: none !important;
+    cursor: default;
+}
+.isTouch #controls {
+    background: rgba(0, 0, 0, 0.5);
+}
+#controls.visible {
+    opacity: 1;
+    pointer-events: all !important;
+}
+
+#top {
+    padding: 12px 18px;
+    padding-bottom: 30px;
+}
+body:not(.isTouch) #top {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), transparent);
+}
+
+#name {
+    font-family: 'Quicksand';
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: var(--f95);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#middle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    min-height: 0px;
+    pointer-events: none;
+}
+#controls.visible #middle > * {
+    pointer-events: all;
+}
+#playPauseBig {
+    --w: 72px;
+}
+#playPauseBig .icon {
+    font-size: 54px;
+}
+body:not(.isTouch) #forward,
+body:not(.isTouch) #playPauseBig,
+body:not(.isTouch) #back {
+    display: none;
+}
+#bufferSpinner {
+    scale: 1.3;
+    opacity: 0;
+    transition: 0.2s var(--bezier);
+    pointer-events: none;
+}
+#bufferSpinner.visible {
+    opacity: 1;
+}
+
+#bottom {
+    padding: 12px 18px;
+    padding-top: 50px;
+}
+body:not(.isTouch) #bottom {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
+
+#progCont {
+    height: 25px;
+}
+#progCont progress {
+    --fill: var(--f70);
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+}
+#progCont progress::-webkit-progress-bar {
+    background: rgba(255, 255, 255, 0.2);
+}
+#progCont input[type="range"] {
+    --w: 18px;
+    --t: -2.5px;
+}
+#progCont input[type="range"]::-webkit-slider-thumb {
+    transform: translateY(var(--t));
+    width: var(--w);
+    height: var(--w);
+    background: var(--f85);
+    border: none;
+}
+#progCont input[type="range"]::-moz-range-thumb {
+    transform: translateY(var(--t));
+    width: var(--w);
+    height: var(--w);
+    background: var(--f85);
+    border: none;
+}
+.canHover #progCont input[type="range"]::-webkit-slider-thumb {
+    scale: 0;
+}
+.canHover #progCont input[type="range"]::-moz-range-thumb {
+    scale: 0;
+}
+.canHover #progCont:hover input[type="range"]::-webkit-slider-thumb:not(:hover) {
+    scale: 1;
+}
+.canHover #progCont:hover input[type="range"]::-moz-range-thumb:not(:hover) {
+    scale: 1;
+}
+.canHover #progCont input[type="range"]::-webkit-slider-thumb:hover,
+#progCont input[type="range"]::-webkit-slider-thumb:active {
+    scale: 1.2;
+}
+.canHover #progCont input[type="range"]::-moz-range-thumb:hover,
+#progCont input[type="range"]::-moz-range-thumb:active {
+    scale: 1.15;
+}
+#progCont progress.buffer {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.isTouch #playPause { display: none }
+
+#text {
+    font-family: 'Quicksand';
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+}
+#speedCont {
+    opacity: 0.7;
+}

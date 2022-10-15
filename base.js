@@ -3,7 +3,7 @@
  * A shortcut for `*.getElementById()`.
  * @param {string} id The target element ID
  * @param {HTMLElement} ancestor The ancestor element to start from
- * @returns 
+ * @returns {HTMLElement|undefined} The selected element
  */
 function _id(id, ancestor = document) {
     return ancestor.getElementById(id);
@@ -12,7 +12,7 @@ function _id(id, ancestor = document) {
  * A shortcut for `*.getElementsByClassName()`.
  * @param {string} id The target class name
  * @param {HTMLElement} ancestor The ancestor element to start from
- * @returns 
+ * @returns {NodeListOf<any>} The selected elements
  */
 function _class(id, ancestor = document) {
     return ancestor.getElementsByClassName(id);
@@ -21,7 +21,7 @@ function _class(id, ancestor = document) {
  * A shortcut for `*.getElementsByTagName()`.
  * @param {string} id The target tag name
  * @param {HTMLElement} ancestor The ancestor element to start from
- * @returns 
+ * @returns {NodeListOf<any>} The selected elements
  */
 function _tag(tag, ancestor = document) {
     return ancestor.getElementsByTagName(tag);
@@ -30,7 +30,7 @@ function _tag(tag, ancestor = document) {
  * A shortcut for `*.querySelector()`.
  * @param {string} id The target query selector
  * @param {HTMLElement} ancestor The ancestor element to start from
- * @returns 
+ * @returns {HTMLElement|undefined} The selected element
  */
 function _qs(selector, ancestor = document) {
     return ancestor.querySelector(selector);
@@ -39,7 +39,7 @@ function _qs(selector, ancestor = document) {
  * A shortcut for `*.querySelectorAll()`.
  * @param {string} id The target query selector
  * @param {HTMLElement} ancestor The ancestor element to start from
- * @returns 
+ * @returns {NodeListOf<any>} The selected elements
  */
 function _qsa(selector, ancestor = document) {
     return ancestor.querySelectorAll(selector);
@@ -48,7 +48,7 @@ function _qsa(selector, ancestor = document) {
 /**
  * Generates a pseudorandom hexodecimal string of a desired length using `Math.random()`.
  * @param {int} length The length of the random
- * @returns 
+ * @returns {String} The resulting string
  */
 function randomHex(length = 8) {
     let chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
@@ -63,10 +63,10 @@ function randomHex(length = 8) {
  * Generates a pseudorandom integer between a minimum and maximum.
  * @param {int} min The minimum
  * @param {int} max The maximum
- * @returns 
+ * @returns {int} The resulting integer
  */
 function randomInt(min, max) { 
-    return Math.round(Math.random() * (max - min) + min);
+    return Math.round(min+(Math.random()*(max-min)));
 }
 
 /**
@@ -74,7 +74,7 @@ function randomInt(min, max) {
  * @param {integer|float} num The input number
  * @param {integer|float} min The minimum number
  * @param {integer|float} max The maximum number
- * @returns 
+ * @returns {integer|float} The resulting number
  */
 function clamp(num, min, max) {
     if (num < min) return min;
@@ -87,7 +87,7 @@ function clamp(num, min, max) {
  * @param {integer|float} num The input number
  * @param {integer|float} min The minimum number
  * @param {integer|float} max The maximum number
- * @returns 
+ * @returns {integer|float} The resulting number
  */
 function overflow(num, min, max) {
     if (num < min) return max;
@@ -99,7 +99,7 @@ function overflow(num, min, max) {
  * Rounds a float to the desired amount of decimal places, clipping any trailing zeros.
  * @param {int|float} number The input number
  * @param {int} decimalPlaces The maximum number of decimal places
- * @returns 
+ * @returns {integer|float} The resulting number
  */
 function roundSmart(number, decimalPlaces = 0) {
     const factorOfTen = Math.pow(10, decimalPlaces);
@@ -109,7 +109,7 @@ function roundSmart(number, decimalPlaces = 0) {
 /**
  * Separates a string into its words and returns an array of those words.
  * @param {string} s The input string
- * @returns 
+ * @returns {String[]} An array of words
  */
 function getWords(s){
     s = s.replace(/(^\s*)|(\s*$)/gi, '');
@@ -120,7 +120,7 @@ function getWords(s){
 /**
  * Returns the number of words in a string.
  * @param {string} s The input string
- * @returns 
+ * @returns {int} The number of words
  */
 function countWords(s){
     return getWords(s).length;
@@ -128,8 +128,8 @@ function countWords(s){
 
 /**
  * Pause execution for a desired amount of time. Use this in `async` functions with `await sleep(ms)`.
- * @param {int} ms The number of milliseconds to sleep for
- * @returns 
+ * @param {Number} ms The number of milliseconds to sleep for
+ * @returns {Promise<undefined>}
  */
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -138,7 +138,7 @@ function sleep(ms) {
 /**
  * Shuffles an array using `Math.random()` to swap elements and returns the result.
  * @param {array} arr The input array
- * @returns The shuffled array
+ * @returns {array} The shuffled array
  */
 function shuffle(arr) {
     let i = 0;
@@ -153,9 +153,13 @@ function shuffle(arr) {
 }
 
 /**
+ * @callback loopCallback
+ * @param {int} i The current loop index
+ */
+/**
  * A for loop using callbacks. If the callback explicitly returns `false`, the loop is terminated.
  * @param {number} count The number of times to loop
- * @param {function} callback A function that's called for every iteration of the loop. The function is passed an integer indicating the current index.
+ * @param {loopCallback} callback A function that's called for every iteration of the loop. The function is passed an integer indicating the current index.
  */
 function loop(count = 1, callback) {
     for (let i = 0; i < count; i++) {
@@ -164,9 +168,14 @@ function loop(count = 1, callback) {
 }
 
 /**
+ * @callback loopEachCallback
+ * @param {int} el The current element
+ * @param {int} i The current loop index
+ */
+/**
  * An alternative syntax for the `*.forEach()` method. If the callback explicitly returns `false`, the loop is terminated.
  * @param {array} array The array to loop through
- * @param {function} callback A function that's called for every element in the array. The function is passed the current element of the array.
+ * @param {loopEachCallback} callback A function that's called for every element in the array. The function is passed the current element of the array.
  */
 function loopEach(array, callback) {
     let error = false;
@@ -178,10 +187,50 @@ function loopEach(array, callback) {
 }
 
 /**
+ * Prompts the user to download a file. Note that this probably won't work if the file has a different origin domain.
+ * @param {String} url The target file URL
+ */
+function downloadFile(url) {
+    const link = document.createElement('a');
+    link.style.display = 'none';
+    link.href = url;
+    link.download = true;
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+}
+
+/**
+ * Converts a number of seconds into `[hh]:[m]m:ss` format.
+ * @param {int} s The number of seconds to format
+ * @returns {String}
+ */
+function formatSeconds(s) {
+    s = Math.floor(s);
+    let m = 0;
+    let h = 0;
+    if (s < 60) return `0:${s.toString().padStart(2, '0')}`;
+    m = Math.floor(s/60);
+    s = s%60;
+    if (m < 60) return `${m}:${s.toString().padStart(2, '0')}`;
+    h = Math.floor(m/60);
+    m = m%60;
+    return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+}
+
+/**
+ * Copies text to the user's clipboard using `window.navigator.copyText`.
+ * @param {string} text The text to copy
+ * @returns
+ */
+const copyText = text => window.navigator.copyText(text);
+
+/**
  * An alternative syntax for `element.addEventListener()`.
  * @param {HTMLElement} el The HTML element to add the listener(s) to
  * @param {string|array} type The event type(s) (single type or array of types) to add to the element
- * @param {function} callback The function to cal when the event is dispatched
+ * @param {function} callback The function to call when the event is dispatched
  */
 function on(el, type, callback) {
     if (!Array.isArray(type)) type = [type];
@@ -193,7 +242,7 @@ function on(el, type, callback) {
 /**
  * A shortcut for storing objects in LocalStorage.
  * @param {string} name The name of the local storage entry
- * @param {any} obj An object to be converted to JSON and stored
+ * @param {object} obj An object to be converted to JSON and stored
  */
 function localStorageObjSet(name, obj) {
     window.localStorage.setItem(name, JSON.stringify(obj));
@@ -202,7 +251,7 @@ function localStorageObjSet(name, obj) {
 /**
  * Retrieves and JSON-decodes a LocalStorage entry.
  * @param {string} name The name of the local storage entry
- * @returns 
+ * @returns {object}
  */
 function localStorageObjGet(name) {
     const data = window.localStorage.getItem(name);
@@ -219,7 +268,7 @@ function localStorageWipe() {
 /**
  * Determines of an input string is a valid URL.
  * @param {string} string The input string
- * @returns 
+ * @returns {Boolean}
  */
 function isValidUrl(string) {
     let url;
@@ -234,7 +283,7 @@ function isValidUrl(string) {
 /**
  * Determines if a string is a valid hostname.
  * @param {string} string The input string
- * @returns 
+ * @returns {Boolean}
  */
 function isValidHostname(string) {
     return string.match(/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/) && !string.match(/^localhost$/);
@@ -243,7 +292,7 @@ function isValidHostname(string) {
 /**
  * Determines if a string is a valid IPv4 or IPv6 address.
  * @param {string} string The input string
- * @returns 
+ * @returns {Boolean}
  */
 function isValidIp(string) {
     return string.match(/((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/) && !string.match(/(^127\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^192\.168\.)/) && !string.match(/^::1$/);
@@ -252,7 +301,7 @@ function isValidIp(string) {
 /**
  * Escapes HTML entities present in the input string and returns the result.
  * @param {string} text The input string
- * @returns 
+ * @returns {string} The escaped string
  */
 function escapeHTML(text) {
     return text
@@ -262,9 +311,15 @@ function escapeHTML(text) {
 }
 
 /**
+ * @typedef leftTopPosition
+ * @type {object}
+ * @property {float} left
+ * @property {float} top
+ */
+/**
  * Positions an HTML element relative to the mouse cursor's position.
  * @param {HTMLElement} el The element to position
- * @returns 
+ * @returns {leftTopPosition} The element's position
  */
 function posElRelToCursor(el) {
     const offsetX = 5;
@@ -298,12 +353,27 @@ const hideTooltip = () => {
     }, 150);
 }
 
+/**
+ * Called when this popup action button is clicked.
+ * @callback popupActionClickCallback
+ */
+/**
+ * @typedef popupAction
+ * @type {object}
+ * @property {string} label The button's label
+ * @property {string} [icon] A Material Symbols icon to use on the button
+ * @property {string} [id] A custom ID to give this popup element
+ * @property {popupActionClickCallback} [action]
+ * @property {boolean} [primary] If `true`, use a primary styled button for this action
+ * @property {boolean} [escape] If `true`, this action will be clicked if the user clicks outside of the popup
+ * @property {boolean} [noClose] If `true`, clicking this action button won't close the popup
+ */
 let popupFocus = [];
 /**
  * Shows a popup.
  * @param {string} title The popup title
  * @param {string} body The popup body, can contain HTML
- * @param {*} actions An array containing popup action objects
+ * @param {popupAction[]} actions An array of popup action objects
  * @returns The resulting popup's element ID
  */
 function showPopup(title, body, actions = []) {
@@ -325,9 +395,10 @@ function showPopup(title, body, actions = []) {
                 <div>${action.label}</div>
             </button>
         `);
-        _id(actionId).addEventListener('click', () => {
+        _id(actionId).addEventListener('click', (e) => {
             if (action.action) action.action();
-            hidePopup(id);
+            if (!action.noClose) hidePopup(id);
+            e.stopPropagation();
         });
         if (action.escape) {
             _id(id).addEventListener('click', () => {
@@ -371,7 +442,7 @@ function showPopup(title, body, actions = []) {
 }
 /**
  * Hides an existing popup.
- * @param {*} id The popup ID returned from `showPopup()`
+ * @param {string} id The popup ID returned from `showPopup()`
  */
 function hidePopup(id) {
     _id(id).classList.remove('visible');
@@ -382,8 +453,13 @@ function hidePopup(id) {
 }
 
 /**
+ * Called when the user submits a `selectDateTime()` popup.
+ * @callback selectDateTimeCallback
+ * @param {Date} date The selected Date object
+ */
+/**
  * Prompts the user to select a date and time.
- * @param {function} callback The function to call with the resulting date object, not called if the user doesn't select a date
+ * @param {selectDateTimeCallback} callback The function to call with the resulting date object, not called if the user doesn't select a date
  * @param {boolean} includeDate If false, the calendar will be hidden
  * @param {boolean} includeTime If false, the clock will be hidden
  * @param {Date} startingDate The date at which to start from
@@ -567,9 +643,23 @@ function selectDateTime(callback, includeDate = true, includeTime = true, starti
 }
 
 /**
+ * Called when this context menu item is clicked.
+ * @callback contextMenuItemClickCallback
+ */
+/**
+ * @typedef contextMenuItem
+ * @property {string} type `item` for a normal item, `sep` for a separator
+ * @property {string} [name] If `type` is `item`, the name of the item
+ * @property {string} [icon] If `type` is `item`, a Material Symbol to use for this item
+ * @property {string} [tooltip] If `type` is `item`, a hover tooltip to display for this item
+ * @property {string} [desc] If `type` is `item`, a description to display under this item
+ * @property {boolean} [disabled] If `true` and `type` is `item`, the item won't be clickable
+ * @property {contextMenuItemClickCallback} [action] If `type` is `item`, called when the item is clicked
+ */
+/**
  * Shows a custom context menu at the cursor's position.
- * @param {*} items An array of context menu elements
- * @returns The resulting context menu's element ID
+ * @param {contextMenuItem[]} items An array of context menu elements
+ * @returns {string} The resulting context menu's element ID
  */
 function showContext(items) {
     const id = randomHex();
@@ -608,8 +698,9 @@ function showContext(items) {
                 break;
         }
     });
-    _id(id).addEventListener('click', () => {
+    _id(id).addEventListener('click', (e) => {
         hideContext();
+        e.stopPropagation();
     });
     _id(id).addEventListener('contextmenu', (e) => {
         e.preventDefault();
@@ -618,9 +709,11 @@ function showContext(items) {
     _id(`${id}-inner`).addEventListener('click', (e) => {
         e.stopPropagation();
     });
+    _id(`${id}-inner`).style.scale = 1;
     const coords = posElRelToCursor(_id(`${id}-inner`));
     _id(`${id}-inner`).style.left = `${coords.left}px`;
     _id(`${id}-inner`).style.top = `${coords.top}px`;
+    _id(`${id}-inner`).style.scale = '';
     escapeQueue.push(() => {
         _id(id).click();
     });
@@ -631,6 +724,9 @@ function showContext(items) {
     }, 50);
     return id;
 }
+/**
+ * Hides all existing context menus
+ */
 function hideContext() {
     [..._class('contextCont')].forEach((el) => {
         el.classList.remove('visible');
@@ -760,6 +856,10 @@ window.addEventListener('load', () => {
     updateEls();
 });
 
+/**
+ * A `URLSearchParams` object created using `window.location.search`.
+ * @type {URLSearchParams}
+ */
 const params = new URLSearchParams(window.location.search);
 
 // Handle disabling hover if the device doesn't support it
