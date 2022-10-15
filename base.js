@@ -220,13 +220,6 @@ function formatSeconds(s) {
 }
 
 /**
- * Copies text to the user's clipboard using `window.navigator.copyText`.
- * @param {string} text The text to copy
- * @returns
- */
-const copyText = text => window.navigator.copyText(text);
-
-/**
  * An alternative syntax for `element.addEventListener()`.
  * @param {HTMLElement} el The HTML element to add the listener(s) to
  * @param {string|array} type The event type(s) (single type or array of types) to add to the element
@@ -913,7 +906,6 @@ try {
         loopEach: loopEach,
         downloadFile: downloadFile,
         formatSeconds: formatSeconds,
-        copyText: copyText,
         on: on,
         localStorageObjSet: localStorageObjSet,
         localStorageObjGet: localStorageObjGet,
