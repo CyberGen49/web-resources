@@ -730,29 +730,6 @@ function hideContext() {
     });
 }
 
-window = window || {};
-document = document || {};
-
-let escapeQueue = [];
-window.addEventListener('keyup', (e) => {
-    if (e.code == 'Escape') {
-        while (true) {
-            const func = escapeQueue.pop();
-            if (!func) break;
-            try {
-                func();
-                break;
-            } catch (error) {}
-        }
-    }
-});
-window.addEventListener('mousemove', (e) => {
-    mouse = {
-        x: e.clientX,
-        y: e.clientY
-    };
-});
-
 const updateEls = () => {
     [..._qsa('textarea')].forEach((el) => {
         if (el.dataset.mod) return;
@@ -844,49 +821,72 @@ const updateEls = () => {
     });
 }
 
-document.addEventListener('domChange', () => {
-    updateEls();
-});
-window.addEventListener('load', () => {
-    updateEls();
-});
-
-/**
- * A `URLSearchParams` object created using `window.location.search`.
- * @type {URLSearchParams}
- */
-const params = new URLSearchParams(window.location.search);
-
-// Handle disabling hover if the device doesn't support it
-const canHover = window.matchMedia('(hover: none)');
-const canHoverHandler = (result) => {
-    if (result.matches) document.body.classList.remove('canHover');
-    else document.body.classList.add('canHover');
-};
-canHoverHandler(canHover);
-canHover.addEventListener('change', canHoverHandler);
-
-// Handle the touch device class
-const isTouch = window.matchMedia('(pointer: coarse)');
-const isTouchHandler = (result) => {
-    if (result.matches) document.body.classList.add('isTouch');
-    else document.body.classList.remove('isTouch');
-};
-isTouchHandler(isTouch);
-isTouch.addEventListener('change', isTouchHandler);
-
-// Handle DOM mutations and dispatching the domChange event
-const mutationObs = new MutationObserver(() => {
-    document.dispatchEvent(new Event('domChange'));
-});
-mutationObs.observe(document.documentElement, {
-    attributes: true,
-    characterData: true,
-    childList: true,
-    subtree: true,
-    attributeOldValue: true,
-    characterDataOldValue: true
-});
+let escapeQueue = [];
+let canHover;
+let isTouch;
+try {
+    window.addEventListener('keyup', (e) => {
+        if (e.code == 'Escape') {
+            while (true) {
+                const func = escapeQueue.pop();
+                if (!func) break;
+                try {
+                    func();
+                    break;
+                } catch (error) {}
+            }
+        }
+    });
+    window.addEventListener('mousemove', (e) => {
+        mouse = {
+            x: e.clientX,
+            y: e.clientY
+        };
+    });
+    document.addEventListener('domChange', () => {
+        updateEls();
+    });
+    window.addEventListener('load', () => {
+        updateEls();
+    });
+    
+    /**
+     * A `URLSearchParams` object created using `window.location.search`.
+     * @type {URLSearchParams}
+     */
+    const params = new URLSearchParams(window.location.search);
+    
+    // Handle disabling hover if the device doesn't support it
+    canHover = window.matchMedia('(hover: none)');
+    const canHoverHandler = (result) => {
+        if (result.matches) document.body.classList.remove('canHover');
+        else document.body.classList.add('canHover');
+    };
+    canHoverHandler(canHover);
+    canHover.addEventListener('change', canHoverHandler);
+    
+    // Handle the touch device class
+    isTouch = window.matchMedia('(pointer: coarse)');
+    const isTouchHandler = (result) => {
+        if (result.matches) document.body.classList.add('isTouch');
+        else document.body.classList.remove('isTouch');
+    };
+    isTouchHandler(isTouch);
+    isTouch.addEventListener('change', isTouchHandler);
+    
+    // Handle DOM mutations and dispatching the domChange event
+    const mutationObs = new MutationObserver(() => {
+        document.dispatchEvent(new Event('domChange'));
+    });
+    mutationObs.observe(document.documentElement, {
+        attributes: true,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: true,
+        characterDataOldValue: true
+    });
+} catch (error) {}
 
 try {
     module.exports({
