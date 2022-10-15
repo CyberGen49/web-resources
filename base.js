@@ -220,6 +220,20 @@ function formatSeconds(s) {
 }
 
 /**
+ * Get age as an integer from a Date object.
+ * @param {Date} date The target date
+ * @returns {number}
+ */
+function getAgeFromDate(date) {
+    const now = new Date();
+    let age = now.getFullYear()-date.getFullYear();
+    if (now.getMonth() < date.getMonth() || (now.getMonth() == date.getMonth() && now.getDate() < date.getDate())) {
+        age--;
+    }
+    return age;
+}
+
+/**
  * An alternative syntax for `element.addEventListener()`.
  * @param {HTMLElement} el The HTML element to add the listener(s) to
  * @param {string|array} type The event type(s) (single type or array of types) to add to the element
@@ -909,6 +923,7 @@ try {
         loopEach: loopEach,
         downloadFile: downloadFile,
         formatSeconds: formatSeconds,
+        getAgeFromDate:getAgeFromDate,
         on: on,
         localStorageObjSet: localStorageObjSet,
         localStorageObjGet: localStorageObjGet,

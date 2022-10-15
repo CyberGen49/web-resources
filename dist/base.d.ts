@@ -201,6 +201,12 @@ export function downloadFile(url: string): void;
  */
 export function formatSeconds(s: number): string;
 /**
+ * Get age as an integer from a Date object.
+ * @param {Date} date The target date
+ * @returns {number}
+ */
+export function getAgeFromDate(date: Date): number;
+/**
  * An alternative syntax for `element.addEventListener()`.
  * @param {HTMLElement} el The HTML element to add the listener(s) to
  * @param {string|array} type The event type(s) (single type or array of types) to add to the element
