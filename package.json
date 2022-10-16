@@ -1,6 +1,6 @@
 {
   "name": "web-resources",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "A collection of custom base CSS and Javascript for use in my web projects",
   "main": "base.js",
   "scripts": {
