@@ -259,6 +259,15 @@ body.light {
     border-radius: 16px;
     border: 2px solid var(--f40);
 }
+.light .notice.danger {
+    border-color: hsl(0, 65%, 40%);
+}
+.light .notice.warning {
+    border-color: hsl(50, 55%, 40%);
+}
+.light .notice.success {
+    border-color: hsl(130, 65%, 40%);
+}
 
 .light::-webkit-scrollbar-thumb,
 .light ::-webkit-scrollbar-thumb {
