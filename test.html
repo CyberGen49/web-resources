@@ -16,10 +16,16 @@
 </head>
 <body>
     <div class="container col">
-        <label class="selectOption">
-            <input id="lightMode" type="checkbox">
-            Light mode
-        </label>
+        <div class="row">
+            <label class="selectOption">
+                <input id="lightMode" type="checkbox">
+                Light mode
+            </label>
+            <label class="selectOption">
+                <input id="psychedelic" type="checkbox">
+                Psychedelic 
+            </label>
+        </div>
         <div class="spoiler visible">
             <div class="head">
                 <h3>Pallette</h3>
@@ -310,11 +316,17 @@
             _id('lightMode').checked = true;
             _id('lightMode').dispatchEvent(new Event('change'));
 
-            on(_id('hueRange'), 'change', () => {
+            on(_id('hueRange'), 'input', () => {
                 const value = hueRange.value;
                 document.body.classList.add('changeColours');
                 document.body.style.setProperty('--fgHue', value);
             });
+
+            setInterval(() => {
+                if (!_id('psychedelic').checked) return;
+                _id('hueRange').value = overflow(parseInt(_id('hueRange').value)+1, 0, 360);
+                _id('hueRange').dispatchEvent(new Event('input'));
+            }, 50);
 
             _id('code').innerHTML = 
 `// async/await can't be used in the global scope, so we need to create
@@ -362,13 +374,35 @@
                 }])
             });
 
+            const addSwatch = (container, prefix, lum) => {
+                const id = randomHex();
+                container.insertAdjacentHTML('beforeend', `
+                    <div id="${id}" class="swatch" style="background: var(--${prefix}${lum}); ${(lum < 50) ? 'color: #fff':'color: #000'}">${lum}</div>
+                `);
+                on(_id(id), 'contextmenu', e => {
+                    e.preventDefault();
+                    showContext([{
+                        type: 'item',
+                        name: `Copy #rrggbb`,
+                        action: () => window.navigator.clipboard.writeText('')
+                    }, {
+                        type: 'item',
+                        name: `Copy rgb(r, g, b)`,
+                        action: () => window.navigator.clipboard.writeText('')
+                    }, {
+                        type: 'item',
+                        name: `Copy hsl(h, s%, l%)`,
+                        action: () => window.navigator.clipboard.writeText('')
+                    }, {
+                        type: 'item',
+                        name: `Copy var(--[b|f]l)`,
+                        action: () => window.navigator.clipboard.writeText('')
+                    }]);
+                });
+            };
             for (let i = 0; i <= 100; i+=5) {
-                _id('fgColours').insertAdjacentHTML('beforeend', `
-                    <div class="swatch" style="background: var(--f${i}); ${(i < 50) ? 'color: #fff':'color: #000'}">${i}</div>
-                `);
-                _id('bgColours').insertAdjacentHTML('beforeend', `
-                    <div class="swatch" style="background: var(--b${i}); ${(i < 50) ? 'color: #fff':'color: #000'}">${i}</div>
-                `);
+                addSwatch(_id('bgColours'), 'b', i);
+                addSwatch(_id('fgColours'), 'f', i);
             }
 
             on(_id('dateSelectDate'), 'click', () => {

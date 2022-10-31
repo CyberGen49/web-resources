@@ -253,6 +253,13 @@ body.light {
     color: var(--b40);
 }
 
+.light .notice {
+    padding: 15px 20px;
+    background: var(--b90);
+    border-radius: 16px;
+    border: 2px solid var(--f40);
+}
+
 .light::-webkit-scrollbar-thumb,
 .light ::-webkit-scrollbar-thumb {
     background-color: var(--f70) !important;

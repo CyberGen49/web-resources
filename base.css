@@ -985,6 +985,13 @@ progress.bar::-moz-progress-bar,
     padding: 15px;
 }
 
+.notice {
+    padding: 15px 20px;
+    background: var(--b20);
+    border-radius: 16px;
+    border: 2px solid var(--f80);
+}
+
 [placeholder]:empty::before,
 [placeholder]:empty::after {
     color: var(--b70); 
