@@ -175,10 +175,18 @@ p {
     line-height: 1.5;
     margin: 0px 0px 0.5em 0px;
 }
-p:first-child {
+ul, ol {
+    line-height: 1.4;
+    margin: 0px 0px 0.5em 0px;
+}
+p:first-child,
+ul:first-child,
+ol:first-child {
     margin-top: 0px;
 }
-p:last-child {
+p:last-child,
+ul:last-child,
+ol:last-child {
     margin-bottom: 0px;
 }
 
