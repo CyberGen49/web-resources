@@ -411,8 +411,11 @@ class REST {
                 ...this.fetchOptions,
                 method: method
             };
-            if (opts.body || method !== 'GET')
+            if (opts.body || method !== 'GET') {
                 fetchOpts.body = JSON.stringify(opts.body);
+                if (!fetchOpts.headers) fetchOpts.headers = {};
+                fetchOpts.headers['content-type'] = 'application/json';
+            }
             let res;
             try {
                 res = await fetch(this.#getFullUrl(path, qs), fetchOpts);
