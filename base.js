@@ -366,6 +366,128 @@ function escapeHTML(text) {
 }
 
 /**
+ * @typedef REST_requestOpts
+ * @property {Object.<string, string|string[]>} query An object containing keys and values to be used in the querystring. Setting a key to an array of strings will add the key to the querystring for each of the provided strings.
+ * @property {object} body An object to be converted to JSON and sent in the body of the request. This option will have no effect with `GET` requests.
+ * @property {('json'|'text'|'response')} [response] The type of response to be returned. Default is `json`, which will parse the server's response into a Javascript object and return it, adding a `_status` property set to the response code. `text` will return the server's response as test, and `response` will return the response object from `fetch`.
+ */
+/**
+ * Interact with REST/JSON web APIs
+ */
+class REST {
+    constructor(baseUrl, fetchOptions) {
+        if (!isValidUrl) throw new Error(`Invalid base URL`);
+        this.baseUrl = baseUrl;
+        this.fetchOptions = fetchOptions;
+    }
+    #getQueryString(queryOpt) {
+        let querystring = '';
+        if (queryOpt) {
+            let qs = new URLSearchParams();
+            for (const key in opts.query) {
+                const value = opts[key];
+                if (typeof value == 'string') {
+                    qs.append(key, value);
+                } else if (typeof value == 'object' && value.length) {
+                    for (const val of value) {
+                        qs.append(key, val);
+                    }
+                }
+            }
+            querystring = qs.toString();
+        }
+        return querystring;
+    }
+    #getFullUrl(path, query) {
+        let url = `${this.baseUrl}/${path}`;
+        url = url.replace(/\/\//g, '/');
+        if (query) url = `${url}?${query}`;
+        return url;
+    }
+    async #fetch(method, path, opts) {
+        return new Promise(async(resolve, reject) => {
+            const qs = this.#getQueryString(opts.query);
+            const fetchOpts = {
+                ...this.fetchOptions,
+                method: method
+            };
+            if (opts.body || method !== 'GET')
+                fetchOpts.body = JSON.stringify(opts.body);
+            let res;
+            try {
+                res = await fetch(this.#getFullUrl(path, qs), fetchOpts);
+            } catch (error) {
+                return reject(error);
+            }
+            const handleResponse = {
+                json: async() => {
+                    const json = await res.json() || {};
+                    json._status = res.status;
+                    return resolve(json);
+                },
+                text: async() => {
+                    const text = await res.text();
+                    return resolve(text);
+                },
+                response: async() => {
+                    return resolve(res);
+                }
+            }
+            try {
+                return handleResponse[opts.response || 'json'];
+            } catch (error) {
+                return reject(error);
+            }
+        });
+    }
+    /**
+     * Sends an HTTP `GET` request to the selected endpoint.
+     * @param {string} path The subpath (endpoint) of the base URL to make a request to
+     * @param {REST_requestOpts} opts Options for this request
+     * @returns {Object|string|Promise<Response>} The response in the format set with the `response` option
+     */
+    async get(path, opts) {
+        return this.#fetch('GET', path, opts);
+    }
+    /**
+     * Sends an HTTP `POST` request to the selected endpoint.
+     * @param {string} path The subpath (endpoint) of the base URL to make a request to
+     * @param {REST_requestOpts} opts Options for this request
+     * @returns {Object|string|Promise<Response>} The response in the format set with the `response` option
+     */
+    async post(path, opts) {
+        return this.#fetch('POST', path, opts);
+    }
+    /**
+     * Sends an HTTP `PUT` request to the selected endpoint.
+     * @param {string} path The subpath (endpoint) of the base URL to make a request to
+     * @param {REST_requestOpts} opts Options for this request
+     * @returns {Object|string|Promise<Response>} The response in the format set with the `response` option
+     */
+    async put(path, opts) {
+        return this.#fetch('PUT', path, opts);
+    }
+    /**
+     * Sends an HTTP `PATCH` request to the selected endpoint.
+     * @param {string} path The subpath (endpoint) of the base URL to make a request to
+     * @param {REST_requestOpts} opts Options for this request
+     * @returns {Object|string|Promise<Response>} The response in the format set with the `response` option
+     */
+    async patch(path, opts) {
+        return this.#fetch('PATCH', path, opts);
+    }
+    /**
+     * Sends an HTTP `DELETE` request to the selected endpoint.
+     * @param {string} path The subpath (endpoint) of the base URL to make a request to
+     * @param {REST_requestOpts} opts Options for this request
+     * @returns {Object|string|Promise<Response>} The response in the format set with the `response` option
+     */
+    async delete(path, opts) {
+        return this.#fetch('DELETE', path, opts);
+    }
+}
+
+/**
  * @typedef leftTopPosition
  * @type {object}
  * @property {number} left
