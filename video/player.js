@@ -192,10 +192,13 @@ window.addEventListener('load', () => {
         }
     });
     on(document, 'fullscreenchange', () => {
-        if (document.fullscreenElement)
+        if (document.fullscreenElement) {
             _qs('#fullscreen .icon').innerText = 'fullscreen_exit';
-        else
+            if (isNameOnlyFullscreen) _id('name').style.display = '';
+        } else {
             _qs('#fullscreen .icon').innerText = 'fullscreen';
+            if (isNameOnlyFullscreen) _id('name').style.display = 'none';
+        }
     })
     on(document.body, 'contextmenu', showMenu);
     on(window, 'keydown', (e) => {
@@ -235,6 +238,8 @@ window.addEventListener('load', () => {
     if (params.get('autoplay')) vid.autoplay = true;
     vid.src = params.get('url');
     const videoName = params.get('name') || params.get('url').split('?')[0].split('/').reverse()[0];
+    const isNameOnlyFullscreen = params.get('nameOnlyFullscreen') ? true : false;
+    _id('name').style.display = 'none';
     _id('name').innerText = videoName;
     document.title = videoName;
     if (params.get('hue')) {
