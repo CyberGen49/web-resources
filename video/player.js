@@ -35,7 +35,7 @@ function showMenu(e) {
             { type: 'sep' }, {
                 type: 'item',
                 name: 'Open player in new tab',
-                icon: 'open',
+                icon: 'open_in_new',
                 action: () => window.open(window.location.href, '_blank')
             }
         )
