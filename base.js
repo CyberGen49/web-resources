@@ -282,6 +282,53 @@ function getAgeFromDate(date) {
 }
 
 /**
+ * Returns a string describing the relative time between two dates, like "3 days ago" or "2 months from now".
+ * @param {number} target A millisecond-timestamp of the target date.
+ * @param {number} [anchor] A millisecond-timestamp of the date to look from. Defaults to `Date.now()`.
+ * @returns {string} The resulting relative description.
+ */
+function getRelativeDate(target, anchor = Date.now()) {
+    const isFuture = (anchor-target < 0) ? true : false;
+    let diff = Math.abs(anchor-target);
+    diff = Math.round(diff/1000);
+    if (diff < 120) // Less than 120 seconds
+        return (isFuture) ? `In a moment` : `Moments ago`;
+    diff = Math.round(diff/60);
+    if (diff < 120) // Less than 120 minutes
+        return (isFuture) ? `${diff} mins from now` : `${diff} mins ago`;
+    diff = Math.round(diff/60);
+    if (diff < 72) // Less than 72 hours
+        return (isFuture) ? `${diff} hours from now` : `${diff} hours ago`;
+    diff = Math.round(diff/24);
+    const days = diff;
+    if (diff < 90) // Less than 90 days
+        return (isFuture) ? `${diff} days from now` : `${diff} days ago`;
+    diff = Math.round(diff/12);
+    if (diff < 36) // Less than 36 months
+        return (isFuture) ? `${diff} months from now` : `${diff} months ago`;
+    diff = Math.round(days/365.2422);
+    return (isFuture) ? `${diff} years from now` : `${diff} years ago`;
+}
+
+/**
+ * Converts a number of bytes to a human-readable size, like "230.2 MB" or "7.27 GB".
+ * @param {number} bytes A number of bytes to convert
+ * @returns {string} The human-readable size string
+ */
+function formatSize(bytes) {
+    if (bytes < 1000) return `${bytes} Bytes`;
+    bytes /= 1024;
+    if (bytes < (1000)) return `${roundSmart(bytes, 0)} KB`;
+    bytes /= 1024;
+    if (bytes < (1000)) return `${roundSmart(bytes, 1)} MB`;
+    bytes /= 1024;
+    if (bytes < (1000)) return `${roundSmart(bytes, 2)} GB`;
+    bytes /= 1024;
+    if (bytes < (1000)) return `${roundSmart(bytes, 2)} TB`;
+    return "-";
+}
+
+/**
  * An alternative syntax for `element.addEventListener()`.
  * @param {HTMLElement} el The HTML element to add the listener(s) to
  * @param {string|array} type The event type(s) (single type or array of types) to add to the element
@@ -1077,47 +1124,50 @@ try {
 } catch (error) {}
 
 try {
-    module.exports = {
-        _id: _id,
-        _class: _class,
-        _tag: _tag,
-        _qs: _qs,
-        _qsa: _qsa,
-        randomHex: randomHex,
-        randomInt: randomInt,
-        randomFloat: randomFloat,
-        getRandomElement: getRandomElement,
-        getRandomWeighted: getRandomWeighted,
-        clamp: clamp,
-        overflow: overflow,
-        roundSmart: roundSmart,
-        getWords: getWords,
-        countWords: countWords,
-        sleep: sleep,
-        shuffle: shuffle,
-        loop: loop,
-        loopEach: loopEach,
-        downloadFile: downloadFile,
-        formatSeconds: formatSeconds,
-        getAgeFromDate:getAgeFromDate,
-        on: on,
-        localStorageObjSet: localStorageObjSet,
-        localStorageObjGet: localStorageObjGet,
-        localStorageWipe: localStorageWipe,
-        isValidUrl: isValidUrl,
-        isValidHostname: isValidHostname,
-        isValidIp: isValidIp,
-        escapeHTML: escapeHTML,
-        posElRelToCursor: posElRelToCursor,
-        hideTooltip: hideTooltip,
-        showPopup: showPopup,
-        hidePopup: hidePopup,
-        selectDateTime: selectDateTime,
-        showContext: showContext,
-        hideContext: hideContext,
-        escapeQueue: escapeQueue,
-        params: params,
-        canHover: canHover,
-        isTouch: isTouch,
-    };
+    module.exports = [
+        _id,
+        _class,
+        _tag,
+        _qs,
+        _qsa,
+        randomHex,
+        randomInt,
+        randomFloat,
+        getRandomElement,
+        getRandomWeighted,
+        clamp,
+        overflow,
+        roundSmart,
+        getWords,
+        countWords,
+        sleep,
+        shuffle,
+        loop,
+        loopEach,
+        downloadFile,
+        formatSeconds,
+        getAgeFromDate,
+        getRelativeDate,
+        formatSize,
+        REST,
+        on,
+        localStorageObjSet,
+        localStorageObjGet,
+        localStorageWipe,
+        isValidUrl,
+        isValidHostname,
+        isValidIp,
+        escapeHTML,
+        posElRelToCursor,
+        hideTooltip,
+        showPopup,
+        hidePopup,
+        selectDateTime,
+        showContext,
+        hideContext,
+        escapeQueue,
+        params,
+        canHover,
+        isTouch,
+    ];
 } catch (error) {}
