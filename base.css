@@ -137,14 +137,14 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     padding: 0px;
     margin: 0.6em 0px 0.4em 0px;
-    line-height: 1.2;
+    line-height: 1.15;
 }
-h1 { font-size: 36px; color: var(--f65); }
-h2 { font-size: 32px; color: var(--f75); }
-h3 { font-size: 28px; color: var(--b80); }
-h4 { font-size: 24px; color: var(--b75); font-weight: 700; }
-h5 { font-size: 20px; color: var(--b70); font-weight: 700; }
-h6 { font-size: 18px; color: var(--b70); font-weight: 700; }
+h1 { font-size: 32px; color: var(--f80); }
+h2 { font-size: 28px; color: var(--f85); }
+h3 { font-size: 24px; color: var(--b90); }
+h4 { font-size: 20px; color: var(--b80); font-weight: 700; }
+h5 { font-size: 18px; color: var(--b75); font-weight: 700; }
+h6 { font-size: 16px; color: var(--b70); font-weight: 700; }
 h1:first-child, 
 h2:first-child, 
 h3:first-child, 
