@@ -59,7 +59,7 @@ window.addEventListener('load', () => {
             const end = buffers.end(i);
             const left = (start/duration)*100;
             const width = ((end-start)/duration)*100;
-            console.log(`Buffer:`, left, width);
+            //console.log(`Buffer:`, left, width);
             if (width > 1)
                 _id('buffers').insertAdjacentHTML('beforeend', `
                     <progress class="buffer" style="left: ${left}%; width: ${width}%" min="0" max="1" value="0"></progress>
