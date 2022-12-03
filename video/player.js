@@ -194,7 +194,7 @@ window.addEventListener('load', () => {
     on(document, 'fullscreenchange', () => {
         if (document.fullscreenElement) {
             _qs('#fullscreen .icon').innerText = 'fullscreen_exit';
-            if (isNameOnlyFullscreen) _id('name').style.visibility = 'shown';
+            if (isNameOnlyFullscreen) _id('name').style.visibility = 'visible';
         } else {
             _qs('#fullscreen .icon').innerText = 'fullscreen';
             if (isNameOnlyFullscreen) _id('name').style.visibility = 'hidden';
