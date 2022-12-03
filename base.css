@@ -224,6 +224,31 @@ pre:last-child {
     margin-bottom: 0px;
 }
 
+table {
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-collapse: collapse;
+    border: 1px solid var(--b30);
+    line-height: 1.2;
+}
+table:last-child {
+    margin: 0px;
+}
+th, td {
+    padding: 8px 16px;
+}
+th {
+    text-align: left;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    font-size: 16px;
+    color: var(--f80);
+    background: var(--b18);
+}
+td {
+    background: var(--b12);
+}
+
 *:focus-visible {
     outline: 1px solid var(--f60);
 }
