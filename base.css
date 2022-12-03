@@ -249,6 +249,10 @@ td {
     background: var(--b12);
 }
 
+hr {
+    border: 1px solid var(--b40);
+}
+
 *:focus-visible {
     outline: 1px solid var(--f60);
 }
