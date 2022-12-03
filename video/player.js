@@ -194,10 +194,10 @@ window.addEventListener('load', () => {
     on(document, 'fullscreenchange', () => {
         if (document.fullscreenElement) {
             _qs('#fullscreen .icon').innerText = 'fullscreen_exit';
-            if (isNameOnlyFullscreen) _id('name').style.display = '';
+            if (isNameOnlyFullscreen) _id('name').style.visibility = 'shown';
         } else {
             _qs('#fullscreen .icon').innerText = 'fullscreen';
-            if (isNameOnlyFullscreen) _id('name').style.display = 'none';
+            if (isNameOnlyFullscreen) _id('name').style.visibility = 'hidden';
         }
     })
     on(document.body, 'contextmenu', showMenu);
@@ -239,7 +239,7 @@ window.addEventListener('load', () => {
     vid.src = params.get('url');
     const videoName = params.get('name') || params.get('url').split('?')[0].split('/').reverse()[0];
     const isNameOnlyFullscreen = params.get('nameOnlyFullscreen') ? true : false;
-    _id('name').style.display = 'none';
+    _id('name').style.visibility = 'hidden';
     _id('name').innerText = videoName;
     document.title = videoName;
     if (params.get('hue')) {
