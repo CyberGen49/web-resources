@@ -237,6 +237,7 @@ window.addEventListener('load', () => {
     });
     if (params.get('autoplay')) vid.autoplay = true;
     vid.src = params.get('url');
+    console.log(vid.src);
     const videoName = params.get('name') || params.get('url').split('?')[0].split('/').reverse()[0];
     const isNameOnlyFullscreen = params.get('nameOnlyFullscreen') ? true : false;
     _id('name').style.visibility = 'hidden';
