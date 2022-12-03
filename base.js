@@ -303,7 +303,7 @@ function getRelativeDate(target, anchor = Date.now()) {
     const days = diff;
     if (diff < 90) // Less than 90 days
         return (isFuture) ? `${diff} days from now` : `${diff} days ago`;
-    diff = Math.round(diff/12);
+    diff = Math.round(diff/30.43685);
     if (diff < 36) // Less than 36 months
         return (isFuture) ? `${diff} months from now` : `${diff} months ago`;
     diff = Math.round(days/365.2422);
