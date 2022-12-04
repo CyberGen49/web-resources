@@ -2,12 +2,12 @@
 @font-face {
     font-family: 'Cascadia Code';
     font-style: normal;
-    font-weight: 300;
+    font-weight: 100 900;
     src: url(https://src.simplecyber.org/fonts/CascadiaCode.ttf) format('truetype');
 }
 @font-face {
     font-family: 'Cascadia Code';
     font-style: italic;
-    font-weight: 300;
+    font-weight: 100 900;
     src: url(https://src.simplecyber.org/fonts/CascadiaCodeItalic.ttf) format('truetype');
 }
