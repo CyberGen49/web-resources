@@ -900,6 +900,9 @@ progress.bar::-moz-progress-bar,
     z-index: 16;
     user-select: none;
 }
+.contextCont .context::-webkit-scrollbar {
+    width: 5px;
+}
 .contextCont .context::-webkit-scrollbar-thumb {
     width: 5px;
     background: var(--b30);
