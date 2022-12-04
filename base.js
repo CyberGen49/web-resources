@@ -945,6 +945,7 @@ function showContext(items) {
         _id(id).click();
     });
     setTimeout(() => {
+        hideTooltip();
         _id(id).classList.add('visible');
         popupFocus[id] = focusTrap.createFocusTrap(_id(id));
         popupFocus[id].activate();
