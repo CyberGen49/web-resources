@@ -946,11 +946,13 @@ progress.bar::-moz-progress-bar,
 .isTouch .contextCont .context .item .icon {
     font-size: 32px;
 }
-.contextCont .context .item .label .name {
-    padding: 3px 0px;
-    overflow: hidden;
+.contextCont .context .item .label {
     white-space: nowrap;
     text-overflow: ellipsis;
+    overflow: hidden;
+}
+.contextCont .context .item .label .name {
+    padding: 3px 0px;
 }
 .contextCont .context .sep {
     margin: 4px 10px;
