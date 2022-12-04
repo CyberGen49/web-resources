@@ -242,7 +242,7 @@ function downloadFile(url) {
     const link = document.createElement('a');
     link.style.display = 'none';
     link.href = url;
-    link.download = true;
+    link.download = url.split('/').reverse()[0];
     link.target = '_blank';
     document.body.appendChild(link);
     link.click();
