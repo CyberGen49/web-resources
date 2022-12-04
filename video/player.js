@@ -98,7 +98,7 @@ window.addEventListener('load', () => {
         showControls();
         hideControlsTimeout = setTimeout(() => {
             if (isVideoPlaying(vid)) hideControls();
-        }, 2000);
+        }, 4000);
     }
     on(vid, 'loadedmetadata', () => {
         _id('progFill').max = vid.duration;
