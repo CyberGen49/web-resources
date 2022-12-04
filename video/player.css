@@ -110,6 +110,10 @@ body:not(.isTouch) #bottom {
 #progCont input[type="range"] {
     --w: 18px;
     --t: -2.5px;
+    outline: none;
+}
+#progCont input[type="range"]:focus-visible {
+    outline: none;
 }
 #progCont input[type="range"]::-webkit-slider-thumb {
     transform: translateY(var(--t));
