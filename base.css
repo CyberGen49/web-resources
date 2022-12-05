@@ -140,9 +140,9 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.15;
 }
 h1 { font-size: 32px; color: var(--f80); }
-h2 { font-size: 28px; color: var(--f85); }
-h3 { font-size: 24px; color: var(--b90); }
-h4 { font-size: 20px; color: var(--b80); font-weight: 700; }
+h2 { font-size: 28px; color: var(--f90); }
+h3 { font-size: 24px; color: var(--b95); }
+h4 { font-size: 20px; color: var(--b85); font-weight: 700; }
 h5 { font-size: 18px; color: var(--b75); font-weight: 700; }
 h6 { font-size: 16px; color: var(--b70); font-weight: 700; }
 h1:first-child, 
