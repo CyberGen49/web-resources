@@ -36,6 +36,15 @@ function _qs(selector, ancestor = document) {
     return ancestor.querySelector(selector);
 }
 /**
+ * A shortcut for `*.querySelector()`.
+ * @param {string} id The target query selector
+ * @param {HTMLElement} ancestor The ancestor element to start from
+ * @returns {HTMLElement|undefined} The selected element
+ */
+function $(selector, ancestor = document) {
+    return ancestor.querySelector(selector);
+}
+/**
  * A shortcut for `*.querySelectorAll()`.
  * @param {string} id The target query selector
  * @param {HTMLElement} ancestor The ancestor element to start from
@@ -44,9 +53,47 @@ function _qs(selector, ancestor = document) {
 function _qsa(selector, ancestor = document) {
     return ancestor.querySelectorAll(selector);
 }
+/**
+ * A shortcut for `*.querySelectorAll()`.
+ * @param {string} id The target query selector
+ * @param {HTMLElement} ancestor The ancestor element to start from
+ * @returns {NodeListOf<any>} The selected elements
+ */
+function $$(selector, ancestor = document) {
+    return ancestor.querySelectorAll(selector);
+}
+/**
+ * @typedef createElementOptions
+ * @type {object}
+ * @property {string} id A ID to assign to this element
+ * @property {string} classes A whitespace-separated list of classes to add to the element
+ * @property {string} innerHTML A string to use as this element's innerHTML
+ * @property {string} innerText A string to use as this element's innerText
+ * @property {Object.<string, string|number>} style A object containing style properties and their corresponding values
+ */
+/**
+ * A quick way to create HTML elements.
+ * @param {string} tag The new element's tag name
+ * @param {createElementOptions} opts Additional things to add to this element after creation
+ * @returns {HTMLElement} The new element
+ */
+function createElement(tag, opts = {}) {
+    const el = document.createElement(tag);
+    if (opts.id) el.id = opts.id;
+    if (opts.classes) el.classList = opts.classes;
+    if (opts.innerHTML) el.innerHTML = opts.innerHTML;
+    if (opts.innerText) el.innerText = opts.innerText;
+    if (opts.style) {
+        for (const property in opts.style) {
+            const value = opts.style[property];
+            el.style[property] = value;
+        }
+    }
+    return el;
+}
 
 /**
- * Generates a pseudorandom hexodecimal string of a desired length using `Math.random()`.
+ * Generates a pseudorandom hexadecimal string of a desired length using `Math.random()`.
  * @param {number} length The length of the random
  * @returns {String} The resulting string
  */
@@ -1131,6 +1178,9 @@ try {
         _tag: _tag,
         _qs: _qs,
         _qsa: _qsa,
+        $: $,
+        $$: $$,
+        createElement: createElement,
         randomHex: randomHex,
         randomInt: randomInt,
         randomFloat: randomFloat,
