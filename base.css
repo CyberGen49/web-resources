@@ -847,7 +847,7 @@ progress.bar::-moz-progress-bar,
     max-width: 500px;
     padding: 6px 12px;
     background: var(--b10);
-    border: 1px solid var(--b20);
+    border: 1px solid var(--b15);
     color: var(--b90);
     font-size: 15px;
     line-height: 1.2;
@@ -889,7 +889,7 @@ progress.bar::-moz-progress-bar,
     max-height: 500px;
     padding: 4px;
     background: var(--b12);
-    border: 1px solid var(--b20);
+    border: 1px solid var(--b18);
     color: var(--b90);
     border-radius: 16px;
     display: flex;
