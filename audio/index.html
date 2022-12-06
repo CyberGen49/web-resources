@@ -28,11 +28,14 @@
                     <progress id="progFill" min="0" max="0"></progress>
                     <input id="prog" type="range" step="0.1" min="0" max="0">
                 </div>
-                <div id="row" class="no-select">
-                    <div id="time" id="row">
+                <div class="row no-select">
+                    <div id="time">
                         <span id="progress">0:00</span>
-                        <span>/</span>
+                        <span id="timeDivider">/</span>
                         <span id="duration">0:00</span>
+                    </div>
+                    <div id="speedCont" class="hidden">
+                        Speed: <span id="speed"></span>
                     </div>
                 </div>
             </div>

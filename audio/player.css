@@ -102,8 +102,11 @@ body {
 }
 
 #time {
-    color: var(--b70);
+    margin-top: -2px;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    font-size: 18px;
 }
-#progress {
-    color: white;
+#timeDivider, #duration, #speedCont {
+    opacity: 0.7;
 }

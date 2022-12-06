@@ -15,7 +15,7 @@ function showMenu(e) {
                     type: 'item',
                     name: `${(speed == 1) ? 'Default':`${speed}x`} speed`,
                     action: () => {
-                        vid.playbackRate = speed;
+                        audio.playbackRate = speed;
                     }
                 });
             });
@@ -66,6 +66,13 @@ window.addEventListener('load', () => {
                 `);
         }
     }
+    const updateSpeed = () => {
+        $('#speedCont').classList.add('hidden');
+        if (audio.playbackRate !== 1) {
+            $('#speedCont').classList.remove('hidden');
+            $('#speed').innerText = `${audio.playbackRate}x`;
+        }
+    }
     on(audio, 'loadedmetadata', () => {
         _id('progFill').max = audio.duration;
         _id('prog').max = audio.duration;
@@ -77,6 +84,7 @@ window.addEventListener('load', () => {
     on(audio, 'pause', () => {
         $('#play .icon').innerText = 'play_arrow';
     });
+    on(audio, 'ratechange', updateSpeed);
     on($('#prog'), 'input', () => {
         const value = $('#prog').value;
         audio.currentTime = value;
