@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="./player.css">
+    <script defer src="../tabbable.js"></script>
+    <script defer src="../focus-trap.js"></script>
+    <script async defer src="../base.js"></script>
+    <script async defer src="./player.js"></script>
+</head>
+<body class="changeColours" style="--fgHue: 270">
+    <div id="main">
+        <div id="card" class="row align-center gap-20 no-wrap" style="min-width: 0">
+            <button id="play" class="btn iconOnly">
+                <div class="icon old">play_arrow</div>
+            </button>
+            <div class="col gap-2 flex-grow" style="min-width: 0;">
+                <div id="title" class="no-select" style="min-width: 0;">Audio file</div>
+                <div id="progCont" class="slider">
+                    <div id="buffers"></div>
+                    <progress id="progFill" min="0" max="0"></progress>
+                    <input id="prog" type="range" step="0.1" min="0" max="0">
+                </div>
+                <div id="row" class="no-select">
+                    <div id="time" id="row">
+                        <span id="progress">0:00</span>
+                        <span>/</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <button id="menu" class="btn alt iconOnly">
+                <div class="icon">more_vert</div>
+            </button>
+        </div>
+    </div>
+    <audio id="audio" style="display: none"></audio>
+</body>
+</html>
