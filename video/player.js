@@ -235,7 +235,7 @@ window.addEventListener('load', () => {
             else startHideControls();
         }
     });
-    if (params.get('autoplay')) vid.autoplay = true;
+    vid.autoplay = true;
     vid.src = encodeURI(params.get('url'));
     const videoName = params.get('name') || params.get('url').split('?')[0].split('/').reverse()[0];
     const isNameOnlyFullscreen = params.get('nameOnlyFullscreen') ? true : false;
