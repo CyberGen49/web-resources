@@ -47,7 +47,7 @@ body {
     height: 25px;
 }
 #progCont progress {
-    --fill: var(--f70);
+    --fill: var(--f80);
     height: 6px;
     background: rgba(255, 255, 255, 0.2);
     box-shadow: none;
@@ -67,14 +67,14 @@ body {
     transform: translateY(var(--t));
     width: var(--w);
     height: var(--w);
-    background: var(--f85);
+    background: var(--f90);
     border: none;
 }
 #progCont input[type="range"]::-moz-range-thumb {
     transform: translateY(var(--t));
     width: var(--w);
     height: var(--w);
-    background: var(--f85);
+    background: var(--f90);
     border: none;
 }
 .canHover #progCont input[type="range"]::-webkit-slider-thumb {
