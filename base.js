@@ -302,16 +302,16 @@ function downloadFile(url) {
  * @returns {String}
  */
 function formatSeconds(s) {
-    s = Math.floor(s);
+    s = Math.floor(s || 0);
     let m = 0;
     let h = 0;
-    if (s < 60) return `0:${(s || 0).toString().padStart(2, '0')}`;
+    if (s < 60) return `0:${s.toString().padStart(2, '0')}`;
     m = Math.floor(s/60);
     s = s%60;
-    if (m < 60) return `${(m || 0)}:${(s || 0).toString().padStart(2, '0')}`;
+    if (m < 60) return `${m}:${s.toString().padStart(2, '0')}`;
     h = Math.floor(m/60);
     m = m%60;
-    return `${(h || 0)}:${(m || 0).toString().padStart(2, '0')}:${(s || 0).toString().padStart(2, '0')}`;
+    return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
 /**
