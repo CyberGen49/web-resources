@@ -284,12 +284,13 @@ function loopEach(array, callback) {
 /**
  * Prompts the user to download a file. Note that this probably won't work if the file has a different origin domain.
  * @param {String} url The target file URL
+ * @param {String} [url] The file name to use, defaults to the last part of the URL
  */
-function downloadFile(url) {
+function downloadFile(url, name) {
     const link = document.createElement('a');
     link.style.display = 'none';
     link.href = url;
-    link.download = url.split('/').reverse()[0];
+    link.download = name || url.split('/').reverse()[0];
     link.target = '_blank';
     document.body.appendChild(link);
     link.click();
