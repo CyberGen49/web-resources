@@ -62,6 +62,7 @@ function _qsa(selector, ancestor = document) {
 function $$(selector, ancestor = document) {
     return ancestor.querySelectorAll(selector);
 }
+
 /**
  * @typedef createElementOptions
  * @type {object}
@@ -303,16 +304,32 @@ function downloadFile(url, name) {
  * @returns {String}
  */
 function formatSeconds(s) {
+    // Convert seconds to integer
     s = Math.floor(s || 0);
-    let m = 0;
-    let h = 0;
-    if (s < 60) return `0:${s.toString().padStart(2, '0')}`;
-    m = Math.floor(s/60);
-    s = s%60;
-    if (m < 60) return `${m}:${s.toString().padStart(2, '0')}`;
-    h = Math.floor(m/60);
-    m = m%60;
-    return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+
+    let hours = 0;
+    let minutes = 0;
+    let seconds = s;
+
+    // Calculate hours, minutes, and seconds
+    if (s >= 3600) {
+        hours = Math.floor(s / 3600);
+        s = s % 3600;
+    }
+    if (s >= 60) {
+        minutes = Math.floor(s / 60);
+        s = s % 60;
+    }
+    seconds = s;
+
+    // Format time string
+    let timeString = '';
+    timeString += (hours > 0) ? hours.toString().padStart(2, '0') + ':' : '';
+    timeString += minutes.toString().padStart(2, '0') + ':';
+    timeString += seconds.toString().padStart(2, '0');
+
+    return timeString;
+    // Thanks ChatGPT for the refactor
 }
 
 /**
@@ -453,12 +470,16 @@ function isValidIp(string) {
  * @param {string} text The input string
  * @returns {string} The escaped string
  */
-function escapeHTML(text) {
+ function escapeHTML(text) {
     return text
-        .replace(/"/g, '&quot;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-}
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+    // Thanks ChatGPT
+  }
+  
 
 /**
  * @typedef REST_requestOpts
