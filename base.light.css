@@ -36,7 +36,6 @@ body.light {
 .light code:not(pre code) {
     background: var(--b95);
     color: var(--b40);
-    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.1);
 }
 .light pre code {
     color: var(--b100);
