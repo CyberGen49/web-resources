@@ -520,7 +520,7 @@ class REST {
         if (query) url = `${url}?${query}`;
         return url;
     }
-    async #fetch(method, path, opts) {
+    async #fetch(method, path, opts = {}) {
         return new Promise(async(resolve, reject) => {
             const qs = this.#getQueryString(opts.query);
             const fetchOpts = {
