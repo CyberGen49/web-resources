@@ -119,6 +119,7 @@ body {
 * {
     max-height: 1000000px; /* This is to prevent mobile font boosting */
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
