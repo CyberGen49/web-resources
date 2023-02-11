@@ -71,9 +71,9 @@ Tropical ships with a handful of useful CSS classes for making flex layouts and 
 | `text-success` | Turns the text green |
 | `text-warning` | Turns the text yellow |
 | `text-danger` | Turns the text red |
-| `align-left` | Aligns the text to the left |
-| `align-center` | Aligns the text to the center |
-| `align-right` | Aligns the text to the right |
+| `text-left` | Aligns the text to the left |
+| `text-center` | Aligns the text to the center |
+| `text-right` | Aligns the text to the right |
 
 ### Miscellaneous classes
 | Class | Description |

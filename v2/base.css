@@ -823,13 +823,13 @@ progress::-moz-progress-bar {
 .text-danger {
     color: var(--red0);
 }
-.align-left {
+.text-left {
     text-align: left;
 }
-.align-center {
+.text-center {
     text-align: center;
 }
-.align-right {
+.text-right {
     text-align: right;
 }
 
