@@ -1,9 +1,0 @@
-{
-    "include": [ "base.js" ],
-    "compilerOptions": {
-        "allowJs": true,
-        "declaration": true,
-        "emitDeclarationOnly": true,
-        "declarationMap": true
-    }
-}
