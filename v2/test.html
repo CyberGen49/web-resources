@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tropical Demo</title>
+    <meta name="theme-color" content="">
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="themes.css">
+    <script defer src="/lib/tabbable.min.js"></script>
+    <script defer src="/lib/focus-trap.min.js"></script>
+    <script defer src="/lib/prism.min.js"></script>
+    <script defer src="base.js"></script>
+    <style>
+        .container {
+            max-width: 1000px;
+            margin: 0px auto;
+            padding: 30px 20px;
+        }
+    </style>
+</head>
+<body class="lightmuted">
+    <script>
+        const themes = {
+            "lightpurple": {
+                "themeColor": "#d5b3e6",
+                "name": "Orchid",
+                "hue": 320
+            },
+            "lightblue": {
+                "themeColor": "#b8e0de",
+                "name": "Ocean",
+                "hue": 175
+            },
+            "lightgreen": {
+                "themeColor": "#b3e6b3",
+                "name": "Pistachio",
+                "hue": 130
+            },
+            "lightyellow": {
+                "themeColor": "#e6ccb3",
+                "name": "Sand",
+                "hue": 30
+            },
+            "lightmuted": {
+                "themeColor": "#c7cfd1",
+                "name": "Overcast",
+                "hue": 200
+            },
+            "darkpurple": {
+                "themeColor": "#4d3663",
+                "name": "Twilight",
+                "hue": 320
+            },
+            "darkblue": {
+                "themeColor": "#242942",
+                "name": "Midnight",
+                "hue": 190
+            },
+            "darkgreen": {
+                "themeColor": "#24423d",
+                "name": "Seaweed",
+                "hue": 150
+            },
+            "darkyellow": {
+                "themeColor": "#423824",
+                "name": "Walnut",
+                "hue": 30
+            },
+            "darkmuted": {
+                "themeColor": "#22262a",
+                "name": "Charcoal",
+                "hue": 230
+            }
+        };
+        function setTheme(theme) {
+            theme = (themes[theme]) ? theme : 'lightmuted';
+            document.body.classList = theme;
+            document.body.dataset.theme = theme;
+            document.querySelector('meta[name="theme-color"]')
+                .setAttribute('content', themes[theme].themeColor);
+            window.localStorage.setItem('tropical-theme', theme);
+        }
+        setTheme(window.localStorage.getItem('tropical-theme'));
+    </script>
+    <div class="container">
+        <h1>Tropical Demo</h1>
+        <p>This page serves to demonstrate the different UI elements provided by the Tropical CSS and Javascript library. If you want more context on how to use these elements on your own site, <a href="readme.html">read the readme</a>!</p>
+
+        <h2>Theme</h2>
+        <p>Click the buttons below to change your theme. It'll persist between page loads, on every page of the site.</p>
+        <div class="col gap-10">
+            <div class="row flex-wrap gap-10">
+                <button class="btn secondary" onClick="setTheme('lightpurple')">Orchid</button>
+                <button class="btn secondary" onClick="setTheme('lightblue')">Ocean</button>
+                <button class="btn secondary" onClick="setTheme('lightyellow')">Sand</button>
+                <button class="btn secondary" onClick="setTheme('lightgreen')">Pistachio</button>
+                <button class="btn secondary" onClick="setTheme('lightmuted')">Overcast</button>
+            </div>
+            <div class="row flex-wrap gap-10">
+                <button class="btn secondary" onClick="setTheme('darkpurple')">Twilight</button>
+                <button class="btn secondary" onClick="setTheme('darkblue')">Midnight</button>
+                <button class="btn secondary" onClick="setTheme('darkyellow')">Walnut</button>
+                <button class="btn secondary" onClick="setTheme('darkgreen')">Forest</button>
+                <button class="btn secondary" onClick="setTheme('darkmuted')">Charcoal</button>
+            </div>
+        </div>
+    
+        <h2>Palette</h2>
+        <div id="paletteCont" class="col gap-10"></div>
+        <script>
+            const vars = [
+                [ 'b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'f4', 'f3', 'f2', 'f1' ],
+                [ 'green0', 'green1', 'green2', 'green3', 'green4', 'green5' ],
+                [ 'orange0', 'orange1', 'orange2', 'orange3', 'orange4', 'orange5' ],
+                [ 'yellow0', 'yellow1', 'yellow2', 'yellow3', 'yellow4', 'yellow5' ],
+                [ 'red0', 'red1', 'red2', 'red3', 'red4', 'red5' ],
+            ];
+            const palletteCont = document.getElementById('paletteCont');
+            for (const col of vars) {
+                const row = document.createElement('div');
+                row.classList.add('row', 'flex-wrap', 'gap-10');
+                for (const name of col) {
+                    const swatchCont = document.createElement('div');
+                    swatchCont.classList.add('col', 'align-center', 'gap-5', 'swatchCont');
+                    const swatch = document.createElement('div');
+                    swatch.classList.add('swatch');
+                    swatch.style.backgroundColor = `var(--${name})`;
+                    const span = document.createElement('span');
+                    span.innerText = name;
+                    swatchCont.appendChild(swatch);
+                    swatchCont.appendChild(span);
+                    row.appendChild(swatchCont);
+                }
+                palletteCont.appendChild(row);
+            }
+        </script>
+        <style>
+            .swatch {
+                width: 64px;
+                height: 64px;
+                border-radius: 50%;
+                box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.2);
+            }
+            .swatchCont span {
+                font-size: 15px;
+                font-family: monospace;
+            }
+        </style>
+    
+        <h1>Header 1</h1>
+        <h2>Header 2</h2>
+        <h3>Header 3</h3>
+        <h4>Header 4</h4>
+        <h5>Header 5</h5>
+        <h6>Header 6</h6>
+    
+        <h2>Paragraphs and links</h2>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <p>And here's a short paragraph that contains <a href="/">a link to somewhere else</a>.</p>
+    
+        <h2>Lists</h2>
+        <ul>
+            <li>Bullet point one</li>
+            <li>
+                Bullet point two
+                <ul>
+                    <li>This one has a sub-point!</li>
+                </ul>
+            </li>
+            <li>Bullet point three</li>
+        </ul>
+    
+        <ol>
+            <li>And the same deal</li>
+            <li>for ordered lists</li>
+        </ol>
+    
+        <h2>Block quotes</h2>
+        <blockquote>
+            <p>Blockquotes are cool I guess</p>
+            <blockquote>
+                <p>They can even be nested inside of each other, which makes them even cooler!</p>
+            </blockquote>
+        </blockquote>
+    
+        <h2>Tables</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Table</th>
+                    <th>Headings</th>
+                    <th>Are</th>
+                    <th>Here</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>And</td>
+                    <td>Table</td>
+                    <td>Data</td>
+                    <td>Is</td>
+                </tr>
+                <tr>
+                    <td>Here</td>
+                    <td>Too</td>
+                    <td>Yay</td>
+                    <td>Tables</td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <h2>Code</h2>
+        <p>This is a little paragraph, but <code>part of it is code</code>!</p>
+    
+        <p>And here are some code blocks demonstrating syntax highlighting. Normally, the background and border of these code blocks would adapt to the theme, but for showcasing purposes, the light one has been forced to <code>lightmuted</code>, and the dark to <code>darkmuted</code>.</p>
+        <p>The third code block has no theme adjustment.</p>
+        <div class="row gap-10 flex-wrap" style="margin-bottom: 10px;">
+            <div class="col flex-grow" style="min-width: 0px">
+    <pre class="lightmuted"><code class="language-css">/* Comment it up */
+    .btn {
+        height: 40px;
+        padding: 0px 20px;
+        padding-top: 2px;
+        border: none;
+        border-radius: 100px;
+        font-family: 'Comfortaa';
+        font-size: 15px;
+        font-weight: bold;
+        color: var(--b1);
+        background: var(--f3);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        user-select: none;
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: 0.3s var(--bezier);
+    }
+    </code></pre>
+            </div>
+            <div class="col flex-grow" style="min-width: 0px">
+    <pre class="darkmuted"><code class="language-css">/* Comment it up */
+    .btn {
+        height: 40px;
+        padding: 0px 20px;
+        padding-top: 2px;
+        border: none;
+        border-radius: 100px;
+        font-family: 'Comfortaa';
+        font-size: 15px;
+        font-weight: bold;
+        color: var(--b1);
+        background: var(--f3);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        user-select: none;
+        cursor: pointer;
+        flex-shrink: 0;
+        transition: 0.3s var(--bezier);
+    }
+    </code></pre>
+            </div>
+        </div>
+        <pre><code class="language-js">/* Comment it up */
+    function positionElement(element, x, y) {
+        const elementWidth = element.offsetWidth;
+        const elementHeight = element.offsetHeight;
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        if (x + elementWidth > windowWidth) {
+            x = x - elementWidth;
+            if (x < 0) x = 0;
+        }
+        if (y + elementHeight > windowHeight) {
+            y = y - elementHeight;
+            if (y < 0) y = 0;
+        }
+        element.style.left = x + 'px';
+        element.style.top = y + 'px';
+    }
+    </code></pre>
+    
+        <h2>Buttons</h2>
+        <div class="col gap-10">
+            <script id="btnScript">
+                const types = [
+                    { class: 'primary', name: 'Default', icon: 'info' },
+                    { class: 'secondary', name: 'Secondary', icon: 'settings' },
+                    { class: 'tertiary', name: 'Tertiary', icon: 'sentiment_very_satisfied' },
+                    { class: 'success', name: 'Success', icon: 'done' },
+                    { class: 'warning', name: 'Warning', icon: 'warning' },
+                    { class: 'danger', name: 'Danger', icon: 'close' },
+                    { class: 'disabled', name: 'Disabled', icon: 'keyboard_return' },
+                ];
+                for (const type of types) {
+                    const a = document.createElement('button');
+                    const b = document.createElement('button');
+                    const c = document.createElement('button');
+                    a.classList.add('btn', type.class, 'iconOnly');
+                    a.innerHTML = `<span class="icon">${type.icon}</span>`;
+                    b.classList.add('btn', type.class);
+                    b.innerHTML = `
+                        <span class="icon">${type.icon}</span>
+                        ${type.name}
+                    `;
+                    c.classList.add('btn', type.class);
+                    c.innerText = type.name;
+                    if (type.class == 'disabled') {
+                        a.disabled = true;
+                        b.disabled = true;
+                        c.disabled = true;
+                    }
+                    const row = document.createElement('div');
+                    row.classList.add('row', 'flex-wrap', 'gap-10');
+                    row.appendChild(a);
+                    row.appendChild(b);
+                    row.appendChild(c);
+                    document.getElementById('btnScript').insertAdjacentElement('beforebegin', row);
+                }
+            </script>
+            <div class="row flex-wrap gap-10">
+                <button class="btn secondary large">Bigger</button>
+                <button class="btn secondary">Normal</button>
+                <button class="btn secondary small">Smaller</button>
+                <button class="btn tertiary small iconOnly" onClick="new ContextMenuBuilder().addItem(item => item.setLabel('Boo!').setIcon('cruelty_free').setClickHandler(() => new PopupBuilder().setTitle('Boo!').addBodyHTML(`<p>Did I scare you?</p>`).addAction(action => action.setLabel('Nah').setIsPrimary(true)).show())).showAtElement(this)">
+                    <div class="icon">more_vert</div>
+                </button>
+            </div>
+        </div>
+    
+        <h2>Text boxes</h2>
+        <div class="col gap-10">
+            <div>
+                <label>Here's a label</label>
+                <input type="text" class="textbox" style="width: 300px" placeholder="Text input">
+            </div>
+            <div class="textbox textarea">
+                <textarea placeholder="Multi-line text input" rows="5"></textarea>
+            </div>
+        </div>
+    
+        <h2>Progress bars and sliders</h2>
+        <h4>Indeterminate</h4>
+        <progress class="success" max="100"></progress>
+        <progress class="warning" max="100"></progress>
+        <progress class="danger" max="100"></progress>
+        <progress max="100"></progress>
+        <h4>Determinate</h4>
+        <progress class="success makeRandom" min="0" max="100" value="16"></progress>
+        <progress class="warning makeRandom" min="0" max="100" value="32"></progress>
+        <progress class="danger makeRandom" min="0" max="100" value="64"></progress>
+        <progress class="makeRandom" min="0" max="100" value="50"></progress>
+        <button id="progRandomize" class="btn secondary small">
+            Randomize
+        </button>
+        <script>
+            document.getElementById('progRandomize').addEventListener('click', () => {
+                const progs = document.querySelectorAll('progress.makeRandom');
+                for (const prog of progs) {
+                    prog.value = Math.floor(Math.random() * 100);
+                }
+            });
+        </script>
+        <h4>Sliders</h4>
+        <div class="row align-center gap-10">
+            <div style="width: 100px">
+                <input id="sliderValue" class="textbox" type="number">
+            </div>
+            <div class="flex-grow">
+                <div class="slider" data-min="0" data-max="100" data-value="69" data-textbox="#sliderValue"></div>
+            </div>
+        </div>
+    
+        <h2>Special elements</h2>
+        <h4>Notices</h4>
+        <div class="notice">
+            <div class="icon">info</div>
+            <div class="body">
+                <p>This is a super cool notice, put here to make the user aware of something!</p>
+            </div>
+        </div>
+        <h4>Loading spinners</h4>
+        <div class="spinner"></div>
+    
+        <h2>Overlays</h2>
+        <h3>Popups</h3>
+        <button class="btn" onClick="showAddBranchPopup()">
+            <div class="icon">visibility</div>
+            Show me a popup...
+        </button>
+        <h3>Context menus</h3>
+        <script>
+            function showSampleContext(el) {
+                new ContextMenuBuilder()
+                    .addItem(item => item
+                        .setLabel(`Here's an item`)
+                        .setIcon(`info`)
+                        .setClickHandler(() => console.log(`It works!`)))
+                    .addSeparator()
+                    .addItem(item => item
+                        .setLabel(`Here's another item`)
+                        .setIcon(`settings`)
+                        .setTooltip(`Honouring the wasted space.`))
+                    .addItem(item => item
+                        .setLabel(`This one has no icon`))
+                    .addItem(item => item
+                        .setLabel(`And this one's disabled`)
+                        .setIcon('close')
+                        .disable())
+                    .showAtElement(el);
+            }
+        </script>
+        <button class="btn" onClick="showSampleContext(this)">
+            <div class="icon">visibility</div>
+            Show me a context menu...
+        </button>
+        <script>
+            let showSampleToast;
+            window.addEventListener('load', () => {
+                const t = new ToastOverlay();
+                showSampleToast = () => {
+                    t.showToast(toast => toast
+                        .setIcon('settings')
+                        .setBodyHTML(`<p>It works! This toast text has been made much longer than it needs to be to demonstrate the wrapping behaviour of the toast overlay.</p>`));
+                }
+            });
+        </script>
+        <h3>Toasts</h3>
+        <button class="btn" onClick="showSampleToast()">
+            <div class="icon">visibility</div>
+            Show me a toast notification...
+        </button>
+        <h3>Tooltips</h3>
+        <h5 title="Yoo look it's working!">Hover over me to see a tooltip</h5>
+    </div>
+</body>
+</html>

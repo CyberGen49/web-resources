@@ -572,7 +572,7 @@ window.addEventListener('mousemove', (e) => {
 // Handle dynamic changes
 document.addEventListener('domChange', () => {
     // Get elements with a title attribute but no tooltip
-    const els = $$('[title]:not([data-has-tooltip])');
+    const els = $$('[title]:not([data-has-tooltip]):not([data-no-tooltip])');
     // Loop through 'em
     for (const el of els) {
         let isMouseOver = false;

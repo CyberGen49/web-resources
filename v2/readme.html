@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tropical Readme</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="themes.css">
+    <script defer src="/lib/marked.min.js"></script>
+    <script defer src="/lib/prism.min.js"></script>
+    <script defer src="base.js"></script>
+    <style>
+        .container {
+            max-width: 1000px;
+            margin: 0px auto;
+            padding: 30px 20px;
+        }
+    </style>
+</head>
+<body class="lightblue">
+    <script>
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList = 'darkblue';
+        }
+    </script>
+    <div class="container">
+        <div class="col align-center">
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', async() => {
+            const container = document.querySelector('.container');
+            const readme = await (await fetch('README.md')).text();
+            container.innerHTML = marked.parse(readme);
+            Prism.highlightAll();
+        });
+    </script>
+</body>
+</html>
