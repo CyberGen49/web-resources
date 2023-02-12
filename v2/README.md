@@ -282,6 +282,27 @@ To disable the custom tooltip on an element, add a `data-no-tooltip` attribute t
 <div title="Hi default tooltip!" data-no-tooltip="true">Hover over me!</div>
 ```
 
+## Utility Javascript
+Tropical ships with a handful of useful Javascript functions, constants, and events that are used by the classes described below. They're available in the global scope, so you can use them anywhere.
+
+### Functions
+#### `$(selector, ancestor)`
+An alias for `*.querySelector()`. Returns the first element matching the selector, called from `ancestor` if provided, or `document` otherwise.
+
+#### `$$(selector, ancestor)`
+An alias for `*.querySelectorAll()`. Returns an array of all elements matching the selector, called from `ancestor` if provided, or `document` otherwise.
+
+#### `positionElement(element, x, y)`
+Positions the element at the given `x` and `y` coordinates by setting its `left` and `top` properties. This function accounts for screen boundaries, preventing the element from appearing offscreen.
+
+### Constants
+#### `mouse`
+An object containing the current mouse cursor position. The `x` and `y` properties are updated every time a `mousemove` event is fired on `window`.
+
+### Events
+#### `domChange` on `document`
+Handled by a mutation observer, this event fires every time the DOM changes. It's useful for updating elements that are dynamically added to the DOM, as they appear.
+
 ## Custom context menus
 Custom context menus are built using the `ContextMenuBuilder` and `ContextMenuItemBuilder` classes. These class' methods are chainable, meaning that you can build and show a context menu without ever needing to store a reference to it.
 
