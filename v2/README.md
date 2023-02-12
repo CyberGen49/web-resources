@@ -86,7 +86,7 @@ Tropical ships with a handful of useful CSS classes for making flex layouts and 
 Buttons are customized by adding the `btn` class, which works with `<button>` and `<a>` elements.
 
 ### Colours
-By default, the button will be inverted from the theme's background colour. The colour of the button can be changed by adding one of a handful of extra classes:
+By default, the button's background will be inverted from that of the current theme. The colour of the button can be changed by adding one of a handful of extra classes:
 
 | Class | Description |
 | --- | --- |
