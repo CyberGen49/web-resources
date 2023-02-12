@@ -1,0 +1,1346 @@
+[
+  {
+    "id": "PopupActionBuilder()",
+    "longname": "PopupActionBuilder",
+    "name": "PopupActionBuilder",
+    "kind": "constructor",
+    "memberof": "PopupActionBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "PopupBuilder"
+          ]
+        },
+        "description": "The parent popup builder.",
+        "name": "parent"
+      }
+    ],
+    "order": 13
+  },
+  {
+    "id": "ToastOverlay()",
+    "longname": "ToastOverlay",
+    "name": "ToastOverlay",
+    "kind": "constructor",
+    "memberof": "ToastOverlay",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "'left'",
+            "'center'",
+            "'right'"
+          ]
+        },
+        "description": "Horizontal alignment",
+        "name": "hAlign",
+        "defaultvalue": "left"
+      },
+      {
+        "type": {
+          "names": [
+            "'top'",
+            "'bottom'"
+          ]
+        },
+        "description": "Vertical alignment",
+        "name": "vAlign",
+        "defaultvalue": "bottom"
+      }
+    ],
+    "order": 38
+  },
+  {
+    "id": "PopupBuilder",
+    "longname": "PopupBuilder",
+    "name": "PopupBuilder",
+    "kind": "class",
+    "scope": "global",
+    "description": "Builds a popup",
+    "meta": {
+      "lineno": 47,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 3
+  },
+  {
+    "id": "PopupActionBuilder",
+    "longname": "PopupActionBuilder",
+    "name": "PopupActionBuilder",
+    "kind": "class",
+    "scope": "global",
+    "description": "Builds a popup action button",
+    "meta": {
+      "lineno": 167,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 12
+  },
+  {
+    "id": "ContextMenuBuilder",
+    "longname": "ContextMenuBuilder",
+    "name": "ContextMenuBuilder",
+    "kind": "class",
+    "scope": "global",
+    "description": "Builds a context menu",
+    "meta": {
+      "lineno": 252,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 21
+  },
+  {
+    "id": "ContextMenuItemBuilder",
+    "longname": "ContextMenuItemBuilder",
+    "name": "ContextMenuItemBuilder",
+    "kind": "class",
+    "scope": "global",
+    "description": "Builds a clickable context menu item",
+    "meta": {
+      "lineno": 369,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 30
+  },
+  {
+    "id": "ToastOverlay",
+    "longname": "ToastOverlay",
+    "name": "ToastOverlay",
+    "kind": "class",
+    "scope": "global",
+    "description": "Initializes a toast notification overlay container.",
+    "meta": {
+      "lineno": 452,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 37
+  },
+  {
+    "id": "ToastBuilder",
+    "longname": "ToastBuilder",
+    "name": "ToastBuilder",
+    "kind": "class",
+    "scope": "global",
+    "description": "Builds a toast notification. This class is to be used alongside the `ToastOverlay` class.",
+    "meta": {
+      "lineno": 502,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 41
+  },
+  {
+    "id": "$",
+    "longname": "$",
+    "name": "$",
+    "kind": "function",
+    "scope": "global",
+    "description": "A shortcut for `*.querySelector()`.",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "description": "The target query selector",
+        "name": "id"
+      },
+      {
+        "type": {
+          "names": [
+            "HTMLElement"
+          ]
+        },
+        "description": "The ancestor element to start from",
+        "name": "ancestor"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "HTMLElement",
+            "undefined"
+          ]
+        },
+        "description": "The selected element"
+      }
+    ],
+    "meta": {
+      "lineno": 8,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 0
+  },
+  {
+    "id": "$$",
+    "longname": "$$",
+    "name": "$$",
+    "kind": "function",
+    "scope": "global",
+    "description": "A shortcut for `*.querySelectorAll()`.",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "description": "The target query selector",
+        "name": "id"
+      },
+      {
+        "type": {
+          "names": [
+            "HTMLElement"
+          ]
+        },
+        "description": "The ancestor element to start from",
+        "name": "ancestor"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "NodeListOf.<any>"
+          ]
+        },
+        "description": "The selected elements"
+      }
+    ],
+    "meta": {
+      "lineno": 17,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 1
+  },
+  {
+    "id": "positionElement",
+    "longname": "positionElement",
+    "name": "positionElement",
+    "kind": "function",
+    "scope": "global",
+    "description": "Positions an element at the given coordinates, ensuring it stays within the window.",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "HTMLElement"
+          ]
+        },
+        "description": "The element",
+        "name": "element"
+      },
+      {
+        "type": {
+          "names": [
+            "number"
+          ]
+        },
+        "description": "Left",
+        "name": "x"
+      },
+      {
+        "type": {
+          "names": [
+            "number"
+          ]
+        },
+        "description": "Top",
+        "name": "y"
+      }
+    ],
+    "meta": {
+      "lineno": 27,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 2
+  },
+  {
+    "id": "PopupBuilderAddActionCallback",
+    "longname": "PopupBuilderAddActionCallback",
+    "name": "PopupBuilderAddActionCallback",
+    "kind": "typedef",
+    "scope": "global",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "PopupActionBuilder"
+          ]
+        },
+        "description": "An action builder to be modified and returned.",
+        "name": "actionBuilder"
+      }
+    ],
+    "type": {
+      "names": [
+        "function"
+      ]
+    },
+    "meta": {
+      "lineno": 149,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 10
+  },
+  {
+    "id": "ContextMenuBuilderAddItemCallback",
+    "longname": "ContextMenuBuilderAddItemCallback",
+    "name": "ContextMenuBuilderAddItemCallback",
+    "kind": "typedef",
+    "scope": "global",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuItemBuilder"
+          ]
+        },
+        "description": "An item builder to be modified and returned.",
+        "name": "itemBuilder"
+      }
+    ],
+    "type": {
+      "names": [
+        "function"
+      ]
+    },
+    "meta": {
+      "lineno": 277,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 22
+  },
+  {
+    "id": "ToastOverlayShowCallback",
+    "longname": "ToastOverlayShowCallback",
+    "name": "ToastOverlayShowCallback",
+    "kind": "typedef",
+    "scope": "global",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "ToastBuilder"
+          ]
+        },
+        "description": "An item builder to be modified and returned.",
+        "name": "itemBuilder"
+      }
+    ],
+    "type": {
+      "names": [
+        "function"
+      ]
+    },
+    "meta": {
+      "lineno": 470,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 39
+  },
+  {
+    "id": "PopupBuilder#setTitle",
+    "longname": "PopupBuilder#setTitle",
+    "name": "setTitle",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets the title of the popup.",
+    "memberof": "PopupBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "description": "The title of the popup",
+        "name": "title"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "PopupBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 90,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 4
+  },
+  {
+    "id": "PopupBuilder#addBody",
+    "longname": "PopupBuilder#addBody",
+    "name": "addBody",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Adds an HTML element to the body of the popup.",
+    "memberof": "PopupBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "HTMLElement"
+          ]
+        },
+        "description": "The element",
+        "name": "element"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "PopupBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 99,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 5
+  },
+  {
+    "id": "PopupBuilder#addBodyHTML",
+    "longname": "PopupBuilder#addBodyHTML",
+    "name": "addBodyHTML",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Appends raw HTML to the body of the popup.",
+    "memberof": "PopupBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "description": "An HTML string",
+        "name": "html"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "PopupBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 108,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 6
+  },
+  {
+    "id": "PopupBuilder#setClickOutside",
+    "longname": "PopupBuilder#setClickOutside",
+    "name": "setClickOutside",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets if clicking outside the popup or pressing escape will close the popup. Defaults to `true`.",
+    "memberof": "PopupBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "boolean"
+          ]
+        },
+        "name": "shouldClose"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "PopupBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 117,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 7
+  },
+  {
+    "id": "PopupBuilder#show",
+    "longname": "PopupBuilder#show",
+    "name": "show",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Shows the popup.",
+    "memberof": "PopupBuilder",
+    "params": [],
+    "meta": {
+      "lineno": 124,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 8
+  },
+  {
+    "id": "PopupBuilder#hide",
+    "longname": "PopupBuilder#hide",
+    "name": "hide",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Hides the popup and removes it from the DOM.",
+    "memberof": "PopupBuilder",
+    "params": [],
+    "meta": {
+      "lineno": 139,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 9
+  },
+  {
+    "id": "PopupBuilder#addAction",
+    "longname": "PopupBuilder#addAction",
+    "name": "addAction",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Adds an action button to the bottom of the popup. These buttons are displayed from right to left.",
+    "memberof": "PopupBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "PopupBuilderAddActionCallback"
+          ]
+        },
+        "description": "A callback function that returns a `PopupActionBuilder` object. This callback is passed a new `PopupActionBuilder` object that can be modified and returned.",
+        "name": "callback"
+      }
+    ],
+    "meta": {
+      "lineno": 157,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 11
+  },
+  {
+    "id": "PopupActionBuilder#setIsPrimary",
+    "longname": "PopupActionBuilder#setIsPrimary",
+    "name": "setIsPrimary",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets whether this action button should use the primary button style. Defaults to `false`.",
+    "memberof": "PopupActionBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "boolean"
+          ]
+        },
+        "name": "isPrimary"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "PopupActionBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 189,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 14
+  },
+  {
+    "id": "PopupActionBuilder#setIsDanger",
+    "longname": "PopupActionBuilder#setIsDanger",
+    "name": "setIsDanger",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets whether this action button should use the danger button style. Defaults to `false`.",
+    "memberof": "PopupActionBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "boolean"
+          ]
+        },
+        "name": "isDanger"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "PopupActionBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 199,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 15
+  },
+  {
+    "id": "PopupActionBuilder#setShouldClose",
+    "longname": "PopupActionBuilder#setShouldClose",
+    "name": "setShouldClose",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets whether clicking this action should close the popup. Defaults to `true`.",
+    "memberof": "PopupActionBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "boolean"
+          ]
+        },
+        "name": "shouldClose"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "PopupActionBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 209,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 16
+  },
+  {
+    "id": "PopupActionBuilder#setLabel",
+    "longname": "PopupActionBuilder#setLabel",
+    "name": "setLabel",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets the label of this action button.",
+    "memberof": "PopupActionBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "description": "The button's label",
+        "name": "label"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "PopupActionBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 218,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 17
+  },
+  {
+    "id": "PopupActionBuilder#disable",
+    "longname": "PopupActionBuilder#disable",
+    "name": "disable",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Disables the action button.",
+    "memberof": "PopupActionBuilder",
+    "params": [],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "PopupActionBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 226,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 18
+  },
+  {
+    "id": "PopupActionBuilder#enable",
+    "longname": "PopupActionBuilder#enable",
+    "name": "enable",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Enables the action button.",
+    "memberof": "PopupActionBuilder",
+    "params": [],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "PopupActionBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 234,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 19
+  },
+  {
+    "id": "PopupActionBuilder#setClickHandler",
+    "longname": "PopupActionBuilder#setClickHandler",
+    "name": "setClickHandler",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets a callback to be run when this action is clicked.",
+    "memberof": "PopupActionBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "callback"
+          ]
+        },
+        "description": "The callback",
+        "name": "onClick"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "PopupActionBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 243,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 20
+  },
+  {
+    "id": "ContextMenuBuilder#addItem",
+    "longname": "ContextMenuBuilder#addItem",
+    "name": "addItem",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Adds a clickable item to the context menu.",
+    "memberof": "ContextMenuBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuBuilderAddItemCallback"
+          ]
+        },
+        "description": "A callback function that returns a `ContextMenuItemBuilder` object. This callback is passed a new `ContextMenuItemBuilder` object that can be modified and returned.",
+        "name": "callback"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 286,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 23
+  },
+  {
+    "id": "ContextMenuBuilder#addSeparator",
+    "longname": "ContextMenuBuilder#addSeparator",
+    "name": "addSeparator",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Adds a separator to the context menu.",
+    "memberof": "ContextMenuBuilder",
+    "params": [],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 296,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 24
+  },
+  {
+    "id": "ContextMenuBuilder#setIconVisibility",
+    "longname": "ContextMenuBuilder#setIconVisibility",
+    "name": "setIconVisibility",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets if menu item icons should be shown. If `true`, the space an icon takes up is still visible even on items without set icons. If `false`, all item icons are hidden, regardless of whether they're set or not. Defaults to `true`.",
+    "memberof": "ContextMenuBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "boolean"
+          ]
+        },
+        "description": "The new state",
+        "name": "areVisible"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 307,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 25
+  },
+  {
+    "id": "ContextMenuBuilder#showAtCoords",
+    "longname": "ContextMenuBuilder#showAtCoords",
+    "name": "showAtCoords",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Shows the context menu at the specified fixed coordinates. This method is used by the other show methods.",
+    "memberof": "ContextMenuBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "number"
+          ]
+        },
+        "description": "Left",
+        "name": "x"
+      },
+      {
+        "type": {
+          "names": [
+            "number"
+          ]
+        },
+        "description": "Top",
+        "name": "y"
+      }
+    ],
+    "meta": {
+      "lineno": 316,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 26
+  },
+  {
+    "id": "ContextMenuBuilder#showAtElement",
+    "longname": "ContextMenuBuilder#showAtElement",
+    "name": "showAtElement",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Shows the context menu originating from the center of an HTML element.",
+    "memberof": "ContextMenuBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "HTMLElement"
+          ]
+        },
+        "description": "The target element",
+        "name": "el"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 341,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 27
+  },
+  {
+    "id": "ContextMenuBuilder#showAtCursor",
+    "longname": "ContextMenuBuilder#showAtCursor",
+    "name": "showAtCursor",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Shows the context menu at the current mouse position, or fixed in the top left if there hasn't been any mouse movement.",
+    "memberof": "ContextMenuBuilder",
+    "params": [],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 349,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 28
+  },
+  {
+    "id": "ContextMenuBuilder#hide",
+    "longname": "ContextMenuBuilder#hide",
+    "name": "hide",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Hides the context menu and removes it from the DOM.",
+    "memberof": "ContextMenuBuilder",
+    "params": [],
+    "meta": {
+      "lineno": 355,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 29
+  },
+  {
+    "id": "ContextMenuItemBuilder#setLabel",
+    "longname": "ContextMenuItemBuilder#setLabel",
+    "name": "setLabel",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets the label for this menu item.",
+    "memberof": "ContextMenuItemBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "description": "The item's label",
+        "name": "label"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuItemBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 397,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 31
+  },
+  {
+    "id": "ContextMenuItemBuilder#setIcon",
+    "longname": "ContextMenuItemBuilder#setIcon",
+    "name": "setIcon",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets the icon for this item. If unset, no icon will be shown.",
+    "memberof": "ContextMenuItemBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "description": "A valid [Material Symbol](https://fonts.google.com/icons) string\n\nTo make sure you're getting the right symbol, click on the icon, go to the **Android** tab, and copy the string in the code block.",
+        "name": "icon"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuItemBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 408,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 32
+  },
+  {
+    "id": "ContextMenuItemBuilder#setTooltip",
+    "longname": "ContextMenuItemBuilder#setTooltip",
+    "name": "setTooltip",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets hover tooltip text for this item.",
+    "memberof": "ContextMenuItemBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "description": "The tooltip text",
+        "name": "text"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuItemBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 418,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 33
+  },
+  {
+    "id": "ContextMenuItemBuilder#disable",
+    "longname": "ContextMenuItemBuilder#disable",
+    "name": "disable",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Disables this menu item.",
+    "memberof": "ContextMenuItemBuilder",
+    "params": [],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuItemBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 426,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 34
+  },
+  {
+    "id": "ContextMenuItemBuilder#enable",
+    "longname": "ContextMenuItemBuilder#enable",
+    "name": "enable",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Enables this menu item.",
+    "memberof": "ContextMenuItemBuilder",
+    "params": [],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuItemBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 434,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 35
+  },
+  {
+    "id": "ContextMenuItemBuilder#setClickHandler",
+    "longname": "ContextMenuItemBuilder#setClickHandler",
+    "name": "setClickHandler",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets a callback to be run when this item is clicked.",
+    "memberof": "ContextMenuItemBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "callback"
+          ]
+        },
+        "description": "The callback",
+        "name": "onClick"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ContextMenuItemBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 443,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 36
+  },
+  {
+    "id": "ToastOverlay#showToast",
+    "longname": "ToastOverlay#showToast",
+    "name": "showToast",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Shows a new toast notification.",
+    "memberof": "ToastOverlay",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "ToastOverlayShowCallback"
+          ]
+        },
+        "description": "A callback function that returns a `ToastBuilder` object. This callback is passed a new `ToastBuilder` object that can be modified and returned.",
+        "name": "callback"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ToastOverlay"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 479,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 40
+  },
+  {
+    "id": "ToastBuilder#setIcon",
+    "longname": "ToastBuilder#setIcon",
+    "name": "setIcon",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets the icon to show on the left of the toast.",
+    "memberof": "ToastBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "description": "A valid [Material Symbol](https://fonts.google.com/icons) string",
+        "name": "icon"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ToastBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 525,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 42
+  },
+  {
+    "id": "ToastBuilder#setBodyHTML",
+    "longname": "ToastBuilder#setBodyHTML",
+    "name": "setBodyHTML",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets the body of the toast.",
+    "memberof": "ToastBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "string"
+          ]
+        },
+        "description": "The body HTML",
+        "name": "html"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ToastBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 535,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 43
+  },
+  {
+    "id": "ToastBuilder#setCloseDelay",
+    "longname": "ToastBuilder#setCloseDelay",
+    "name": "setCloseDelay",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets the delay before the toast will automatically close after being shown. Set this to `0` to show the toast indefinitely (until the user closes it).\n\nDefault is `5000` (5 seconds).",
+    "memberof": "ToastBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "number"
+          ]
+        },
+        "description": "The delay in milliseconds.",
+        "name": "delayMs"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ToastBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 546,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 44
+  },
+  {
+    "id": "ToastBuilder#setIsCloseable",
+    "longname": "ToastBuilder#setIsCloseable",
+    "name": "setIsCloseable",
+    "kind": "function",
+    "scope": "instance",
+    "description": "Sets whether or not the toast can be closed by the user. Rather, this determines if the close button is visible or not.",
+    "memberof": "ToastBuilder",
+    "params": [
+      {
+        "type": {
+          "names": [
+            "boolean"
+          ]
+        },
+        "name": "isCloseable"
+      }
+    ],
+    "returns": [
+      {
+        "type": {
+          "names": [
+            "ToastBuilder"
+          ]
+        }
+      }
+    ],
+    "meta": {
+      "lineno": 555,
+      "filename": "base.js",
+      "path": "/home/scn/web/web-resources/v2"
+    },
+    "order": 45
+  }
+]

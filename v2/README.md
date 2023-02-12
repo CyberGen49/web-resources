@@ -94,9 +94,9 @@ By default, the button's background will be inverted from that of the current th
 | `tertiary` | Makes the button's background the same as the background |
 | `success` | Makes the button's background green |
 | `warning` | Makes the button's background yellow |
-| `error` | Makes the button's background red |
+| `danger` | Makes the button's background red |
 
-### Icons
+### Adding icons
 You can add icons to buttons (either before or after the label) by adding an inner element with the `icon` class. The inner text of this icon element should contain a valid [Material Symbol](https://fonts.google.com/icons?icon.set=Material+Symbols) name.
 
 ```html
@@ -160,17 +160,114 @@ By design, `<textarea>` elements don't expand when their contents overflow the b
 </div>
 ```
 
-## Range sliders
-wip
-
 ## Progress bars
-wip
+Progress bars are styled by default, so they don't require any extra classes. To create a progress bar, just make a `<progress>` element and assign it some attributes:
+
+```html
+<progress min="0" max="100" value="42"></progress>
+```
+
+### Changing the colour
+Additionally, you can add one of a few colour classes to change the colour of the progress bar:
+
+| Class | Description |
+| --- | --- |
+| `success` | Turns the progress bar green |
+| `warning` | Turns the progress bar yellow |
+| `danger` | Turns the progress bar red |
+
+Note that progress elements without a value will appear indeterminate, which is useful for representing actions where the current progress is unknown.
+
+## Range sliders
+Tropical overhauls how range sliders are handled, providing an easy way to display them with a background (filled portion). To create a custom range slider, just make a `<div>` with the `slider` class.
+
+```html
+<div class="slider"></div>
+```
+
+### Configuration
+
+Next, add data attributes to configure the slider:
+
+| Attribute | Description |
+| --- | --- |
+| `data-min` | The minimum value of the slider - defaults to 0 |
+| `data-max` | The maximum value of the slider - defaults to 100 |
+| `data-value` | The starting value of the slider - defaults to 0 |
+| `data-step` | The step size of the slider - defaults to 1 |
+| `data-textbox` | A selector for an input element to link to the slider's value |
+| `data-range-id` | An ID to give to the inner range input |
+| `data-prog-id` | An ID to give to the inner progress input |
+
+Not all of these data values are required. Only use the ones that you need.
+
+```html
+<div class="row align-center gap-10">
+    <div style="width: 100px">
+        <input id="sliderValue" class="textbox" type="number">
+    </div>
+    <div class="flex-grow">
+        <div class="slider"
+             data-min="0"
+             data-max="100"
+             data-value="69"
+             data-textbox="#sliderValue"></div>
+    </div>
+</div>
+```
+
+### Handling changes
+When initialized, Tropical will automatically populate the slider element with inner `<progress>` and `<input type="range">` elements. Changing the slider element's data values after this point will have no effect, so to make changes to these values, target those new inner elements instead.
+
+If you change the value of the range or progress elements using Javascript, you'll need to dispatch `change` events on them to update the slider's appearance:
+
+```js
+const sliderInners = document.querySelectorAll('#my-slider > *');
+for (const el of sliderInners) {
+    el.dispatchEvent(new Event('change'));
+}
+```
 
 ## Code blocks
-wip
+It's good practice to make code blocks by putting your code inside of `<pre><code></code></pre>` elements, so that's how Tropical handles it. This also makes scrollbars play nicely with our rounded corners.
+
+```html
+<pre><code>
+const myVar = 42;
+</code></pre>
+```
+
+### Syntax highlighting
+Tropical's syntax highlighting is handled by [Prism](https://prismjs.com/), and can be activated by adding Prism to your site (detailed above), and adding a `language-X` class to your `<code>` elements, where `X` is the language you want to highlight. While we don't support all of Prism's languages, you can find all valid language classes [here](https://prismjs.com/#supported-languages).
+
+```html
+<pre><code class="language-javascript">
+const myVar = 42;
+</code></pre>
+```
 
 ## Notices
-wip
+Notices are special elements that are meant to draw the attention of the user. To create a notice, start with a `<div>` element and add the `notice` class. Then, create another `<div>` element inside of it and give it the `body` class.
+
+```html
+<div class="notice">
+    <div class="body">
+        <p>This is some important text!</p>
+    </div>
+</div>
+```
+
+### Adding an icon
+Optionally, you can add an icon to the notice by creating another `<div>` above the body and giving it the `icon` class. The inner text of this icon element should contain a valid [Material Symbol](https://fonts.google.com/icons?icon.set=Material+Symbols) name.
+
+```html
+<div class="notice">
+    <div class="icon">info</div>
+    <div class="body">
+        <p>This notice is here to give you some information!</p>
+    </div>
+</div>
+```
 
 ## Tooltips
 Tropical includes custom hover tooltips that are applied automatically to elements with a `title` attribute and support HTML content.
@@ -186,26 +283,144 @@ To disable the custom tooltip on an element, add a `data-no-tooltip` attribute t
 ```
 
 ## Custom context menus
-Custom context menus are built using the `ContextMenuBuilder` class. This class' methods are chainable, meaning that you can build and show a context menu without ever needing to store a reference to it. Here it is in action:
+Custom context menus are built using the `ContextMenuBuilder` and `ContextMenuItemBuilder` classes. These class' methods are chainable, meaning that you can build and show a context menu without ever needing to store a reference to it.
+
+### Adding items
+To add an item, call the `addItem()` method and pass it a callback function. This callback will be passed a new `ContextMenuItemBuilder` object, which you can use to configure the item.
 
 ```js
-const el = document.querySelectorAll('#my-element');
-new ContextMenuBuilder()
+const menu = new ContextMenuBuilder()
     .addItem(item => item
-        .setLabel(`Here's an item`)
-        .setIcon(`info`)
-        .setClickHandler(() => console.log(`It works!`)))
+        /* ... */);
+```
+
+#### Setting a label
+Set the item's label by calling the `setLabel()` method and passing it a string.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(item => item
+        .setLabel('My item'));
+```
+
+#### Setting an icon
+Set the item's icon by calling the `setIcon()` method and passing it a string. This string should be a valid [Material Symbol](https://fonts.google.com/icons?icon.set=Material+Symbols) name.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(item => item
+        .setLabel('My item')
+        .setIcon('star'));
+```
+
+#### Setting a tooltip
+Optionally, you can add a hover tooltip to the item, in the case that you want to display more information on hover. Add a tooltip with the `setTooltip()` method and pass it a string.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(item => item
+        .setLabel('My item')
+        .setIcon('star')
+        .setTooltip(`Here's some extra info!`));
+```
+
+#### Setting a click handler
+If you want to make the item actually do something when clicked, you'll need to add a click handler. Do this with the `setClickHandler()` method and pass it a callback function to be called on click.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(item => item
+        .setLabel('My item')
+        .setIcon('star')
+        .setTooltip(`Here's some extra info!`)
+        .setClickHandler(() => console.log('Clicked!')));
+```
+
+#### Disabling/enabling the item
+You can disable the item by calling the `disable()` method. You can also re-enable it by calling the `enable()` method. This is especially useful if you need to conditionally disable an item based on the current state of the page.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(item => item
+        .setLabel('My item')
+        .setIcon('star')
+        .setTooltip(`Here's some extra info!`)
+        .disable());
+```
+
+#### Building the item separately
+You don't have to build your context menu items inside of the `addItem()` callback, and can instead create a new `ContextMenuItemBuilder` object, pass it your existing menu, then force the menu's `addItem()` method to return your item.
+
+```js
+const menu = new ContextMenuBuilder();
+const item = new ContextMenuItemBuilder(menu)
+    .setLabel('Secret item')
+    .setIcon('star');
+menu.addItem(() => item);
+```
+
+### Adding separators
+To add a separator, all you need to do is call the `addSeparator()` method.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(/* ... */)
     .addSeparator()
-    .addItem(item => item
-        .setLabel(`Here's another item`)
-        .setIcon(`settings`)
-    .addItem(item => item
-        .setLabel(`This one has no icon`))
-    .addItem(item => item
-        .setLabel(`And this one's disabled`)
-        .setIcon('close')
-        .disable())
-    .showAtElement(el);
+    .addItem(/* ... */)
+    .addItem(/* ... */);
+```
+
+### Removing the space reserved for icons
+If you don't want to add icons to your context menu, you can remove the space reserved for them by calling the `setIconVisibility()` method and passing it `false`.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(item => item.setLabel('I have no icon!'))
+    .addItem(item => item.setLabel('Neither do I!'))
+    .setIconVisibility(false);
+```
+
+### Displaying the menu
+There are a few ways to display the menu.
+
+#### Show at cursor
+To show the menu at the cursor's current position, call the `showAtCursor()` method. Chances are, this is the method you'll want to use.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(item => item.setLabel(`Hi I'm an item!`))
+    .showAtCursor();
+```
+
+#### Show at element
+To show the menu at an HTML element, call the `showAtElement()` method and pass it the element. This will position the menu's origin corner (depending on screen position) at the center of the element.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(item => item.setLabel(`Hi I'm an item!`))
+    .showAtElement(document.querySelector('#my-element'));
+```
+
+#### Show at coordinates
+To show the menu at specific x, y coordinates, call the `showAtCoords()` method and pass it your coordinates.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(item => item.setLabel(`Hi I'm an item!`))
+    .showAtCoords(100, 100);
+```
+
+### Hiding the menu
+The menu will be hidden when clicked outside of, or when any of the items are clicked. If you want to hide it programmatically, use the `hide()` method.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(item => item.setLabel(`Hi I'm an item!`))
+    .showAtCursor();
+// Hide the menu after 1 second
+setTimeout(() => {
+    menu.hide();
+}, 1000);
 ```
 
 ## Custom popups

@@ -196,8 +196,8 @@ code .token.namespace { color: var(--f3) }
     font-family: 'Comfortaa';
     font-size: 15px;
     font-weight: bold;
-    color: var(--b1);
-    background: var(--f3);
+    color: var(--fg);
+    background: var(--bg);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -211,95 +211,59 @@ code .token.namespace { color: var(--f3) }
     flex-shrink: 0;
     transition: 0.3s var(--bezier);
 }
+.btn {
+    --fg: var(--b1);
+    --bg: var(--f3);
+    --bgHover: var(--f4);
+    --bgActive: var(--b5);
+}
 .btn.secondary {
-    background: var(--b3);
-    color: var(--f2);
+    --fg: var(--f2);
+    --bg: var(--b3);
+    --bgHover: var(--b4);
+    --bgActive: var(--b5);
 }
 .btn.tertiary {
-    background: transparent;
-    color: var(--f3);
+    --fg: var(--f3);
+    --bg: transparent;
+    --bgHover: var(--b3);
+    --bgActive: var(--b4);
 }
 .btn.overlay {
-    background: transparent;
-    color: white;
+    --fg: white;
+    --bg: transparent;
+    --bgHover: rgba(255, 255, 255, 0.2);
+    --bgActive: rgba(255, 255, 255, 0.4);
 }
 .btn.success {
-    background: var(--green1);
-    color: var(--f1);
+    --fg: var(--f1);
+    --bg: var(--green1);
+    --bgHover: var(--green2);
+    --bgActive: var(--green3);
 }
 .btn.warning {
-    background: var(--yellow1);
-    color: var(--f1);
+    --fg: var(--f1);
+    --bg: var(--yellow1);
+    --bgHover: var(--yellow2);
+    --bgActive: var(--yellow3);
 }
 .btn.danger {
-    background: var(--red1);
-    color: var(--f1);
+    --fg: var(--f1);
+    --bg: var(--red1);
+    --bgHover: var(--red2);
+    --bgActive: var(--red3);
 }
 .btn:hover,
 .btn:focus-visible {
-    background: var(--f4);
+    background: var(--bgHover);
+    color: var(--fg);
     text-decoration: none;
-    color: var(--b1);
     transition: none;
 }
-.btn.secondary:hover,
-.btn.secondary:focus-visible {
-    background: var(--b4);
-    color: var(--f2);
-}
-.btn.tertiary:hover,
-.btn.tertiary:focus-visible {
-    background: var(--b3);
-    color: var(--f3);
-}
-.btn.overlay:hover,
-.btn.overlay:focus-visible {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-}
-.btn.success:hover,
-.btn.success:focus-visible {
-    background: var(--green2);
-    color: var(--f1);
-}
-.btn.warning:hover,
-.btn.warning:focus-visible {
-    background: var(--yellow2);
-    color: var(--f1);
-}
-.btn.danger:hover,
-.btn.danger:focus-visible {
-    background: var(--red2);
-    color: var(--f1);
-}
 .btn:active {
-    background: var(--b5);
+    background: var(--bgActive);
+    color: var(--fg);
     text-decoration: none;
-    color: var(--b1);
-}
-.btn.secondary:active {
-    background: var(--b5);
-    color: var(--f2);
-}
-.btn.tertiary:active {
-    background: var(--b4);
-    color: var(--f3);
-}
-.btn.overlay:active {
-    background: rgba(255, 255, 255, 0.4);
-    color: white;
-}
-.btn.success:active {
-    background: var(--green3);
-    color: var(--f1);
-}
-.btn.warning:active {
-    background: var(--yellow3);
-    color: var(--f1);
-}
-.btn.danger:active {
-    background: var(--red3);
-    color: var(--f1);
 }
 .btn > .icon {
     font-family: 'Material Symbols Outlined';

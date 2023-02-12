@@ -302,7 +302,7 @@ class ContextMenuBuilder {
     /**
      * Sets if menu item icons should be shown. If `true`, the space an icon takes up is still visible even on items without set icons. If `false`, all item icons are hidden, regardless of whether they're set or not. Defaults to `true`.
      * @param {boolean} areVisible The new state
-     * @returns {PopupBuilder}
+     * @returns {ContextMenuBuilder}
      */
     setIconVisibility(areVisible) {
         this.el.classList.toggle('hideIcons', !areVisible);
@@ -631,18 +631,15 @@ document.addEventListener('domChange', () => {
         const step = slider.dataset.step || 1;
         const value = slider.dataset.value || 0;
         const textbox = $(slider.dataset.textbox);
-        // Remove parent data values
-        slider.removeAttribute('data-min');
-        slider.removeAttribute('data-max');
-        slider.removeAttribute('data-step');
-        slider.removeAttribute('data-value');
-        slider.removeAttribute('data-textbox');
+        const rangeId = slider.dataset.rangeId;
+        const progId = slider.dataset.progId;
         // Create progress element
         const prog = document.createElement('progress');
         prog.min = min;
         prog.max = max;
         prog.value = value;
         prog.step = step;
+        (progId) ? prog.id = progId : '';
         slider.appendChild(prog);
         // Create input element
         const input = document.createElement('input');
@@ -651,6 +648,7 @@ document.addEventListener('domChange', () => {
         input.max = max;
         input.value = value;
         input.step = step;
+        (rangeId) ? input.id = rangeId : '';
         slider.appendChild(input);
         // Add event listeners
         input.addEventListener('input', () => {
