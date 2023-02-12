@@ -424,7 +424,247 @@ setTimeout(() => {
 ```
 
 ## Custom popups
-wip
+Custom popups are built using the `PopupBuilder` and `PopupActionBuilder` classes. These class' methods are chainable, meaning that you can build and show a popup without ever needing to store a reference to it.
+
+Initialize a new popup builder by creating a new instance of the `PopupBuilder` class.
+
+```js
+const popup = new PopupBuilder();
+```
+
+### Setting the title
+Set the popup's title by calling the `setTitle()` method and passing it a string.
+
+```js
+const popup = new PopupBuilder()
+    .setTitle('My popup');
+```
+
+### Setting the body
+There are a couple different methods for setting the popup's body. Use whichever method you're the most comfortable with.
+
+#### Appending elements
+To append an HTML element to the popup's body, call the `addBody()` method and pass it an element.
+
+```js
+const el = document.createElement('p');
+el.innerText = `Hey look, it's a popup!`;
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addBody(el);
+```
+
+#### Appending raw HTML
+To append raw HTML to the popup's body, call the `addBodyHTML()` method and pass it a string.
+
+```js
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addBodyHTML(`<p>Hey look, it's a popup!</p>`);
+```
+
+### Adding action buttons
+To add an action button to the popup, call the `addAction()` method and pass it a callback function. This callback will be passed a `PopupActionBuilder` object, which you can use to configure the action button.
+
+```js
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addBodyHTML(`<p>Hey look, it's a popup!</p>`)
+    .addAction(action => action
+        /* ... */;
+```
+
+Note that action buttons are added from right to left, since the action buttons start from the right.
+
+#### Setting the label
+Set the action button's label by calling the `setLabel()` method and passing it a string.
+
+```js
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addBodyHTML(`<p>Hey look, it's a popup!</p>`)
+    .addAction(action => action
+        .setLabel('My action'));
+```
+
+#### Changing the button colour
+By default, action buttons use the `secondary` button class (described above). There are a couple available methods for changing the action button's colour.
+
+| Method | Description |
+| --- | --- |
+| `setIsPrimary()` | Sets the button to use the default, inverted look |
+| `setIsDanger()` | Turns the button red |
+
+```js
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addBodyHTML(`<p>Hey look, it's a popup!</p>`)
+    .addAction(action => action
+        .setLabel('Important action')
+        .setIsPrimary())
+    .addAction(action => action
+        .setLabel('Dangerous action')
+        .setIsDanger());
+```
+
+#### Setting a click handler
+Set the action button's click handler by calling the `setClickHandler()` method and passing it a callback function.
+
+```js
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addBodyHTML(`<p>Hey look, it's a popup!</p>`)
+    .addAction(action => action
+        .setLabel('My action')
+        .setClickHandler(() => console.log('Clicked!')));
+```
+
+#### Enabling/disabling the button
+You can disable the action button by calling the `disable()` method. You can also re-enable it by calling the `enable()` method. This is especially useful if you need to conditionally disable an action button based on the current state of the page.
+
+```js
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addBodyHTML(`<p>Hey look, it's a popup!</p>`)
+    .addAction(action => action
+        .setLabel('My action')
+        .disable());
+```
+
+#### Keeping the popup open after clicking the button
+By default, clicking an action button will close its popup. If you want to keep the popup open in this case, call the `setShouldClose()` method and pass it `false`.
+
+```js
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addBodyHTML(`<p>Hey look, it's a popup!</p>`)
+    .addAction(action => action
+        .setLabel('My action')
+        .setClickHandler(() => console.log('Clicked!'))
+        .setShouldClose(false));
+```
+
+#### Building the action button separately
+You don't have to build the action button inside the `addAction()` callback. You can also build it separately and then return it from your `addAction()` callback.
+
+```js
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addBodyHTML(`<p>Hey look, it's a popup!</p>`);
+const action = new PopupActionBuilder()
+    .setLabel('My action')
+    .setClickHandler(() => console.log('Clicked!'));
+popup.addAction(() => action);
+```
+
+### Keeping the popup open when clicking outside
+By default, clicking outside of the popup will close it. If you want to keep the popup open in this case, call the `setClickOutside()` method and pass it `false`.
+
+```js
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addBodyHTML(`<p>Hey look, it's a popup!</p>`)
+    .addAction(action => action.setLabel('Okay'))
+    .setClickOutside(false);
+```
+
+### Showing the popup
+To show the popup, call the `show()` method.
+
+```js
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addBodyHTML(`<p>Hey look, it's a popup!</p>`)
+    .addAction(action => action.setLabel('Okay'))
+    .show();
+```
+
+### Hiding the popup
+If you need to hide the popup programmatically, you can call the `hide()` method.
+
+```js
+popup.hide();
+```
 
 ## Custom toast notifications
-wip
+Setting up custom toast notifications works a tad bit different than context menus or popups, and is handled with the `ToastOverlay` and `ToastBuilder` classes.
+
+### Creating the overlay
+Before you can show toast notifications, you need to create the overlay that they'll be shown inside of. This is done by creating a new instance of the `ToastOverlay` class.
+
+The point of creating an overlay like this is so multiple toasts can be shown at once and stack on top of each other. To make sure this works properly, always use the same overlay for all your toast notifications.
+
+The constructor takes two optional parameters:
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `hAlign` | `string` | The horizontal alignment of the toasts. Can be `left`, `center`, or `right`. Defaults to `left`. |
+| `vAlign` | `string` | The vertical alignment of the toasts. Can be `top` or `bottom`. Defaults to `bottom`. |
+
+```js
+const toasts = new ToastOverlay('right', 'bottom');
+```
+
+### Showing a toast notification
+To show a toast notification, call the `showToast()` method on your existing toast overlay object. This method takes a callback function which will be passed a new `ToastBuilder` object to be configured.
+
+```js
+toasts.showToast(toast => toast
+    /* ... */);
+```
+
+#### Setting the body
+To set the toast's body, call the `setBodyHTML()` method and pass it a string of raw HTML.
+
+```js
+toasts.showToast(toast => toast
+    .setBodyHTML(`<p>Hey look, it's a toast!</p>`));
+```
+
+#### Adding an icon
+to add an icon to the toast, call the `setIcon()` method and pass it a valid [Material Symbol](https://material.io/resources/icons/?style=baseline) name. The icon will be placed to the left of the toast's body.
+
+```js
+toasts.showToast(toast => toast
+    .setBodyHTML(`<p>Hey look, it's a toast!</p>`)
+    .setIcon('info'));
+```
+
+#### Changing the close delay
+By default, toast notifications will dismiss themselves after 5 seconds. You can change this by calling the `setCloseDelay()` method and passing it a number of milliseconds.
+
+Setting this to `0` will stop the toast from dismissing itself.
+
+```js
+toasts.showToast(toast => toast
+    .setBodyHTML(`<p>Hey look, it's a toast!</p>`)
+    .setCloseDelay(3000));
+```
+
+#### Hiding the close button
+By default, toast notifications have a dismiss button so the user can get rid of them. You can hide this by calling the `setIsCloseable()` method and passing it `false`.
+
+```js
+toasts.showToast(toast => toast
+    .setBodyHTML(`<p>Hey look, it's a toast!</p>`)
+    .setIsCloseable(false));
+```
+
+### Closing a toast programmatically
+If you need to close a toast programmatically, you can call the `close()` method on it. This requires that you built the toast separately.
+
+```js
+const toast = new ToastBuilder()
+    .setBodyHTML(`<p>Hey look, it's a toast!</p>`);
+toasts.showToast(() => toast);
+
+// Something happens
+toast.close();
+```
+
+## Loading spinners
+Tropical comes with a simple loading spinner that can be created by adding the `spinner` class to a `<div>`.
+
+```html
+<div class="spinner"></div>
+```

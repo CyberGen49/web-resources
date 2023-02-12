@@ -482,13 +482,7 @@ class ToastOverlay {
         this.el.insertAdjacentElement('afterbegin', toast.el);
         setTimeout(() => {
             const delay = toast.el.dataset.delay;
-            const close = () => {
-                toast.el.classList.remove('visible');
-                setTimeout(() => {
-                    if (!toast.el.parentNode) return;
-                    toast.el.parentNode.removeChild(toast.el);
-                }, 200);
-            }
+            toast.close();
             toast.elClose.addEventListener('click', close);
             toast.el.classList.add('visible');
             if (delay) setTimeout(close, delay);
@@ -558,6 +552,18 @@ class ToastBuilder {
         } else {
             this.elClose.style.display = 'none';
         }
+        return this;
+    }
+    /**
+     * Closes the toast, assuming that it's visible.
+     * @returns {ToastBuilder}
+     */
+    close() {
+        toast.el.classList.remove('visible');
+        setTimeout(() => {
+            if (!toast.el.parentNode) return;
+            toast.el.parentNode.removeChild(toast.el);
+        }, 200);
         return this;
     }
 }
