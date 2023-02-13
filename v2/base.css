@@ -783,12 +783,25 @@ progress::-moz-progress-bar {
     }
 }
 .spinner {
+    --fill: var(--f3);
     height: 48px;
     width: 48px;
     border: 5px solid var(--b4);
-    border-top-color: var(--f3);
+    border-top-color: var(--fill);
     border-radius: 50%;
     animation: spinner 1s linear infinite;
+}
+.spinner.info {
+    --fill: var(--blue1);
+}
+.spinner.success {
+    --fill: var(--green1);
+}
+.spinner.warning {
+    --fill: var(--yellow1);
+}
+.spinner.danger {
+    --fill: var(--red1);
 }
 
 .text-info {

@@ -285,6 +285,23 @@ To disable the custom tooltip on an element, add a `data-no-tooltip` attribute t
 <div title="Hi default tooltip!" data-no-tooltip="true">Hover over me!</div>
 ```
 
+## Loading spinners
+Tropical comes with a simple loading spinner that can be created by adding the `spinner` class to a `<div>`.
+
+```html
+<div class="spinner"></div>
+```
+
+### Changing the colour
+By default, the spinner's moving section is an inverse of the theme's background colour. You can change the colour of this moving section by adding one of the type classes:
+
+| Class | Description |
+| --- | --- |
+| `info` | Turns the moving section blue |
+| `success` | Turns the moving section green |
+| `warning` | Turns the moving section yellow |
+| `danger` | Turns the moving section red |
+
 ## Utility Javascript
 Tropical ships with a handful of useful Javascript functions, constants, and events that are used by the classes described below. They're available in the global scope, so you can use them anywhere.
 
@@ -684,11 +701,4 @@ toasts.showToast(() => toast);
 
 // Something happens
 toast.close();
-```
-
-## Loading spinners
-Tropical comes with a simple loading spinner that can be created by adding the `spinner` class to a `<div>`.
-
-```html
-<div class="spinner"></div>
 ```
