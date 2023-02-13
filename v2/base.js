@@ -482,8 +482,9 @@ class ToastOverlay {
         this.el.insertAdjacentElement('afterbegin', toast.el);
         setTimeout(() => {
             const delay = toast.el.dataset.delay;
-            toast.close();
-            toast.elClose.addEventListener('click', close);
+            if (delay) setTimeout(() => {
+                toast.close();
+            }, delay);
             toast.el.classList.add('visible');
             if (delay) setTimeout(close, delay);
         }, 100);
@@ -508,6 +509,7 @@ class ToastBuilder {
         this.elClose.classList.add('btn', 'secondary', 'iconOnly', 'small', 'close');
         this.elClose.innerHTML = '<div class="icon">close</div>';
         this.elClose.title = 'Dismiss';
+        this.elClose.addEventListener('click', () => this.close());
         this.el.appendChild(this.elClose);
         this.el.dataset.delay = 5000;
     }
@@ -559,10 +561,10 @@ class ToastBuilder {
      * @returns {ToastBuilder}
      */
     close() {
-        toast.el.classList.remove('visible');
+        this.el.classList.remove('visible');
         setTimeout(() => {
-            if (!toast.el.parentNode) return;
-            toast.el.parentNode.removeChild(toast.el);
+            if (!this.el.parentNode) return;
+            this.el.parentNode.removeChild(this.el);
         }, 200);
         return this;
     }

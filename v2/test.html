@@ -397,7 +397,23 @@
     
         <h2>Overlays</h2>
         <h3>Popups</h3>
-        <button class="btn" onClick="showAddBranchPopup()">
+        <script>
+            function showSamplePopup() {
+                new PopupBuilder()
+                    .setTitle(`A popup appeared!`)
+                    .addBodyHTML(`<p>It has a title, a body, and some actions.</p>`)
+                    .addBodyHTML(`<p>The coolest part is that you can put any HTML in here, so the possibilities are endless!</p>`)
+                    .addAction(action => action
+                        .setLabel(`Again!`)
+                        .setIsPrimary(true)
+                        .setClickHandler(showSamplePopup))
+                    .addAction(action => action
+                        .setLabel(`Close`)
+                        .setClickHandler(() => console.log(`Cancelled.`)))
+                    .show();
+            }
+        </script>
+        <button class="btn" onClick="showSamplePopup()">
             <div class="icon">visibility</div>
             Show me a popup...
         </button>
