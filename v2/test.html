@@ -300,6 +300,7 @@ function positionElement(element, x, y) {
                     { class: 'primary', name: 'Default', icon: 'info' },
                     { class: 'secondary', name: 'Secondary', icon: 'settings' },
                     { class: 'tertiary', name: 'Tertiary', icon: 'sentiment_very_satisfied' },
+                    { class: 'info', name: 'Info', icon: 'info' },
                     { class: 'success', name: 'Success', icon: 'done' },
                     { class: 'warning', name: 'Warning', icon: 'warning' },
                     { class: 'danger', name: 'Danger', icon: 'close' },
@@ -354,14 +355,16 @@ function positionElement(element, x, y) {
     
         <h2>Progress bars and sliders</h2>
         <h4>Indeterminate</h4>
+        <progress class="info" max="100"></progress>
         <progress class="success" max="100"></progress>
         <progress class="warning" max="100"></progress>
         <progress class="danger" max="100"></progress>
         <progress max="100"></progress>
         <h4>Determinate</h4>
-        <progress class="success makeRandom" min="0" max="100" value="16"></progress>
-        <progress class="warning makeRandom" min="0" max="100" value="32"></progress>
-        <progress class="danger makeRandom" min="0" max="100" value="64"></progress>
+        <progress class="info makeRandom" min="0" max="100" value="20"></progress>
+        <progress class="success makeRandom" min="0" max="100" value="40"></progress>
+        <progress class="warning makeRandom" min="0" max="100" value="60"></progress>
+        <progress class="danger makeRandom" min="0" max="100" value="80"></progress>
         <progress class="makeRandom" min="0" max="100" value="50"></progress>
         <button id="progRandomize" class="btn secondary small">
             Randomize

@@ -235,6 +235,12 @@ code .token.namespace { color: var(--f3) }
     --bgHover: rgba(255, 255, 255, 0.2);
     --bgActive: rgba(255, 255, 255, 0.4);
 }
+.btn.info {
+    --fg: var(--f1);
+    --bg: var(--blue1);
+    --bgHover: var(--blue2);
+    --bgActive: var(--blue3);
+}
 .btn.success {
     --fg: var(--f1);
     --bg: var(--green1);
@@ -606,6 +612,10 @@ code .token.namespace { color: var(--f3) }
     display: flex;
     margin-bottom: 10px;
 }
+.notice.info {
+    border-color: var(--blue1);
+    background: var(--blue2);
+}
 .notice.success {
     border-color: var(--green1);
     background: var(--green2);
@@ -646,6 +656,9 @@ progress {
     overflow: hidden;
     outline: none;
     border: none;
+}
+progress.info {
+    --fill: var(--blue1);
 }
 progress.success {
     --fill: var(--green1);
@@ -778,6 +791,9 @@ progress::-moz-progress-bar {
     animation: spinner 1s linear infinite;
 }
 
+.text-info {
+    color: var(--blue0);
+}
 .text-success {
     color: var(--green0);
 }

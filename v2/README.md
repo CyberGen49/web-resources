@@ -68,6 +68,7 @@ Tropical ships with a handful of useful CSS classes for making flex layouts and 
 ### Text classes
 | Class | Description |
 | --- | --- |
+| `text-info` | Turns the text blue |
 | `text-success` | Turns the text green |
 | `text-warning` | Turns the text yellow |
 | `text-danger` | Turns the text red |
@@ -92,6 +93,7 @@ By default, the button's background will be inverted from that of the current th
 | --- | --- |
 | `secondary` | Makes the button's background slightly differ from the background |
 | `tertiary` | Makes the button's background the same as the background |
+| `info` | Makes the button's background blue |
 | `success` | Makes the button's background green |
 | `warning` | Makes the button's background yellow |
 | `danger` | Makes the button's background red |
@@ -172,6 +174,7 @@ Additionally, you can add one of a few colour classes to change the colour of th
 
 | Class | Description |
 | --- | --- |
+| `info` | Turns the progress bar blue |
 | `success` | Turns the progress bar green |
 | `warning` | Turns the progress bar yellow |
 | `danger` | Turns the progress bar red |
