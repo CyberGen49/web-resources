@@ -214,84 +214,84 @@
         <h2>Code</h2>
         <p>This is a little paragraph, but <code>part of it is code</code>!</p>
     
-        <p>And here are some code blocks demonstrating syntax highlighting. Normally, the background and border of these code blocks would adapt to the theme, but for showcasing purposes, the light one has been forced to <code>lightmuted</code>, and the dark to <code>darkmuted</code>.</p>
+        <p>And below are some code blocks demonstrating syntax highlighting. Normally, the background and border of these code blocks would adapt to the theme, but for showcasing purposes, the light one has been forced to <code>lightmuted</code>, and the dark one to <code>darkmuted</code>.</p>
         <p>The third code block has no theme adjustment.</p>
         <div class="row gap-10 flex-wrap" style="margin-bottom: 10px;">
             <div class="col flex-grow" style="min-width: 0px">
-    <pre class="lightmuted"><code class="language-css">/* Comment it up */
-    .btn {
-        height: 40px;
-        padding: 0px 20px;
-        padding-top: 2px;
-        border: none;
-        border-radius: 100px;
-        font-family: 'Comfortaa';
-        font-size: 15px;
-        font-weight: bold;
-        color: var(--b1);
-        background: var(--f3);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        user-select: none;
-        cursor: pointer;
-        flex-shrink: 0;
-        transition: 0.3s var(--bezier);
-    }
-    </code></pre>
+<pre class="lightmuted"><code class="language-css">/* Comment it up */
+.btn {
+    height: 40px;
+    padding: 0px 20px;
+    padding-top: 2px;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Comfortaa';
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--b1);
+    background: var(--f3);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    user-select: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: 0.3s var(--bezier);
+}
+</code></pre>
             </div>
             <div class="col flex-grow" style="min-width: 0px">
-    <pre class="darkmuted"><code class="language-css">/* Comment it up */
-    .btn {
-        height: 40px;
-        padding: 0px 20px;
-        padding-top: 2px;
-        border: none;
-        border-radius: 100px;
-        font-family: 'Comfortaa';
-        font-size: 15px;
-        font-weight: bold;
-        color: var(--b1);
-        background: var(--f3);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        user-select: none;
-        cursor: pointer;
-        flex-shrink: 0;
-        transition: 0.3s var(--bezier);
-    }
-    </code></pre>
+<pre class="darkmuted"><code class="language-css">/* Comment it up */
+.btn {
+    height: 40px;
+    padding: 0px 20px;
+    padding-top: 2px;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Comfortaa';
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--b1);
+    background: var(--f3);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    user-select: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: 0.3s var(--bezier);
+}
+</code></pre>
             </div>
         </div>
-        <pre><code class="language-js">/* Comment it up */
-    function positionElement(element, x, y) {
-        const elementWidth = element.offsetWidth;
-        const elementHeight = element.offsetHeight;
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-        if (x + elementWidth > windowWidth) {
-            x = x - elementWidth;
-            if (x < 0) x = 0;
-        }
-        if (y + elementHeight > windowHeight) {
-            y = y - elementHeight;
-            if (y < 0) y = 0;
-        }
-        element.style.left = x + 'px';
-        element.style.top = y + 'px';
+<pre><code class="language-js">/* Comment it up */
+function positionElement(element, x, y) {
+    const elementWidth = element.offsetWidth;
+    const elementHeight = element.offsetHeight;
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    if (x + elementWidth > windowWidth) {
+        x = x - elementWidth;
+        if (x < 0) x = 0;
     }
-    </code></pre>
+    if (y + elementHeight > windowHeight) {
+        y = y - elementHeight;
+        if (y < 0) y = 0;
+    }
+    element.style.left = x + 'px';
+    element.style.top = y + 'px';
+}
+</code></pre>
     
         <h2>Buttons</h2>
         <div class="col gap-10">
