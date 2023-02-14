@@ -163,6 +163,19 @@ By design, `<textarea>` elements don't expand when their contents overflow the b
 </div>
 ```
 
+### Dropdown menus
+Similar to textareas, dropdown (`<select>`) menus are also wrapped in a parent `<div>`. This div should only have the `dropdown` class, and the inner `<select>` should have `textbox`. This makes the custom arrow icon work properly:
+
+```html
+<div class="dropdown">
+    <select class="textbox">
+        <option value="1">Option 1</option>
+        <option value="2" selected>Option 2</option>
+        <option value="3">Option 3</option>
+    </select>
+</div>
+```
+
 ## Progress bars
 Progress bars are styled by default, so they don't require any extra classes. To create a progress bar, just make a `<progress>` element and assign it some attributes:
 
