@@ -54,6 +54,7 @@ h2:not(.no-border) {
 
 p, li {
     line-height: 1.6;
+    word-break: break-word;
 }
 p, ul, ol {
     margin: 0px;
@@ -829,6 +830,11 @@ progress::-moz-progress-bar {
 }
 .text-right {
     text-align: right;
+}
+.text-overflow-ellipses {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .no-margin {

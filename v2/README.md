@@ -75,6 +75,7 @@ Tropical ships with a handful of useful CSS classes for making flex layouts and 
 | `text-left` | Aligns the text to the left |
 | `text-center` | Aligns the text to the center |
 | `text-right` | Aligns the text to the right |
+| `text-overflow-ellipses` | Sets `overflow` to `hidden`, `white-space` to `nowrap`, and `text-overflow` to `ellipses` |
 
 ### Miscellaneous classes
 | Class | Description |
