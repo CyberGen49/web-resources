@@ -27,7 +27,7 @@ See `themes.json` for some metadata about each theme.
     --f1: black;
     /* Green accent */
     --green0: hsl(120, 60%, 40%);
-    --green1: hsl(120, 60%, 70%);
+    --green1: hsl(120, 60%, 65%);
     --green2: hsl(120, 60%, 80%);
     --green3: hsl(120, 60%, 85%);
     --green4: hsl(120, 60%, 90%);
@@ -47,8 +47,8 @@ See `themes.json` for some metadata about each theme.
     --yellow4:  hsl(40, 100%, 90%);
     --yellow5:  hsl(40, 100%, 95%);
     /* Blue accent */
-    --blue0:  hsl(210, 80%, 40%);
-    --blue1:  hsl(210, 80%, 70%);
+    --blue0:  hsl(210, 80%, 45%);
+    --blue1:  hsl(210, 80%, 65%);
     --blue2:  hsl(210, 80%, 80%);
     --blue3:  hsl(210, 80%, 85%);
     --blue4:  hsl(210, 80%, 90%);
