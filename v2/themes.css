@@ -230,28 +230,28 @@ See `themes.json` for some metadata about each theme.
 .darkgreen  .text-info,
 .darkmuted  .text-info,
 .darkblue   .text-info {
-    color: var(--blue2);
+    color: var(--blue2) !important;
 }
 .darkpurple .text-success,
 .darkyellow .text-success,
 .darkgreen  .text-success,
 .darkmuted  .text-success,
 .darkblue   .text-success {
-    color: var(--green2);
+    color: var(--green2) !important;
 }
 .darkpurple .text-warning,
 .darkyellow .text-warning,
 .darkgreen  .text-warning,
 .darkmuted  .text-warning,
 .darkblue   .text-warning {
-    color: var(--yellow2);
+    color: var(--yellow2) !important;
 }
 .darkpurple .text-danger,
 .darkyellow .text-danger,
 .darkgreen  .text-danger,
 .darkmuted  .text-danger,
 .darkblue   .text-danger {
-    color: var(--red2);
+    color: var(--red2) !important;
 }
 
 .darkblue {

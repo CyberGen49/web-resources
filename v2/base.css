@@ -855,16 +855,16 @@ progress::-moz-progress-bar {
 }
 
 .text-info {
-    color: var(--blue0);
+    color: var(--blue0) !important;
 }
 .text-success {
-    color: var(--green0);
+    color: var(--green0) !important;
 }
 .text-warning {
-    color: var(--yellow0);
+    color: var(--yellow0) !important;
 }
 .text-danger {
-    color: var(--red0);
+    color: var(--red0) !important;
 }
 .text-left {
     text-align: left;
