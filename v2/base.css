@@ -22,11 +22,12 @@ body {
 }
 
 a {
-    text-decoration: underline;
     color: var(--f3);
+    text-decoration: underline;
 }
 a:hover {
     color: var(--f2);
+    text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5, h6 {
