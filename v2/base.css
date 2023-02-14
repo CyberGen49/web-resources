@@ -214,6 +214,27 @@ code .token.namespace { color: var(--f3) }
     flex-shrink: 0;
     transition: 0.3s var(--bezier);
 }
+.btnGroup {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.btnGroup::-webkit-scrollbar {
+    display: none;
+}
+.btnGroup > .btn {
+    border-radius: 6px 6px 6px 6px;
+}
+.btnGroup > .btn:first-child {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.btnGroup > .btn:last-child {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
 .btn {
     --fg: var(--b1);
     --bg: var(--f3);

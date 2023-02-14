@@ -121,8 +121,19 @@ If you want a circular button that only has an icon, you can add the `iconOnly` 
 ### Size
 You can change the size of buttons by adding the `small` or `large` classes, which make the button slightly smaller or larger, respectively.
 
+### Button groups
+You can group buttons together by wrapping them in a parent `<div>` and adding the `btnGroup` class. This is useful if you want to make tabs, for example.
+
+```html
+<div class="btnGroup">
+    <button class="btn secondary">Button 1</button>
+    <button class="btn secondary">Button 2</button>
+    <button class="btn secondary">Button 3</button>
+</div>
+```
+
 ### Disabled buttons
-Buttons that are disabled will appear greyed out and will not respond to clicks. Only `<button>` elements can be disabled, as they support the `disabled` attribute.
+Buttons that are disabled will appear greyed out and will not respond to clicks. Only elements that support the `disabled` attribute can be disabled.
 
 ## Textboxes
 Text input elements are customized by adding the `textbox` class.
