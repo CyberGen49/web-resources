@@ -225,6 +225,35 @@ See `themes.json` for some metadata about each theme.
     --thumbFillHover: var(--f4);
 }
 
+.darkpurple .text-info,
+.darkyellow .text-info,
+.darkgreen  .text-info,
+.darkmuted  .text-info,
+.darkblue   .text-info {
+    color: var(--blue2);
+}
+.darkpurple .text-success,
+.darkyellow .text-success,
+.darkgreen  .text-success,
+.darkmuted  .text-success,
+.darkblue   .text-success {
+    color: var(--green2);
+}
+.darkpurple .text-warning,
+.darkyellow .text-warning,
+.darkgreen  .text-warning,
+.darkmuted  .text-warning,
+.darkblue   .text-warning {
+    color: var(--yellow2);
+}
+.darkpurple .text-danger,
+.darkyellow .text-danger,
+.darkgreen  .text-danger,
+.darkmuted  .text-danger,
+.darkblue   .text-danger {
+    color: var(--red2);
+}
+
 .darkblue {
     /* Background and foreground */
     --b0: hsl(230, 30%, 8%);
