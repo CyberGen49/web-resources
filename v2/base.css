@@ -65,6 +65,7 @@ small {
     color: var(--f4);
 }
 small.pad-top {
+    display: block;
     margin-top: 0.5em;
 }
 
