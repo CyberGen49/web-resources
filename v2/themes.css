@@ -196,31 +196,31 @@ See `themes.json` for some metadata about each theme.
 
 .darkpurple .textbox,
 .darkyellow .textbox,
-.darkgreen .textbox,
-.darkmuted .textbox,
-.darkblue .textbox {
+.darkgreen  .textbox,
+.darkmuted  .textbox,
+.darkblue   .textbox {
     background-color: var(--b0);
     border-color: var(--b0);
 }
 .darkpurple .textbox:focus,
 .darkyellow .textbox:focus,
-.darkgreen .textbox:focus,
-.darkmuted .textbox:focus,
+.darkgreen  .textbox:focus,
+.darkmuted  .textbox:focus,
 .darkpurple .textbox:focus-within,
 .darkyellow .textbox:focus-within,
-.darkgreen .textbox:focus-within,
-.darkmuted .textbox:focus-within,
-.darkblue .textbox:focus,
-.darkblue .textbox:focus-within {
+.darkgreen  .textbox:focus-within,
+.darkmuted  .textbox:focus-within,
+.darkblue   .textbox:focus,
+.darkblue   .textbox:focus-within {
     background-color: var(--b2);
     border-color: var(--f4);
 }
 
 .darkpurple .slider input[type="range"],
 .darkyellow .slider input[type="range"],
-.darkgreen .slider input[type="range"],
-.darkmuted .slider input[type="range"],
-.darkblue .slider input[type="range"] {
+.darkgreen  .slider input[type="range"],
+.darkmuted  .slider input[type="range"],
+.darkblue   .slider input[type="range"] {
     --thumbFill: var(--f2);
     --thumbFillHover: var(--f4);
 }
