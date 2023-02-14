@@ -279,6 +279,9 @@ code .token.namespace { color: var(--f3) }
     color: inherit;
     font-weight: normal;
 }
+.btn.iconOnly > *:not(.icon) {
+    display: none;
+}
 .btn:not(.iconOnly) > .icon {
     margin: -2px -5px 0px -5px;
 }
