@@ -335,8 +335,8 @@ code .token.namespace { color: var(--f3) }
     height: 40px;
 }
 .btn.small.iconOnly {
-    width: 36px;
-    height: 36px;
+    width: 34px;
+    height: 34px;
 }
 .btn.large.iconOnly {
     width: 44px;
