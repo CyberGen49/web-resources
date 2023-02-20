@@ -561,12 +561,7 @@ input[type="date"], input[type="time"], input[type="datetime-local"], select {
 }
 .context > .item:disabled {
     cursor: not-allowed;
-}
-.context > .item:disabled .label {
-    color: var(--b5);
-}
-.context > .item:disabled .icon {
-    color: var(--b5);
+    opacity: 0.5;
 }
 .context > .separator {
     height: 1px;
