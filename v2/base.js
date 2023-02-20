@@ -588,7 +588,6 @@ document.addEventListener('domChange', () => {
         // Create and append the tooltip
         const tooltip = document.createElement('div');
         tooltip.classList.add('tooltip');
-        tooltip.innerHTML = el.title;
         document.body.appendChild(tooltip);
         // Remove original title
         el.title = '';
@@ -600,6 +599,8 @@ document.addEventListener('domChange', () => {
         // Show the tooltip
         const show = () => {
             hide();
+            if (!el) return;
+            tooltip.innerHTML = el.title;
             timeout = setTimeout(() => {
                 positionElement(tooltip, mouse.x+5, mouse.y);
                 timeout = setTimeout(() => {
