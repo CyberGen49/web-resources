@@ -603,7 +603,7 @@ document.addEventListener('domChange', () => {
             if (!el) return;
             if (el.title) html = el.title;
             el.removeAttribute('title');
-            tooltip.innerHTML = el.title || el.tooltip;
+            tooltip.innerHTML = html;
             timeout = setTimeout(() => {
                 positionElement(tooltip, mouse.x+5, mouse.y);
                 timeout = setTimeout(() => {
