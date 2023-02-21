@@ -1,16 +1,25 @@
 
 /**
- * Generates a pseudorandom hexadecimal string of a desired length using `Math.random()`.
+ * Generates a random string of a desired length, containing any of the desired characters.
+ * @param {number} length The resulting string's length
+ * @param {string|string[]} chars A list of possible characters to use
+ * @returns {string} The resulting random string
+ */
+function randomString(length, chars = '0123456789abcdefghijklmnopqrstuvwxyz') {
+    let str = '';
+    for (let i = 0; i < length; i++) {
+        str += chars[randomInt(0, chars.length-1)];
+    }
+    return str;
+}
+
+/**
+ * Generates a lowercase hexadecimal string of a desired length.
  * @param {number} length The length of the random
  * @returns {String} The resulting string
  */
 function randomHex(length = 8) {
-    let chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
-    let str = '';
-    for (let i = 0; i < length; i++) {
-        str += chars[Math.round(Math.random()*15)];
-    }
-    return str;
+    return randomString(length, '0123456789abcdef');
 }
 
 /**
