@@ -379,6 +379,17 @@ const menu = new ContextMenuBuilder()
         .setIcon('star'));
 ```
 
+#### Making the item red
+You can make the item's icon and text appear red by passing `true` to the `setIsDanger()` method. This is useful for implying dangerous actions.
+
+```js
+const menu = new ContextMenuBuilder()
+    .addItem(item => item
+        .setLabel('My dangerous item')
+        .setIcon('skull')
+        .setIsDanger(true));
+```
+
 #### Setting a tooltip
 Optionally, you can add a hover tooltip to the item, in the case that you want to display more information on hover. Add a tooltip with the `setTooltip()` method and pass it a string.
 

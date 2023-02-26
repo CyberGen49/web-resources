@@ -420,6 +420,16 @@ class ContextMenuItemBuilder {
         return this;
     }
     /**
+     * Sets whether or not the icon and text of this item should be red.
+     * @param {boolean} isDanger
+     * @returns {ContextMenuItemBuilder}
+     */
+    setIsDanger(isDanger) {
+        this.elIcon.classList.toggle('text-danger', isDanger);
+        this.elLabel.classList.toggle('text-danger', isDanger);
+        return this;
+    }
+    /**
      * Disables this menu item.
      * @returns {ContextMenuItemBuilder}
      */
