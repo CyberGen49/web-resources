@@ -68,6 +68,7 @@ Tropical ships with a handful of useful CSS classes for making flex layouts and 
 ### Text classes
 | Class | Description |
 | --- | --- |
+| `text-muted` | Makes the text appear lighter than normal |
 | `text-info` | Turns the text blue |
 | `text-success` | Turns the text green |
 | `text-warning` | Turns the text yellow |

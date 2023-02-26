@@ -849,6 +849,9 @@ progress::-moz-progress-bar {
     --fill: var(--red1);
 }
 
+.text-muted {
+    color: var(--f3) !important;
+}
 .text-info {
     color: var(--blue0) !important;
 }
