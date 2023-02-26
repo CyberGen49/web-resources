@@ -850,7 +850,7 @@ progress::-moz-progress-bar {
 }
 
 .text-muted {
-    color: var(--f3) !important;
+    color: var(--f4) !important;
 }
 .text-info {
     color: var(--blue0) !important;
