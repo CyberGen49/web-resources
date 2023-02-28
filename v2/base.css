@@ -114,6 +114,7 @@ code:not(pre code) {
     background: var(--b0);
     border: 1px solid var(--b2);
     border-radius: 8px;
+    word-break: break-word;
 }
 pre {
     padding: 10px;
