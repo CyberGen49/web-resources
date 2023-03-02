@@ -108,19 +108,19 @@ body {
 }
 
 #btnPlayPauseBig {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
 }
 #btnPlayPauseBig .icon {
     font-family: 'Material Symbols Outlined Rounded';
-    font-size: 80px;
+    font-size: 72px;
 }
 #btnJumpBackBig, #btnJumpForwardBig {
-    width: 60px;
-    height: 60px;
+    width: 54px;
+    height: 54px;
 }
 #btnJumpBackBig .icon, #btnJumpForwardBig .icon {
-    font-size: 40px;
+    font-size: 36px;
 }
 
 #controls.visible .btn,
