@@ -1,0 +1,146 @@
+
+body {
+    overflow: hidden;
+    background: black;
+}
+#vid, #controls .top, #controls .middle, #controls .bottom, #spinnerOverlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+#vid {
+    pointer-events: all;
+}
+#controls {
+    transition: 0.4s var(--bezier);
+}
+#controls:not(.visible) {
+    opacity: 0;
+    pointer-events: none !important;
+}
+#controls.visible {
+    opacity: 1;
+    pointer-events: inherit;
+    transition: 0.1s var(--bezier);
+}
+#controls .top {
+    z-index: 2;
+}
+#controls .middle {
+    z-index: 3;
+}
+#controls .bottom {
+    z-index: 1;
+}
+#controls .middle {
+    display: none;
+}
+#controls .bottom .shadow {
+    padding: 50px 20px 15px 20px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
+#controls .top .shadow {
+    padding: 15px 20px 50px 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), transparent);
+}
+
+#spinnerOverlay {
+    z-index: 4;
+}
+#spinner {
+    --size: 132px;
+    --thickness: 8px;
+    opacity: 0;
+    transition: 0.3s var(--bezier);
+}
+#spinner.visible {
+    opacity: 1;
+}
+
+#title {
+    min-width: 0px;
+    font-family: 'Comfortaa';
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+    color: var(--l8);
+    word-break: break-word;
+}
+
+#btnPlayPause .icon {
+    font-family: 'Material Symbols Filled Rounded';
+}
+
+#controls .time {
+    margin-top: 2px;
+    font-family: 'Comfortaa';
+    font-weight: bold;
+    font-size: 18px;
+    user-select: none;
+    color: var(--l9);
+}
+
+#progress input {
+    margin-top: 0.5px;
+    opacity: 0;
+    transition: 0.2s var(--bezier);
+}
+#progress input:hover,
+#progress input:focus-visible {
+    opacity: 1;
+    transition: none;
+}
+
+#buffers {
+    position: relative;
+    margin-bottom: -16px;
+    margin-top: 11px;
+    height: 5px;
+}
+#buffers .buffer {
+    position: absolute;
+    margin: 0px;
+    --bg: rgba(255, 255, 255, 0.2);
+}
+
+#btnPlayPauseBig {
+    width: 100px;
+    height: 100px;
+}
+#btnPlayPauseBig .icon {
+    font-family: 'Material Symbols Outlined Rounded';
+    font-size: 80px;
+}
+#btnJumpBackBig, #btnJumpForwardBig {
+    width: 60px;
+    height: 60px;
+}
+#btnJumpBackBig .icon, #btnJumpForwardBig .icon {
+    font-size: 40px;
+}
+
+#controls.visible .btn,
+#controls.visible .slider {
+    pointer-events: all;
+}
+
+@media ( pointer: coarse ) {
+    #progress input {
+        opacity: 1;
+    }
+    #controls .middle {
+        display: flex;
+    }
+    #btnPlayPause {
+        display: none;
+    }
+    #controls .shadow {
+        background: none !important;
+    }
+    #controls .bottom {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}

@@ -21,6 +21,7 @@ You can see a live demo of most of Tropical's elements on the [demo page](test.h
 * Custom toast notifications
 * Custom tooltips
 * Loading spinners
+* Custom video player
 
 ## Adding Tropical to your site
 To add Tropical to your site, add the following lines to your HTML `<head>`:
@@ -41,9 +42,22 @@ You only need to include `prism` if you plan on doing syntax highlighting.
 ## Using themes
 Tropical comes with 10 different themes. To make your site to look right, you **must** add one of the theme classes to your `body` element. Valid theme classes are `lightpurple`, `lightblue`, `lightgreen`, `lightyellow`, `lightmuted`, `darkpurple`, `darkblue`, `darkgreen`, `darkyellow`, and `darkmuted`.
 
-You can find more information (primary hue, recommended meta `theme-color` and canon theme names) in the [themes.json](themes.json) file.
+Theme classes can even be applied to child elements should you wish to use a different theme for a portion of your site, like a sidebar.
 
-Different theme classes can be applied to child elements should you wish to use a different theme for a portion of your site.
+You can find more information (primary hue, recommended meta `theme-color` and proper theme names) in the [themes.json](themes.json) file.
+
+### Developing with themes
+Every theme has the same set of [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*).
+
+`b0` through `b5` and `f4` through `f1` define the theme's background and foreground colours. `b0` is the darkest background colour, and `f1` is the lightest foreground (text) colour in dark themes, for example.
+
+By default, `f1` is used for text, and `b1` is used for the page background.
+
+If you want to always use a light colour regardless of theme, for example, there are separate `l*` properties, ranging from `l0` to `l9`, which hold the theme's background and foreground colours from darkest to lightest. 
+
+In other words, `l9` will be a bright colour and `l0` will be a dark colour regardless of whether the theme is dark or not.
+
+Each theme also has sets of colour properties ranging from `0` to `5` in `red`, `orange`, `yellow`, `green`, and `blue`. For example, `blue0` is a dark blue, and `red5` is a light red. These properties range from dark to light regardless of the theme.
 
 ## Utility CSS
 Tropical ships with a handful of useful CSS classes for making flex layouts and applying different colour meanings.
@@ -84,6 +98,19 @@ Tropical ships with a handful of useful CSS classes for making flex layouts and 
 | `no-margin` | Sets the element's `margin` to `0px` |
 | `no-padding` | Sets the element's `padding` to `0px` |
 | `no-select` | Sets `user-select` to `none` |
+
+### Material symbol classes
+When these classes are applied to an element, the text within will be treated as a [Material Symbol](https://fonts.google.com/icons?icon.set=Material+Symbols).
+
+To use any of the following classes, the element will also need the base `material-symbol` class applied.
+
+| Class | Description |
+| --- | --- |
+| `outlined` | Uses the outlined icon set |
+| `filled` | Uses the filled icon set |
+| `rounded` | Makes the icon appear rounded |
+
+These classes can be combined to achieve, for example, rounded filled icons.
 
 ## Buttons
 Buttons are customized by adding the `btn` class, which works with `<button>` and `<a>` elements.
@@ -245,17 +272,28 @@ Not all of these data values are required. Only use the ones that you need.
 </div>
 ```
 
-### Handling changes
-When initialized, Tropical will automatically populate the slider element with inner `<progress>` and `<input type="range">` elements. Changing the slider element's data values after this point will have no effect, so to make changes to these values, target those new inner elements instead.
+### Handling inputs and manual changes
+When initialized, Tropical will automatically populate the slider element with inner `<progress>` and `<input type="range">` elements.
 
-If you change the value of the range or progress elements using Javascript, you'll need to dispatch `change` events on them to update the slider's appearance:
+When the user interacts with the slider, the main slider element's `data-value` attribute is updated and an `input` event is fired. An `input` event is also fired if the user types in a linked textbox set by the `data-textbox` attribute.
 
 ```js
-const sliderInners = document.querySelectorAll('#my-slider > *');
-for (const el of sliderInners) {
-    el.dispatchEvent(new Event('change'));
-}
+const slider = $('#slider');
+slider.addEventListener('input', () => {
+    console.log(`New slider value: ${slider.dataset.value}`);
+});
 ```
+
+If you change any of the data attributes on the slider, you'll need to dispatch a `change` event on it for those changes to be applied to the inner progress and range elements.
+
+```js
+const slider = $('#slider');
+slider.dataset.max = 1000;
+slider.dataset.value = 727;
+slider.dispatchEvent(new Event('change'));
+```
+
+You should never need to interact with the inner progress and range elements.
 
 ## Code blocks
 It's good practice to make code blocks by putting your code inside of `<pre><code></code></pre>` elements, so that's how Tropical handles it. This also makes scrollbars play nicely with our rounded corners.
@@ -739,3 +777,24 @@ toasts.showToast(() => toast);
 // Something happens
 toast.close();
 ```
+
+## Custom video player
+Tropical comes with a mobile friendly embeddable video player that matches the theme. This video player will also restore your last point in a video. It can be set up by simply creating an `iframe` and passing it the correct URL:
+
+```html
+<iframe src="https://src.simplecyber.org/v2/video?url=YOUR_VIDEO_URL&theme=darkblue"
+        allow="autoplay; fullscreen"
+        frameborder=0>
+```
+
+### Player parameters
+The video page takes a handful of query parameters:
+
+| Parameter | Description |
+| --- | --- |
+| `url` | The URL of your video file, required. |
+| `theme` | A Tropical theme to apply to the video player. Defaults to `darkmuted`. See [using themes](#using-themes). |
+| `autoplay` | When set, the video will autoplay on load, if possible. |
+| `titleOnlyFullscreen` | When set, the video file name will only be shown while the player is in fullscreen. Otherwise, the title can be seen all the time. |
+
+If you want the player to be able to enter fullscreen, be sure to add `fullscreen` to the iframe's `allow` attribute.

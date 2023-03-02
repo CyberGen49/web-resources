@@ -169,14 +169,10 @@ function shuffle(arr) {
  * @returns {String}
  */
 function formatSeconds(s) {
-    // Convert seconds to integer
     s = Math.floor(s || 0);
-
     let hours = 0;
     let minutes = 0;
     let seconds = s;
-
-    // Calculate hours, minutes, and seconds
     if (s >= 3600) {
         hours = Math.floor(s / 3600);
         s = s % 3600;
@@ -186,15 +182,11 @@ function formatSeconds(s) {
         s = s % 60;
     }
     seconds = s;
-
-    // Format time string
     let timeString = '';
     timeString += (hours > 0) ? hours.toString().padStart(2, '0') + ':' : '';
-    timeString += minutes.toString().padStart(2, '0') + ':';
+    timeString += minutes.toString().padStart((hours > 0) ? 2 : 1, '0') + ':';
     timeString += seconds.toString().padStart(2, '0');
-
     return timeString;
-    // Thanks ChatGPT for the refactor
 }
 
 /**

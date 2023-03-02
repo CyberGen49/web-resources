@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <link rel="stylesheet" href="/v2/base.css">
+    <link rel="stylesheet" href="/v2/themes.css">
+    <link rel="stylesheet" href="/v2/video/player.css">
+    <script defer src="/lib/tabbable.min.js"></script>
+    <script defer src="/lib/focus-trap.min.js"></script>
+    <script defer src="/utils.js"></script>
+    <script defer src="/v2/base.js"></script>
+    <script defer src="/v2/video/player.js"></script>
+</head>
+<body class="darkmuted">
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const theme = params.get('theme');
+        if (theme) document.body.classList = theme;
+    </script>
+    <video id="vid"></video>
+    <div id="controls" class="col visible">
+        <div class="top col justify-start">
+            <div class="shadow row gap-10 align-center">
+                <div class="flex-grow">
+                    <div id="title" style="opacity: 0"></div>
+                </div>
+                <button id="btnMenu" class="btn overlay large iconOnly">
+                    <div class="icon">more_vert</div>
+                </button>
+            </div>
+        </div>
+        <div class="middle row align-center justify-center">
+            <button id="btnJumpBackBig" class="btn overlay iconOnly">
+                <div class="icon">replay_10</div>
+            </button>
+            <div class="row justify-center" style="width: 300px">
+                <button id="btnPlayPauseBig" class="btn overlay iconOnly">
+                    <div class="icon">play_arrow</div>
+                </button>
+            </div>
+            <button id="btnJumpForwardBig" class="btn overlay iconOnly">
+                <div class="icon">forward_10</div>
+            </button>
+        </div>
+        <div class="bottom col justify-end">
+            <div class="col shadow">
+                <div class="row gap-15 align-center">
+                    <div id="btnPlayPause" class="btn overlay iconOnly">
+                        <div class="icon">play_arrow</div>
+                    </div>
+                    <div class="row gap-5 flex-grow time">
+                        <div id="timeProgress">0:00</div>
+                        /
+                        <div id="timeDuration" style="opacity: 0.7">0:00</div>
+                    </div>
+                    <div id="btnFullscreen" class="btn overlay iconOnly">
+                        <div class="icon">fullscreen</div>
+                    </div>
+                </div>
+                <div class="col" style="margin-top: -2px">
+                    <div id="buffers"></div>
+                    <div id="progress" class="slider overlay" data-min="0" data-max="0" data-value="0"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="spinnerOverlay" class="row align-center justify-center">
+        <div id="spinner" class="spinner overlay"></div>
+    </div>
+</body>
+</html>

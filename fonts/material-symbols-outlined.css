@@ -5,8 +5,26 @@
     font-weight: 300;
     src: url(/fonts/material-symbols-outlined-300.woff2) format('woff2');
 }
+@font-face {
+    font-family: 'Material Symbols Outlined Rounded';
+    font-style: normal;
+    font-weight: 300;
+    src: url(/fonts/material-symbols-outlined-rounded-300.woff2) format('woff2');
+}
+@font-face {
+    font-family: 'Material Symbols Filled';
+    font-style: normal;
+    font-weight: 300;
+    src: url(/fonts/material-symbols-filled-300.woff2) format('woff2');
+}
+@font-face {
+    font-family: 'Material Symbols Filled Rounded';
+    font-style: normal;
+    font-weight: 300;
+    src: url(/fonts/material-symbols-filled-rounded-300.woff2) format('woff2');
+}
 
-.material-symbols-outlined {
+.material-symbol {
     font-family: 'Material Symbols Outlined';
     font-weight: normal;
     font-style: normal;
@@ -20,4 +38,17 @@
     direction: ltr;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
+}
+
+.material-symbol.outlined {
+    font-family: 'Material Symbols Outlined';
+}
+.material-symbol.outlined.rounded {
+    font-family: 'Material Symbols Outlined Rounded';
+}
+.material-symbol.filled {
+    font-family: 'Material Symbols Filled';
+}
+.material-symbol.filled.rounded {
+    font-family: 'Material Symbols Filled Rounded';
 }
