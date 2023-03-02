@@ -79,6 +79,7 @@ body {
 
 #controls .time {
     margin-top: 2px;
+    font-size: 18px;
     user-select: none;
     color: var(--l9);
 }
