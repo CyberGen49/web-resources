@@ -31,6 +31,7 @@ window.addEventListener('load', () => {
     if (!titleOnlyFullscreen) elTitle.style.opacity = 1;
     const shouldAutoplay = !!params.get('autoplay');
     const savedProgress = JSON.parse(window.localStorage.getItem('video_progress') || '{}');
+    document.body.dataset.isEmbed = (window.top !== window);
     // Get elements
     const vid = $('#vid');
     const spinner = $('#spinner');
@@ -49,13 +50,13 @@ window.addEventListener('load', () => {
     const isVideoPlaying = () => !!(vid.currentTime > 0 && !vid.paused && !vid.ended && vid.readyState > 2);
     // Handle showing and hiding controls
     let controlsHideTimeout;
-    const hideControls = () => controls.classList.remove('visible');
+    const hideControls = () => document.body.dataset.controlsVisible = 'false';
     const startControlsHide = () => {
         clearTimeout(controlsHideTimeout);
-        controls.classList.add('visible');
+        document.body.dataset.controlsVisible = 'true';
         controlsHideTimeout = setTimeout(() => {
             if (isVideoPlaying()) hideControls();
-        }, 3000);
+        }, 2000);
     };
     // Handle the loading spinner
     let isWaiting = true;
@@ -150,11 +151,15 @@ window.addEventListener('load', () => {
         isWaiting = true;
         startControlsHide();
     });
+    let wasPlayingOnSeek = false;
     vid.addEventListener('seeking', () => {
+        wasPlayingOnSeek = isVideoPlaying();
+        vid.pause();
         updatePlayingState();
         startControlsHide();
     });
     vid.addEventListener('seeked', () => {
+        if (wasPlayingOnSeek) vid.play();
         updatePlayingState();
         startControlsHide();
     });
@@ -200,13 +205,13 @@ window.addEventListener('load', () => {
     });
     playPauseBig.addEventListener('click', () => playPause.click());
     jumpBackBig.addEventListener('click', () => {
-        vid.currentTime -= 5.1;
+        vid.currentTime -= 10.1;
         vid.currentTime += 0.1;
         updateProgress();
         updatePlayingState();
     });
     jumpForwardBig.addEventListener('click', () => {
-        vid.currentTime += 5.1;
+        vid.currentTime += 10.1;
         vid.currentTime -= 0.1;
         updateProgress();
         updatePlayingState();

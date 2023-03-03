@@ -13,21 +13,25 @@ body {
 }
 #vid {
     pointer-events: all;
+    cursor: visible;
+}
+body[data-controls-visible="false"] #vid {
+    cursor: none;
 }
 #vid::-internal-media-controls-overlay-cast-button {
     display: none;
 }
 #controls {
-    transition: 0.4s var(--bezier);
+    transition: 0.5s var(--bezier);
 }
-#controls:not(.visible) {
+body[data-controls-visible="false"] #controls {
     opacity: 0;
     pointer-events: none !important;
 }
-#controls.visible {
+body[data-controls-visible="true"] #controls.visible {
     opacity: 1;
     pointer-events: inherit;
-    transition: 0.1s var(--bezier);
+    transition: 0.2s var(--bezier);
 }
 #controls .top {
     z-index: 2;
@@ -42,11 +46,11 @@ body {
     display: none;
 }
 #controls .bottom .shadow {
-    padding: 50px 20px 15px 20px;
+    padding: 50px 18px 12px 18px;
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
 }
 #controls .top .shadow {
-    padding: 15px 20px 50px 20px;
+    padding: 12px 18px 50px 18px;
     background: linear-gradient(rgba(0, 0, 0, 0.8), transparent);
 }
 
@@ -144,4 +148,11 @@ body {
     #controls .bottom {
         background: rgba(0, 0, 0, 0.5);
     }
+}
+
+[data-is-embed="false"] [data-only-when-embed="true"] {
+    display: none;
+}
+[data-is-embed="true"] [data-only-when-embed="true"] {
+    display: inherit;
 }
