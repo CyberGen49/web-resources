@@ -266,18 +266,18 @@ window.addEventListener('load', () => {
                     .setLabel('Custom...')
                     .setClickHandler(() => {
                         new PopupBuilder()
-                            .setTitle('Set playback speed')
+                            .setTitle('Set playback speed (percentage)')
                             .addBodyHTML(`
                                 <div class="row gap-10 align-center">
-                                    <input id="inputSpeed" class="textbox" type="number" min="0.1" max="10" step="0.05" style="width: 100px">
-                                    <div class="slider" data-min="0.1" data-max="10" data-step="0.05" data-value="${vid.playbackRate}" data-textbox="#inputSpeed" style="width: 300px"></div>
+                                    <input id="inputSpeed" class="textbox" type="number" style="width: 100px">
+                                    <div class="slider" data-min="10" data-max="1000" data-step="5" data-value="${vid.playbackRate*100}" data-textbox="#inputSpeed" style="width: 300px"></div>
                                 </div>
                             `)
                             .addAction(action => action
                                 .setLabel('Set')
                                 .setIsPrimary(true)
                                 .setClickHandler(() => {
-                                    const speed = parseFloat($('#inputSpeed').value);
+                                    const speed = parseFloat($('#inputSpeed').value)/100;
                                     if (speed) vid.playbackRate = speed;
                                 }))
                             .addAction(action => action.setLabel('Cancel'))

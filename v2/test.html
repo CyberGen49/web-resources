@@ -496,28 +496,20 @@ function positionElement(element, x, y) {
             }
         </style>
         <div class="col gap-15">
-            <div class="row gap-10 sm align-center">
-                <div class="flex-grow">
-                    <label>Video URL</label>
-                    <input type="text" id="videoUrl" class="textbox">
-                </div>
-                <button id="videoLoad" class="btn">
-                    Load
-                </button>
+            <div class="row gap-10 sm">
+                <input type="text" id="videoUrl" class="textbox flex-grow">
+                <button id="videoLoad" class="btn">Load</button>
             </div>
-            <iframe id="video" frameborder="0" allow="fullscreen,autoplay"></iframe>
+            <iframe id="video" frameborder="0" allow="fullscreen; autoplay"></iframe>
         </div>
         <script>
             const url = `https://cdn.discordapp.com/attachments/798146358073884683/1045028767795511346/redditsave.com_whitecat_overstreams_rogunlimitation_dt_with_his-taai37b0bl1a1.mp4`;
             const videoUrl = document.querySelector('#videoUrl');
             const videoLoad = document.querySelector('#videoLoad');
             const video = document.querySelector('#video');
-            const load = (url) => {
-                video.src = `video?url=${url}&theme=${document.body.classList}`;
-            };
-            videoLoad.addEventListener('click', () => {
-                load(videoUrl.value);
-            });
+            const theme = document.body.dataset.theme;
+            const load = url => video.src = `video?url=${url}&theme=${theme}`;
+            videoLoad.onclick = () => load(videoUrl.value);
             videoUrl.value = url;
             load(url);
         </script>

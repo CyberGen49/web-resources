@@ -670,16 +670,16 @@ document.addEventListener('domChange', () => {
             const progId = slider.dataset.progId;
             textbox = $(slider.dataset.textbox);
             // Set attributes
-            prog.min = min;
-            prog.max = max;
-            prog.value = value;
-            prog.step = step;
-            if (progId) prog.id = progId || '';
             input.type = 'range';
             input.min = min;
             input.max = max;
             input.value = value;
             input.step = step;
+            prog.min = min;
+            prog.max = max;
+            prog.value = value;
+            prog.step = step;
+            if (progId) prog.id = progId || '';
             if (rangeId) input.id = rangeId || '';
             // Handle the textbox
             if (textbox) {
@@ -689,8 +689,8 @@ document.addEventListener('domChange', () => {
                 textbox.step = step;
                 textbox.value = value;
                 textbox.oninput = () => {
-                    slider.dataset.value = textbox.value;
-                    slider.dispatchEvent(new Event('change'));
+                    input.value = textbox.value;
+                    input.dispatchEvent(new Event('input'));
                 };
                 textbox.onchange = textbox.oninput;
             }
