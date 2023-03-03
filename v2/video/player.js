@@ -287,14 +287,9 @@ window.addEventListener('load', () => {
             }))
         .addSeparator()
         .addItem(item => item
-            .setIcon('download')
-            .setLabel('Download video')
-            .setClickHandler(() => promptUrlDownload(vid.src)))
-        .addItem(item => item
             .setIcon('open_in_new')
             .setLabel('Open player in new tab')
             .setClickHandler(() => window.open(window.location.href, '_blank')))
-        .addSeparator()
         .addItem(item => item
             .setIcon('refresh')
             .setLabel('Reload player')
