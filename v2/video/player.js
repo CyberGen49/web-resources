@@ -224,7 +224,7 @@ window.addEventListener('load', () => {
     // Global click events
     vid.addEventListener('click', () => {
         if (window.matchMedia('(pointer: coarse)').matches) {
-            if (controls.classList.contains('visible')) {
+            if (document.body.dataset.controlsVisible === 'true') {
                 hideControls();
             } else {
                 startControlsHide();
