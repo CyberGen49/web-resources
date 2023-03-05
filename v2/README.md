@@ -79,6 +79,11 @@ Tropical ships with a handful of useful CSS classes for making flex layouts and 
 | `lg` | Turns a row into a column when the screen is less than 960px wide |
 | `xl` | Turns a row into a column when the screen is less than 1200px wide |
 
+### Other layout classes
+| Class | Description |
+| --- | --- |
+| `container` | Creates a responsive container for basic page contents, with a `max-width` of `1000px`, centered using `margin: 0px auto`, and padded with `padding: 30px 20px`. |
+
 ### Text classes
 | Class | Description |
 | --- | --- |
@@ -782,7 +787,8 @@ toast.close();
 Tropical comes with a mobile friendly embeddable video player that matches the theme. This video player will also restore your last point in a video. It can be set up by simply creating an `iframe` and passing it the correct URL:
 
 ```html
-<iframe src="https://src.simplecyber.org/v2/video?url=YOUR_VIDEO_URL&theme=darkblue"
+<iframe id="videoPlayer"
+        src="https://src.simplecyber.org/v2/video?url=YOUR_VIDEO_URL&theme=darkblue"
         allow="autoplay; fullscreen"
         frameborder=0>
 ```
@@ -798,3 +804,17 @@ The video page takes a handful of query parameters:
 | `titleOnlyFullscreen` | When set, the video file name will only be shown while the player is in fullscreen. Otherwise, the title can be seen all the time. |
 
 If you want the player to be able to enter fullscreen, be sure to add `fullscreen` to the iframe's `allow` attribute.
+
+### Styling the player
+You can use CSS to change the dimensions of the player:
+
+```css
+#videoPlayer {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+```
+
+The `aspect-ratio` property ensures that the player is always 16:9, and with `width` set to `100%`, the player will automatically adjust to screen width changes.
+
+You can opt to set a fixed `width` and `height` instead if you so choose.
