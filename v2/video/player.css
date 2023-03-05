@@ -11,7 +11,7 @@ body {
     height: 100%;
     pointer-events: none;
 }
-body[data-controls-visible="true"] #vid {
+#vid {
     pointer-events: all;
     cursor: default;
 }
@@ -81,6 +81,19 @@ body[data-controls-visible="true"] #controls.visible {
     font-family: 'Material Symbols Filled Rounded';
 }
 
+.btn[data-volume="3"] .icon::before {
+    content: 'volume_up';
+}
+.btn[data-volume="2"] .icon::before {
+    content: 'volume_down';
+}
+.btn[data-volume="1"] .icon::before {
+    content: 'volume_mute';
+}
+.btn[data-volume="0"] .icon::before {
+    content: 'volume_off';
+}
+
 #controls .time {
     margin-top: 2px;
     font-size: 18px;
@@ -127,8 +140,8 @@ body[data-controls-visible="true"] #controls.visible {
     font-size: 36px;
 }
 
-#controls.visible .btn,
-#controls.visible .slider {
+body:not([data-controls-visible="false"]) #controls .btn,
+body:not([data-controls-visible="false"]) #controls .slider {
     pointer-events: all;
 }
 

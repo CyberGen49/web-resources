@@ -35,12 +35,12 @@ window.addEventListener('load', () => {
     // Get elements
     const vid = $('#vid');
     const spinner = $('#spinner');
-    const controls = $('#controls');
     const btnMenu = $('#btnMenu');
     const progress = $('#progress');
     const timeProgress = $('#timeProgress');
     const timeDuration = $('#timeDuration');
     const playPause = $('#btnPlayPause');
+    const btnVolume = $('#btnVolume');
     const btnFullscreen = $('#btnFullscreen');
     const playPauseBig = $('#btnPlayPauseBig');
     const jumpBackBig = $('#btnJumpBackBig');
@@ -58,6 +58,7 @@ window.addEventListener('load', () => {
             if (isVideoPlaying()) hideControls();
         }, 2000);
     };
+    startControlsHide();
     // Handle the loading spinner
     let isWaiting = true;
     setInterval(() => {
@@ -119,6 +120,19 @@ window.addEventListener('load', () => {
         $('.icon', playPause).innerText = icon;
         $('.icon', playPauseBig).innerText = icon;
     };
+    // Handle video volume
+    const updateVolume = vol => {
+        vol = Math.min(Math.max(vol, 0), 1);
+        vid.volume = vol;
+        let level = 0;
+        if (vol.muted || vol == 0) level = 0;
+        else if (vol < 0.33) level = 1;
+        else if (vol < 0.66) level = 2;
+        else level = 3;
+        btnVolume.dataset.volume = level;
+        btnVolume.title = `Volume ${Math.ceil(vid.volume*100)}%`;
+    }
+    updateVolume(vid.volume);
     // Video events
     vid.addEventListener('loadedmetadata', () => {
         if (savedProgress[vid.src]) vid.currentTime = savedProgress[vid.src];
@@ -177,6 +191,36 @@ window.addEventListener('load', () => {
         updatePlayingState();
         startControlsHide();
     });
+    btnVolume.addEventListener('click', () => {
+        const menu = new ContextMenuBuilder();
+        menu.el.insertAdjacentHTML('beforeend', `
+            <div class="row align-center">
+                <div style="padding: 0px 15px">
+                    <div id="volSlider" class="slider" data-max=100 data-value="${Math.round(vid.volume*100)}" style="width: 180px"></div>
+                </div>
+                <button id="btnVolMute" class="btn tertiary iconOnly">
+                    <div class="icon"></div>
+                </button>
+            </div>
+        `);
+        const slider = $('#volSlider', menu.el);
+        const btnVolMute = $('#btnVolMute', menu.el);
+        slider.addEventListener('input', () => {
+            btnVolMute.classList.toggle('danger', vid.muted);
+            btnVolMute.title = vid.muted ? 'Unmute' : 'Mute';
+            updateVolume(slider.dataset.value/100);
+            btnVolMute.dataset.volume = btnVolume.dataset.volume;
+        });
+        btnVolMute.addEventListener('click', () => {
+            vid.muted = !vid.muted;
+            slider.dispatchEvent(new Event('input'));
+        });
+        slider.dispatchEvent(new Event('input'));
+        const rect = btnVolume.getBoundingClientRect();
+        const x = rect.right+7;
+        const y = rect.top-7;
+        menu.showAtCoords(x, y);
+    });
     btnFullscreen.addEventListener('click', () => {
         if (document.fullscreenEnabled) {
             if (!document.fullscreenElement) {
@@ -222,6 +266,7 @@ window.addEventListener('load', () => {
         updateProgress();
     });
     // Global click events
+    let lastVidClick = 0;
     vid.addEventListener('click', () => {
         if (window.matchMedia('(pointer: coarse)').matches) {
             if (document.body.dataset.controlsVisible === 'true') {
@@ -231,7 +276,11 @@ window.addEventListener('load', () => {
             }
         } else {
             playPause.click();
+            if ((Date.now()-lastVidClick) < 300) {
+                btnFullscreen.click();
+            }
         }
+        lastVidClick = Date.now();
     });
     // Keyboard shortcuts
     window.addEventListener('keydown', (e) => {
