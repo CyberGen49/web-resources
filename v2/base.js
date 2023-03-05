@@ -651,7 +651,7 @@ document.addEventListener('domChange', () => {
                             hide();
                         }, 10000);
                     }, 500);
-                }, 1);
+                }, 50);
             }, 200);
         };
         // On mouse move

@@ -28,7 +28,7 @@ window.addEventListener('load', () => {
     elTitle.innerText = title;
     // Get settings
     const titleOnlyFullscreen = !!params.get('titleOnlyFullscreen');
-    if (!titleOnlyFullscreen) elTitle.style.opacity = 1;
+    if (!titleOnlyFullscreen) elTitle.classList.add('visible');
     const shouldAutoplay = !!params.get('autoplay');
     const savedProgress = JSON.parse(window.localStorage.getItem('video_progress') || '{}');
     document.body.dataset.isEmbed = (window.top !== window);
@@ -117,6 +117,7 @@ window.addEventListener('load', () => {
     // Handle the play/pause buttons
     const updatePlayingState = () => {
         const icon = isVideoPlaying() ? 'pause' : 'play_arrow';
+        playPause.title = isVideoPlaying() ? 'Pause' : 'Play';
         $('.icon', playPause).innerText = icon;
         $('.icon', playPauseBig).innerText = icon;
     };
@@ -125,10 +126,11 @@ window.addEventListener('load', () => {
         vol = Math.min(Math.max(vol, 0), 1);
         vid.volume = vol;
         let level = 0;
-        if (vol.muted || vol == 0) level = 0;
+        if (vid.muted || vol == 0) level = 0;
         else if (vol < 0.33) level = 1;
         else if (vol < 0.66) level = 2;
         else level = 3;
+        btnVolume.classList.toggle('text-danger', vid.muted);
         btnVolume.dataset.volume = level;
         btnVolume.title = `Volume ${Math.ceil(vid.volume*100)}%`;
     }
@@ -206,7 +208,7 @@ window.addEventListener('load', () => {
         const slider = $('#volSlider', menu.el);
         const btnVolMute = $('#btnVolMute', menu.el);
         slider.addEventListener('input', () => {
-            btnVolMute.classList.toggle('danger', vid.muted);
+            btnVolMute.classList.toggle('text-danger', vid.muted);
             btnVolMute.title = vid.muted ? 'Unmute' : 'Mute';
             updateVolume(slider.dataset.value/100);
             btnVolMute.dataset.volume = btnVolume.dataset.volume;
@@ -241,10 +243,12 @@ window.addEventListener('load', () => {
     document.addEventListener('fullscreenchange', () => {
         if (document.fullscreenElement) {
             $('.icon', btnFullscreen).innerText = 'fullscreen_exit';
-            if (titleOnlyFullscreen) elTitle.style.opacity = 1;
+            btnFullscreen.title = 'Exit fullscreen';
+            if (titleOnlyFullscreen) elTitle.classList.add('visible');
         } else {
             $('.icon', btnFullscreen).innerText = 'fullscreen';
-            if (titleOnlyFullscreen) elTitle.style.opacity = 0;
+            btnFullscreen.title = 'Enter fullscreen';
+            if (titleOnlyFullscreen) elTitle.classList.remove('visible');
         }
     });
     playPauseBig.addEventListener('click', () => playPause.click());

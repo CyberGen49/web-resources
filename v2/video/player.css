@@ -68,6 +68,7 @@ body[data-controls-visible="true"] #controls.visible {
 }
 
 #title {
+    display: none;
     min-width: 0px;
     font-family: 'Comfortaa';
     font-size: 24px;
@@ -75,6 +76,9 @@ body[data-controls-visible="true"] #controls.visible {
     line-height: 1.2;
     color: var(--l8);
     word-break: break-word;
+}
+#title.visible {
+    display: block;
 }
 
 #btnPlayPause .icon {
@@ -121,7 +125,7 @@ body[data-controls-visible="true"] #controls.visible {
 #buffers .buffer {
     position: absolute;
     margin: 0px;
-    --bg: rgba(255, 255, 255, 0.2);
+    --bg: rgba(255, 255, 255, 0.1);
 }
 
 #btnPlayPauseBig {
