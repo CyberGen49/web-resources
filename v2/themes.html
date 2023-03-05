@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tropical Theme Showcase</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="themes.css">
+    <script defer src="/lib/axios.min.js"></script>
+    <script defer src="base.js"></script>
+</head>
+<body class="darkmuted">
+    <div class="row">
+        <div id="light" class="col gap-15 lightmuted" style="background: white">
+            <div class="head">Light themes</div>
+        </div>
+        <div id="dark" class="col gap-15 darkmuted" style="background: black">
+            <div class="head">Dark themes</div>
+        </div>
+    </div>
+    <style>
+        #light, #dark {
+            width: 500px;
+            padding: 20px;
+        }
+        .head {
+            color: var(--f1);
+            font-family: 'Comfortaa';
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .theme .name {
+            color: var(--f1);
+            font-family: 'Comfortaa';
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .theme .id {
+            color: var(--f3);
+            font-family: 'Cascadia Code';
+            font-size: 16px;
+        }
+        .theme .palette {
+            height: 50px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .theme.light .palette {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .theme.dark .palette {
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+        }
+        .theme .palette .swatch {
+            height: 100%;
+            font-family: 'Cascadia Code';
+            font-size: 14px;
+        }
+    </style>
+    <script>
+        const main = async() => {
+            const res = await axios.get('themes.json');
+            const themes = res.data;
+            const themeVars = ['b0', 'b1', 'b2', 'b3', 'b4', 'b5', 'f4', 'f3', 'f2', 'f1'];
+            for (const id in themes) {
+                const theme = themes[id];
+                const type = id.match(/^(light|dark)/)[0];
+                const cont = $(`#${type}`);
+                cont.insertAdjacentHTML(`beforeend`, `
+                    <div id="${id}" class="theme ${type} col gap-5">
+                        <div class="row align-end">
+                            <div class="name no-margin flex-grow">${theme.name}</div>    
+                            <div class="id no-margin">${id}</div>
+                        </div>
+                        <div class="row palette"></div>
+                        <div class="row">
+                            <small>Background</small>
+                            <div class="flex-grow"></div>  
+                            <small>Foreground</small>
+                        </div>
+                    </div>
+                `);
+                const palette = $(`.palette`, $(`#${id}`));
+                for (const varName of themeVars) {
+                    palette.insertAdjacentHTML(`beforeend`, `
+                        <div class="row align-center justify-center swatch flex-grow ${id}" style="background: var(--${varName}); color: var(--${varName.match(/^b.*/) ? 'f2' : 'b1'})">
+                            ${varName}
+                        </div>
+                    `);
+                }
+            }
+        };
+        window.addEventListener('load', main);
+    </script>
+</body>
+</html>

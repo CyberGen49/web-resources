@@ -40,16 +40,18 @@ To add Tropical to your site, add the following lines to your HTML `<head>`:
 You only need to include `prism` if you plan on doing syntax highlighting.
 
 ## Using themes
-Tropical comes with 10 different themes. To make your site to look right, you **must** add one of the theme classes to your `body` element. Valid theme classes are `lightpurple`, `lightblue`, `lightgreen`, `lightyellow`, `lightmuted`, `darkpurple`, `darkblue`, `darkgreen`, `darkyellow`, and `darkmuted`.
+Tropical comes with 10 different themes. To make your site to look right, you **must** add one of the following theme classes to your `body` element:
 
-Theme classes can even be applied to child elements should you wish to use a different theme for a portion of your site, like a sidebar.
+![Themes](images/themes.png)
 
-You can find more information (primary hue, recommended meta `theme-color` and proper theme names) in the [themes.json](themes.json) file.
+Theme classes can also be applied to child elements should you wish to use a different theme for a portion of your site, like a sidebar.
+
+You can find more theme information, like primary hue and recommended meta `theme-color`, in the [themes.json](themes.json) file.
 
 ### Developing with themes
 Every theme has the same set of [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*).
 
-`b0` through `b5` and `f4` through `f1` define the theme's background and foreground colours. `b0` is the darkest background colour, and `f1` is the lightest foreground (text) colour in dark themes, for example.
+As shown in the image above, `b0` through `b5` and `f4` through `f1` define the theme's background and foreground colours. `b0` is the darkest background colour, and `f1` is the lightest foreground (text) colour in dark themes, for example.
 
 By default, `f1` is used for text, and `b1` is used for the page background.
 

@@ -874,6 +874,9 @@ progress::-moz-progress-bar {
     padding: 30px 20px;
     margin: 0px auto;
 }
+.container img {
+    max-width: 100%;
+}
 
 .text-muted {
     color: var(--f4) !important;
