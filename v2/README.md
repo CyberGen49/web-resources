@@ -1,5 +1,5 @@
 
-#### [View this README rendered with Tropical](https://src.simplecyber.org/v2/readme.html)
+#### [View this README rendered with Tropical](https://src.simplecyber.org/v2)
 
 # The Tropical CSS and Javascript Library
 This README contains everything you need to know to make the most out of the Tropical CSS and Javascript library.
