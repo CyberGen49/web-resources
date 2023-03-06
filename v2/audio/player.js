@@ -34,8 +34,6 @@ window.addEventListener('load', () => {
     if (hideBorder) $('#controls').style.border = 'none';
     document.body.dataset.isEmbed = (window.top !== window);
     // Get elements
-    const controls = $('#controls');
-    controls.style.display = '';
     const audio = $('#audio');
     const btnMenu = $('#btnMenu');
     const progress = $('#progress');
