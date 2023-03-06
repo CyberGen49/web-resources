@@ -133,7 +133,7 @@ body[data-controls-visible="true"] #controls.visible {
     height: 90px;
 }
 #btnPlayPauseBig .icon {
-    font-family: 'Material Symbols Outlined Rounded';
+    font-family: 'Material Symbols Filled Rounded';
     font-size: 72px;
 }
 #btnJumpBackBig, #btnJumpForwardBig {

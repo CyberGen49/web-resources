@@ -304,12 +304,12 @@ function positionElement(element, x, y) {
                     { class: 'success', name: 'Success', icon: 'done' },
                     { class: 'warning', name: 'Warning', icon: 'warning' },
                     { class: 'danger', name: 'Danger', icon: 'close' },
-                    { class: 'disabled', name: 'Disabled', icon: 'keyboard_return' },
                 ];
                 for (const type of types) {
                     const a = document.createElement('button');
                     const b = document.createElement('button');
                     const c = document.createElement('button');
+                    const d = document.createElement('button');
                     a.classList.add('btn', type.class, 'iconOnly');
                     a.innerHTML = `<span class="icon">${type.icon}</span>`;
                     b.classList.add('btn', type.class);
@@ -319,16 +319,15 @@ function positionElement(element, x, y) {
                     `;
                     c.classList.add('btn', type.class);
                     c.innerText = type.name;
-                    if (type.class == 'disabled') {
-                        a.disabled = true;
-                        b.disabled = true;
-                        c.disabled = true;
-                    }
+                    d.classList.add('btn', type.class);
+                    d.innerText = 'Disabled';
+                    d.disabled = true;
                     const row = document.createElement('div');
                     row.classList.add('row', 'flex-wrap', 'gap-10');
                     row.appendChild(a);
                     row.appendChild(b);
                     row.appendChild(c);
+                    row.appendChild(d);
                     document.getElementById('btnScript').insertAdjacentElement('beforebegin', row);
                 }
             </script>
@@ -503,7 +502,7 @@ function positionElement(element, x, y) {
             <iframe id="video" frameborder="0" allow="fullscreen; autoplay"></iframe>
         </div>
         <script>
-            const url = `https://cdn.discordapp.com/attachments/798146358073884683/1045028767795511346/redditsave.com_whitecat_overstreams_rogunlimitation_dt_with_his-taai37b0bl1a1.mp4`;
+            const url = `https://cdn.discordapp.com/attachments/798146358073884683/1082128295988039680/WhiteCat_FCS_A_FOOL_MOON_NIGHT_3D.mp4`;
             const videoUrl = document.querySelector('#videoUrl');
             const videoLoad = document.querySelector('#videoLoad');
             const video = document.querySelector('#video');

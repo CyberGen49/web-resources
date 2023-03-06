@@ -43,7 +43,7 @@
             const readme = await (await fetch('README.md')).text();
             container.innerHTML = marked.parse(readme);
             Prism.highlightAll();
-            container.querySelector('h4').remove();
+            container.querySelector('h2').remove();
             const headers = container.querySelectorAll('h1, h2, h3, h4, h5, h6');
             const toc = document.querySelector('#toc');
             for (const el of headers) {

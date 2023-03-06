@@ -1,5 +1,5 @@
 
-#### [View this README rendered with Tropical](https://src.simplecyber.org/v2)
+## [View this README rendered with Tropical](https://src.simplecyber.org/v2)
 
 # The Tropical CSS and Javascript Library
 This README contains everything you need to know to make the most out of the Tropical CSS and Javascript library.
@@ -129,6 +129,7 @@ By default, the button's background will be inverted from that of the current th
 | --- | --- |
 | `secondary` | Makes the button's background slightly differ from the background |
 | `tertiary` | Makes the button's background the same as the background |
+| `overlay` | Makes the button's background transparent and foreground always light |
 | `info` | Makes the button's background blue |
 | `success` | Makes the button's background green |
 | `warning` | Makes the button's background yellow |
@@ -169,6 +170,21 @@ You can group buttons together by wrapping them in a parent `<div>` and adding t
 
 ### Disabled buttons
 Buttons that are disabled will appear greyed out and will not respond to clicks. Only elements that support the `disabled` attribute can be disabled.
+
+### Button CSS properties
+Buttons have the following CSS custom properties to make customization easier:
+
+| Property | Description |
+| --- | --- |
+| `--height` | Controls the button's height |
+| `--padding-top` | Controls the top padding of the button |
+| `--padding-lr` | Controls the left and right padding of the button |
+| `--gap` | Controls the gap between elements inside the button |
+| `--icon-size` | Controls the size of the button's icon |
+| `--fg` | Controls the button's text and icon colour |
+| `--bg` | Controls the button's background colour |
+| `--bgHover` | Controls the button's background colour when hovered over |
+| `--bgActive` | Controls the button's background colour when active (clicked) |
 
 ## Textboxes
 Text input elements are customized by adding the `textbox` class.
@@ -241,6 +257,14 @@ Additionally, you can add one of a few colour classes to change the colour of th
 
 Note that progress elements without a value will appear indeterminate, which is useful for representing actions where the current progress is unknown.
 
+### Progress CSS properties
+Progress elements have the following CSS custom properties to make customization easier:
+
+| Property | Description |
+| --- | --- |
+| `--bg` | Controls the bar's background (unfilled section) |
+| `--fg` | Controls the bar's filled section |
+
 ## Range sliders
 Tropical overhauls how range sliders are handled, providing an easy way to display them with a background (filled portion). To create a custom range slider, just make a `<div>` with the `slider` class.
 
@@ -302,6 +326,16 @@ slider.dispatchEvent(new Event('change'));
 
 You should never need to interact with the inner progress and range elements.
 
+### Slider CSS properties
+Sliders have the following CSS custom properties to make customization easier:
+
+| Property | Description |
+| --- | --- |
+| `--thumbFill` | Controls the colour of the slider thumb |
+| `--thumbFillHover` | Controls the colour of the slider thumb when hovered over |
+| `--barBg` | Controls the colour of the unfilled section of the slider |
+| `--barFill` | Controls the colour of the filled section of the slider |
+
 ## Code blocks
 It's good practice to make code blocks by putting your code inside of `<pre><code></code></pre>` elements, so that's how Tropical handles it. This also makes scrollbars play nicely with our rounded corners.
 
@@ -356,12 +390,26 @@ To disable the custom tooltip on an element, add a `data-no-tooltip` attribute t
 <div title="Hi default tooltip!" data-no-tooltip="true">Hover over me!</div>
 ```
 
+When initialized, elements with a title attribute will have that attribute removed, and an `aria-describedby` attribute added that references the tooltip element. A `data-tooltip` attribute will also be added, which holds the contents of the tooltip.
+
+You can change an element's tooltip by simply resetting the title attribute, or by modifying the `data-tooltip` attribute.
+
 ## Loading spinners
 Tropical comes with a simple loading spinner that can be created by adding the `spinner` class to a `<div>`.
 
 ```html
 <div class="spinner"></div>
 ```
+
+### Loading spinner CSS properties
+Loading spinner have the following CSS custom properties to make customization easier:
+
+| Property | Description |
+| --- | --- |
+| `--bg` | Controls the colour of the background (track) portion of the spinner |
+| `--fill` | Controls the spinner's coloured, animated portion |
+| `--size` | Controls the spinner's width/height |
+| `--thickness` | Controls the thickness of the spinner track |
 
 ### Changing the colour
 By default, the spinner's moving section is an inverse of the theme's background colour. You can change the colour of this moving section by adding one of the type classes:
@@ -386,13 +434,16 @@ An alias for `*.querySelectorAll()`. Returns an array of all elements matching t
 #### `positionElement(element, x, y)`
 Positions the element at the given `x` and `y` coordinates by setting its `left` and `top` properties. This function accounts for screen boundaries, preventing the element from appearing offscreen.
 
+#### `isElementVisible(el)`
+Returns `true` if the element is in the DOM and is visible onscreen, `false` otherwise.
+
 ### Constants
 #### `mouse`
 An object containing the current mouse cursor position. The `x` and `y` properties are updated every time a `mousemove` event is fired on `window`.
 
 ### Events
 #### `domChange` on `document`
-Handled by a mutation observer, this event fires every time the DOM changes. It's useful for updating elements that are dynamically added to the DOM, as they appear.
+Handled by a mutation observer, this event fires every time the DOM changes. It's useful for updating elements that are dynamically added to the DOM, as they appear, and is used by Tropical to automatically add tooltips to elements, initialize custom sliders, and handle auto-expanding textareas.
 
 ## Custom context menus
 Custom context menus are built using the `ContextMenuBuilder` and `ContextMenuItemBuilder` classes. These class' methods are chainable, meaning that you can build and show a context menu without ever needing to store a reference to it.
