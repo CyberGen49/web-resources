@@ -21,7 +21,7 @@ You can see a live demo of most of Tropical's elements on the [demo page](test.h
 * Custom toast notifications
 * Custom tooltips
 * Loading spinners
-* Custom video player
+* Custom video and audio players
 
 ## Adding Tropical to your site
 To add Tropical to your site, add the following lines to your HTML `<head>`:
@@ -871,3 +871,36 @@ You can use CSS to change the dimensions of the player:
 The `aspect-ratio` property ensures that the player is always 16:9, and with `width` set to `100%`, the player will automatically adjust to screen width changes.
 
 You can opt to set a fixed `width` and `height` instead if you so choose.
+
+## Custom audio player
+Tropical also comes with a mobile friendly embeddable audio player that matches the theme. Just like the video player, you can set it up with an iframe:
+
+```html
+<iframe id="audioPlayer"
+        src="https://src.simplecyber.org/v2/audio?url=YOUR_AUDIO_URL&theme=darkblue"
+        allow="autoplay"
+        frameborder=0>
+```
+
+### Player parameters
+The audio page takes a handful of query parameters:
+
+| Parameter | Description |
+| --- | --- |
+| `url` | The URL of your audio file, required. |
+| `theme` | A Tropical theme to apply to the audio player. Defaults to `darkmuted`. See [using themes](#using-themes). |
+| `autoplay` | When set, the audio will autoplay on load, if possible. |
+| `hideTitle` | When set, the audio file name won't be displayed |
+| `hideBorder` | When set, the audio player won't have a visible rounded border |
+
+### Styling the player
+Recommended CSS styling for the audio player embed is as follows:
+
+```css
+#audioPlayer {
+    width: 100%;
+    height: 200px;
+}
+```
+
+It's important that we add some extra height to the embed to allow for context menus and popups to display correctly, which is why we're setting `height` to `200px` here.

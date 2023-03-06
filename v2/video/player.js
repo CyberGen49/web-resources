@@ -167,15 +167,11 @@ window.addEventListener('load', () => {
         isWaiting = true;
         startControlsHide();
     });
-    let wasPlayingOnSeek = false;
     vid.addEventListener('seeking', () => {
-        wasPlayingOnSeek = isVideoPlaying();
-        vid.pause();
         updatePlayingState();
         startControlsHide();
     });
     vid.addEventListener('seeked', () => {
-        if (wasPlayingOnSeek) vid.play();
         updatePlayingState();
         startControlsHide();
     });

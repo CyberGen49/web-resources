@@ -502,15 +502,45 @@ function positionElement(element, x, y) {
             <iframe id="video" frameborder="0" allow="fullscreen; autoplay"></iframe>
         </div>
         <script>
-            const url = `https://cdn.discordapp.com/attachments/798146358073884683/1082128295988039680/WhiteCat_FCS_A_FOOL_MOON_NIGHT_3D.mp4`;
-            const videoUrl = document.querySelector('#videoUrl');
-            const videoLoad = document.querySelector('#videoLoad');
-            const video = document.querySelector('#video');
-            const theme = document.body.dataset.theme;
-            const load = url => video.src = `video?url=${url}&theme=${theme}`;
-            videoLoad.onclick = () => load(videoUrl.value);
-            videoUrl.value = url;
-            load(url);
+            (() => {
+                const url = `https://cdn.discordapp.com/attachments/798146358073884683/1082128295988039680/WhiteCat_FCS_A_FOOL_MOON_NIGHT_3D.mp4`;
+                const videoUrl = document.querySelector('#videoUrl');
+                const videoLoad = document.querySelector('#videoLoad');
+                const video = document.querySelector('#video');
+                const theme = document.body.dataset.theme;
+                const load = url => video.src = `video?url=${url}&theme=${theme}`;
+                videoLoad.onclick = () => load(videoUrl.value);
+                videoUrl.value = url;
+                load(url);
+            })();
+        </script>
+
+        <h2>Audio player</h2>
+        <style>
+            #audio {
+                width: 100%;
+                height: 200px;
+            }
+        </style>
+        <div class="col gap-15">
+            <div class="row gap-10 sm">
+                <input type="text" id="audioUrl" class="textbox flex-grow">
+                <button id="audioLoad" class="btn">Load</button>
+            </div>
+            <iframe id="audio" frameborder="0" allow="autoplay"></iframe>
+        </div>
+        <script>
+            (() => {
+                const url = `https://cyberfiles.pro/Dump/bergle%20mystery.ogg`;
+                const audioUrl = document.querySelector('#audioUrl');
+                const audioLoad = document.querySelector('#audioLoad');
+                const audio = document.querySelector('#audio');
+                const theme = document.body.dataset.theme;
+                const load = url => audio.src = `audio?url=${url}&theme=${theme}`;
+                audioLoad.onclick = () => load(audioUrl.value);
+                audioUrl.value = url;
+                load(url);
+            })();
         </script>
     </div>
 </body>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Player</title>
+    <link rel="stylesheet" href="/v2/base.css">
+    <link rel="stylesheet" href="/v2/themes.css">
+    <link rel="stylesheet" href="/v2/audio/player.css">
+    <script defer src="/lib/tabbable.min.js"></script>
+    <script defer src="/lib/focus-trap.min.js"></script>
+    <script defer src="/utils.js"></script>
+    <script defer src="/v2/base.js"></script>
+    <script defer src="/v2/audio/player.js"></script>
+</head>
+<body class="darkmuted" data-is-embed="true">
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const theme = params.get('theme');
+        if (theme) document.body.classList = theme;
+    </script>
+    <audio id="audio"></audio>
+    <div id="container" class="row" style="position: absolute; width: 100%; height: 100%;">
+        <div id="controls" class="col">
+            <div id="title"></div>
+            <div class="row gap-15 align-center no-select">
+                <button id="btnPlayPause" class="btn tertiary iconOnly">
+                    <div class="icon">play_arrow</div>
+                </button>
+                <div class="row gap-5 flex-grow time">
+                    <div id="timeProgress">0:00</div>
+                    /
+                    <div id="timeDuration" style="opacity: 0.7">0:00</div>
+                </div>
+                <div id="btnVolume" class="btn tertiary iconOnly" data-volume="3">
+                    <div class="icon"></div>
+                </div>
+                <div id="btnMenu" class="btn tertiary iconOnly">
+                    <div class="icon">more_horiz</div>
+                </div>
+            </div>
+            <div class="col" style="margin-top: -2px">
+                <div id="buffers"></div>
+                <div id="progress" class="slider" data-min="0" data-max="0" data-value="0"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
