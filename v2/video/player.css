@@ -58,7 +58,7 @@ body[data-controls-visible="true"] #controls.visible {
     z-index: 4;
 }
 #spinner {
-    --size: 90px;
+    --size: calc(90px + calc(8px * 2));
     --thickness: 8px;
     opacity: 0;
     transition: 0.3s var(--bezier);
