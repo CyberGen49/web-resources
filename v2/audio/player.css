@@ -37,6 +37,9 @@ body[data-is-embed="false"] #container {
     display: block;
 }
 
+#progress {
+    --barBg: transparent;
+}
 #progress input {
     margin-top: 0.5px;
     opacity: 0;
@@ -58,11 +61,13 @@ body[data-is-embed="false"] #container {
     margin-bottom: -16px;
     margin-top: 11px;
     height: 5px;
+    border-radius: 3px;
+    background: var(--b3);
 }
 #buffers .buffer {
     position: absolute;
     margin: 0px;
-    --bg: rgba(255, 255, 255, 0.1);
+    --bg: var(--b4);
 }
 
 #btnPlayPause .icon {
