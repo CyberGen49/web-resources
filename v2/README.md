@@ -117,7 +117,14 @@ To use any of the following classes, the element will also need the base `materi
 | `filled` | Uses the filled icon set |
 | `rounded` | Makes the icon appear rounded |
 
-These classes can be combined to achieve, for example, rounded filled icons.
+These classes can be combined to achieve, for example, rounded filled icons:
+
+```html
+<!-- A filled and rounded red heart -->
+<span class="material-symbol filled rounded text-danger">
+    favorite
+</span>
+```
 
 ## Buttons
 Buttons are customized by adding the `btn` class, which works with `<button>` and `<a>` elements.
