@@ -59,7 +59,7 @@ If you want to always use a light colour regardless of theme, for example, there
 
 In other words, `l9` will be a bright colour and `l0` will be a dark colour regardless of whether the theme is dark or not.
 
-Each theme also has sets of colour properties ranging from `0` to `5` in `red`, `orange`, `yellow`, `green`, and `blue`. For example, `blue0` is a dark blue, and `red5` is a light red. These properties range from dark to light regardless of the theme.
+Each theme also has sets of colour properties ranging from `0` to `5` in `red`, `yellow`, `green`, and `blue`. For example, `blue0` is a dark blue, and `red5` is a light red. These properties range from dark to light regardless of the theme.
 
 ## Utility CSS
 Tropical ships with a handful of useful CSS classes for making flex layouts and applying different colour meanings.
