@@ -58,7 +58,7 @@ body[data-controls-visible="true"] #controls.visible {
     z-index: 4;
 }
 #spinner {
-    --size: calc(90px + calc(8px * 2));
+    --size: 100px;
     --thickness: 8px;
     opacity: 0;
     transition: 0.3s var(--bezier);
@@ -129,8 +129,8 @@ body[data-controls-visible="true"] #controls.visible {
 }
 
 #btnPlayPauseBig {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
 }
 #btnPlayPauseBig .icon {
     font-family: 'Material Symbols Filled Rounded';
