@@ -758,7 +758,9 @@ document.addEventListener('domChange', () => {
             textarea.dispatchEvent(new Event('resize'));
         });
         textarea.dataset.modified = true;
-        setInterval(() => textarea.dispatchEvent(new Event('resize')), 1000);
+        window.addEventListener('resize', () => {
+            textarea.dispatchEvent(new Event('resize'));
+        });
     }
 });
     
