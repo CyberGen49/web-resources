@@ -748,6 +748,7 @@ document.addEventListener('domChange', () => {
     const textareas = $$('textarea[data-make-expandable]:not([data-modified])');
     // Loop through 'em
     for (const textarea of textareas) {
+        if (!isElementVisible(textarea)) continue;
         textarea.addEventListener('input', () => {
             textarea.style.height = 'auto';
             textarea.style.height = textarea.scrollHeight + 'px';
