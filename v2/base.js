@@ -757,10 +757,10 @@ document.addEventListener('domChange', () => {
         textarea.addEventListener('input', () => {
             textarea.dispatchEvent(new Event('resize'));
         });
-        textarea.dataset.modified = true;
         window.addEventListener('resize', () => {
             textarea.dispatchEvent(new Event('resize'));
         });
+        textarea.dataset.modified = true;
     }
 });
     
