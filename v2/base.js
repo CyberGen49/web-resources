@@ -749,7 +749,7 @@ document.addEventListener('domChange', () => {
     // Loop through 'em
     for (const textarea of textareas) {
         textarea.addEventListener('resize', () => {
-            if (!isElementVisible(textarea)) return;
+            if (!isElementVisible(textarea) || !textarea.scrollHeight) return;
             textarea.style.height = 'auto';
             textarea.style.height = textarea.scrollHeight + 'px';
         });
