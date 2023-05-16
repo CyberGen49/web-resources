@@ -682,10 +682,10 @@ const popup = new PopupBuilder()
     .addBodyHTML(`<p>Hey look, it's a popup!</p>`)
     .addAction(action => action
         .setLabel('Important action')
-        .setIsPrimary())
+        .setIsPrimary(true))
     .addAction(action => action
         .setLabel('Dangerous action')
-        .setIsDanger());
+        .setIsDanger(true));
 ```
 
 #### Setting a click handler
