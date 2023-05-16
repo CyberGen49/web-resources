@@ -1012,7 +1012,7 @@ progress::-moz-progress-bar {
 
 [placeholder]:empty::before,
 [placeholder]:empty::after {
-    color: var(--b70); 
+    color: var(--f4);
     pointer-events: none;
 }
 [placeholder]:empty:not(:focus)::before {
