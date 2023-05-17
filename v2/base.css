@@ -832,10 +832,11 @@ input[type="radio"],
 input[type="checkbox"] {
     appearance: none;
     font-family: "Material Symbols Outlined Rounded";
-    font-size: 2em;
+    font-size: 1.8em;
     color: var(--f1);
     line-height: 1;
     flex-shrink: 0;
+    cursor: pointer;
 }
 input[type="radio"]:checked,
 input[type="checkbox"]:checked {
