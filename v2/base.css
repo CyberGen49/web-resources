@@ -856,6 +856,7 @@ label.selectOption {
     line-height: 1.2;
     color: var(--f1);
     cursor: pointer;
+    user-select: none;
 }
 label.selectOption input[type="radio"],
 label.selectOption input[type="checkbox"] {
