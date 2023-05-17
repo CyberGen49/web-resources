@@ -828,6 +828,47 @@ progress::-moz-progress-bar {
     background: var(--thumbFillHover);
 }
 
+input[type="radio"],
+input[type="checkbox"] {
+    appearance: none;
+    font-family: "Material Symbols Outlined Rounded";
+    font-size: 2em;
+    color: var(--f1);
+    line-height: 1;
+    flex-shrink: 0;
+}
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
+    color: var(--f4);
+}
+input[type="radio"]::before { content: "radio_button_unchecked"; }
+input[type="radio"]:checked::before { content: "radio_button_checked"; }
+input[type="checkbox"]::before { content: "check_box_outline_blank"; }
+input[type="checkbox"]:checked::before { content: "check_box"; }
+label.selectOption {
+    display: flex;
+    align-items: center;
+    padding-right: 8px;
+}
+label.selectOption input[type="radio"],
+label.selectOption input[type="checkbox"] {
+    margin-top: 0;
+    margin-right: 0.3em;
+}
+.canHover label.selectOption:hover > input[type="radio"],
+.canHover label.selectOption:hover > input[type="checkbox"] {
+    color: var(--b80);
+}
+.canHover label.selectOption:hover > input[type="radio"]:checked,
+.canHover label.selectOption:hover > input[type="checkbox"]:checked {
+    color: var(--f90);
+}
+label.selectOption .innerLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 @keyframes spinner {
     from {
         transform: rotate(0deg);
