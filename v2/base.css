@@ -861,18 +861,13 @@ label.selectOption input[type="checkbox"] {
     margin-top: 0;
     margin-right: 0.3em;
 }
-.canHover label.selectOption:hover > input[type="radio"],
-.canHover label.selectOption:hover > input[type="checkbox"] {
-    color: var(--b80);
+label.selectOption:hover > input[type="radio"],
+label.selectOption:hover > input[type="checkbox"] {
+    color: var(--f2);
 }
-.canHover label.selectOption:hover > input[type="radio"]:checked,
-.canHover label.selectOption:hover > input[type="checkbox"]:checked {
-    color: var(--f90);
-}
-label.selectOption .innerLabel {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+label.selectOption:hover > input[type="radio"]:checked,
+label.selectOption:hover > input[type="checkbox"]:checked {
+    color: var(--b5);
 }
 
 @keyframes spinner {
