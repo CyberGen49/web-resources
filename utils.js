@@ -183,7 +183,7 @@ function formatSeconds(s) {
     }
     seconds = s;
     let timeString = '';
-    timeString += (hours > 0) ? hours.toString().padStart(2, '0') + ':' : '';
+    timeString += (hours > 0) ? hours.toString() + ':' : '';
     timeString += minutes.toString().padStart((hours > 0) ? 2 : 1, '0') + ':';
     timeString += seconds.toString().padStart(2, '0');
     return timeString;
