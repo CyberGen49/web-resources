@@ -5,13 +5,20 @@
 @import '/fonts/material-symbols-outlined.css';
 
 body {
+    /* Fonts */
+    --fontDefault: 'Poppins';
+    --fontCode: 'Cascadia Code';
+    --fontHeading: 'Comfortaa';
+    --fontButton: 'Comfortaa';
+    --fontContext: 'Comfortaa';
+    --fontIcons: 'Material Symbols Outlined Rounded';
     /* Timing functions */
     --bezier: cubic-bezier(0.1, 0.3, 0.3, 1);
     /* Body styles */
     margin: 0px;
     background: var(--b1);
     color: var(--f1);
-    font-family: 'Poppins';
+    font-family: var(--fontDefault);
     font-size: 16px;
     line-height: 1;
 }
@@ -31,7 +38,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Comfortaa';
+    font-family: var(--fontHeading);
     font-weight: bold;
     color: var(--f1);
     line-height: 1.2;
@@ -101,13 +108,13 @@ table th, table td {
     border: 1px solid var(--b4);
 }
 table th {
-    font-family: 'Comfortaa';
+    font-family: var(--fontHeading);
     font-weight: bold;
     color: var(--f2);
 }
 
 code {
-    font-family: 'Cascadia Code';
+    font-family: var(--fontCode);
 }
 code:not(pre code) {
     padding: 2px 4px;
@@ -202,7 +209,7 @@ code .token.namespace { color: var(--f3) }
     padding-top: var(--padding-top);
     border: none;
     border-radius: 100px;
-    font-family: 'Comfortaa';
+    font-family: var(--fontButton);
     font-size: var(--font-size);
     font-weight: bold;
     color: var(--fg);
@@ -308,7 +315,7 @@ code .token.namespace { color: var(--f3) }
     text-decoration: none;
 }
 .btn > .icon {
-    font-family: 'Material Symbols Outlined Rounded';
+    font-family: var(--fontIcons);
     font-size: var(--icon-size);
     line-height: 1;
     color: inherit;
@@ -353,7 +360,7 @@ code .token.namespace { color: var(--f3) }
     padding: 0px 20px;
     border: 2px solid var(--b3);
     border-radius: 20px;
-    font-family: 'Poppins';
+    font-family: var(--fontDefault);
     font-size: 16px;
     line-height: 1.3;
     background: var(--b3);
@@ -404,7 +411,7 @@ input[type="date"], input[type="time"], input[type="datetime-local"], select {
     align-items: center;
     justify-content: center;
     content: 'expand_more';
-    font-family: 'Material Symbols Outlined Rounded';
+    font-family: var(--fontIcons);
     font-size: 32px;
     color: var(--f3);
     pointer-events: none;
@@ -445,7 +452,7 @@ input[type="date"], input[type="time"], input[type="datetime-local"], select {
     scale: 1;
 }
 .popup > .title {
-    font-family: 'Comfortaa';
+    font-family: var(--fontHeading);
     font-size: 22px;
     font-weight: bold;
     color: var(--f1);
@@ -541,7 +548,7 @@ input[type="date"], input[type="time"], input[type="datetime-local"], select {
     max-width: 100%;
     margin-top: 3px;
     color: var(--f1);
-    font-family: 'Comfortaa';
+    font-family: var(--fontContext);
     font-weight: bold;
     font-size: 16px;
     text-align: left;
@@ -553,7 +560,7 @@ input[type="date"], input[type="time"], input[type="datetime-local"], select {
     white-space: nowrap;
 }
 .context > .item > .icon {
-    font-family: 'Material Symbols Outlined Rounded';
+    font-family: var(--fontIcons);
     width: 24px;
     font-size: 24px;
     line-height: 1;
@@ -638,7 +645,7 @@ input[type="date"], input[type="time"], input[type="datetime-local"], select {
     opacity: 1;
 }
 .toastOverlay > .toast > .icon {
-    font-family: 'Material Symbols Outlined Rounded';
+    font-family: var(--fontIcons);
     font-size: 28px;
     line-height: 1;
     color: var(--f2);
@@ -682,7 +689,7 @@ input[type="date"], input[type="time"], input[type="datetime-local"], select {
     background: var(--red2);
 }
 .notice > .icon {
-    font-family: 'Material Symbols Outlined Rounded';
+    font-family: var(--fontIcons);
     font-size: 28px;
     line-height: 1;
     color: var(--f3);
@@ -832,7 +839,7 @@ progress::-moz-progress-bar {
 input[type="radio"],
 input[type="checkbox"] {
     appearance: none;
-    font-family: "Material Symbols Outlined Rounded";
+    font-family: var(--fontIcons);
     font-size: 1.8em;
     color: var(--f1);
     line-height: 1;
@@ -852,7 +859,7 @@ label.selectOption {
     padding-right: 8px;
     display: flex;
     align-items: center;
-    font-family: 'Poppins';
+    font-family: var(--fontDefault);
     font-size: 16px;
     line-height: 1.2;
     color: var(--f1);
