@@ -43,8 +43,8 @@
     },
     "darkblue": {
         "themeColor": "#242942",
-        "bg": "#ebd6f5",
-        "fg": "#743e62",
+        "bg": "#151828",
+        "fg": "#a6d0d9",
         "name": "Midnight",
         "hue": 190
     },
