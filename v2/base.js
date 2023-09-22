@@ -139,6 +139,7 @@ class PopupBuilder {
             } catch (error) {
                 console.warn(`Unable to trap focus inside popup. Make sure focus-trap and tabbable are available.`);
             }
+            this.dispatchEvent(new Event('show'));
         }, 1);
         return this;
     }
@@ -153,6 +154,7 @@ class PopupBuilder {
         setTimeout(() => {
             this.#elCont.parentNode.removeChild(this.#elCont);
         }, 200);
+        this.dispatchEvent(new Event('hide'));
         return this;
     }
     /**
