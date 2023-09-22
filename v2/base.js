@@ -56,6 +56,8 @@ function isElementVisible(el) {
 class PopupBuilder {
     #shouldEscapeClose = true;
     #elCont; #elTitle; #elBody; #elActions;
+    #onShow = () => {};
+    #onHide = () => {};
     constructor() {
         // Create container
         this.#elCont = document.createElement('div');
@@ -128,6 +130,24 @@ class PopupBuilder {
         return this;
     }
     /**
+     * Sets a callback function to run when the popup is shown.
+     * @param {callback} onShow The callback to run
+     * @returns {PopupBuilder}
+     */
+    setOnShow(onShow) {
+        this.#onShow = onShow;
+        return this;
+    }
+    /**
+     * Sets a callback function to run when the popup is hidden.
+     * @param {callback} onHide The callback to run
+     * @returns {PopupBuilder}
+     */
+    setOnHide(onHide) {
+        this.#onHide = onHide;
+        return this;
+    }
+    /**
      * Shows the popup.
      */
     show() {
@@ -139,7 +159,7 @@ class PopupBuilder {
             } catch (error) {
                 console.warn(`Unable to trap focus inside popup. Make sure focus-trap and tabbable are available.`);
             }
-            this.dispatchEvent(new Event('show'));
+            this.#onShow();
         }, 1);
         return this;
     }
@@ -154,7 +174,7 @@ class PopupBuilder {
         setTimeout(() => {
             this.#elCont.parentNode.removeChild(this.#elCont);
         }, 200);
-        this.dispatchEvent(new Event('hide'));
+        this.#onHide();
         return this;
     }
     /**
