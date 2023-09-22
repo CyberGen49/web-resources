@@ -156,12 +156,12 @@ See `themes.json` for some metadata about each theme.
     --yellow4:  hsl(40, 70%, 80%);
     --yellow5:  hsl(40, 70%, 90%);
     /* Blue accent */
-    --blue0:  hsl(220, 70%, 50%);
-    --blue1:  hsl(220, 70%, 60%);
-    --blue2:  hsl(220, 70%, 70%);
-    --blue3:  hsl(220, 70%, 85%);
-    --blue4:  hsl(220, 70%, 90%);
-    --blue5:  hsl(220, 70%, 95%);
+    --blue0:  hsl(230, 80%, 50%);
+    --blue1:  hsl(230, 80%, 60%);
+    --blue2:  hsl(230, 80%, 70%);
+    --blue3:  hsl(230, 80%, 80%);
+    --blue4:  hsl(230, 80%, 90%);
+    --blue5:  hsl(230, 80%, 95%);
     /* Danger */
     --red0: hsl(340, 55%, 40%);
     --red1: hsl(340, 55%, 50%);
