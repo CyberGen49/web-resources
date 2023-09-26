@@ -208,8 +208,8 @@ class PopupActionBuilder {
         this.el.innerText = `Button`;
         this.el.addEventListener('click', () => {
             if (this.el.disabled) return;
-            if (this.#shouldClose) parent.hide();
             this.#onClick();
+            if (this.#shouldClose) parent.hide();
         });
     }
     /**
