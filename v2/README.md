@@ -752,19 +752,50 @@ const popup = new PopupBuilder()
 ### Showing the popup
 To show the popup, call the `show()` method.
 
+Additionally, if you want to do something when the popup is shown, pass a callback to the `setOnShow()` method.
+
 ```js
 const popup = new PopupBuilder()
     .setTitle('My popup')
     .addBodyHTML(`<p>Hey look, it's a popup!</p>`)
     .addAction(action => action.setLabel('Okay'))
+    .setOnShow(() => console.log(`Popup shown!`))
     .show();
 ```
 
 ### Hiding the popup
 If you need to hide the popup programmatically, you can call the `hide()` method.
 
+Like with showing, you can do something on hide by passing a callback to the `setOnHide()` method. This can be useful for detecting when the popup closes by the user clicking outside of it, not using any action buttons, but it also fires when an action button is used.
+
 ```js
+const popup = new PopupBuilder()
+    .setTitle('My popup')
+    .addAction(action => action.setLabel('Okay'))
+    .setOnHide(() => console.log(`Popup closed!`))
+    .show();
+
+// Hide the popup programmatically
 popup.hide();
+```
+
+#### Using a Promise to wait for a popup to close
+
+```js
+const fancyPopup = () => new Promise(resolve => {
+    new PopupBuilder()
+        .setTitle('Hi there!')
+        .addBodyHTML(`<p>Click the okay button or anywhere outside of this popup to close it!</p>`)
+        .addAction(action => action.setLabel('Okay'))
+        .setOnHide(() => resolve('value'))
+        .show();
+});
+
+(async() => {
+    console.log(`Waiting for popup to close...`);
+    const status = await fancyPopup();
+    console.log(`Popup closed and returned status "${status}"!`);
+})();
 ```
 
 ## Custom toast notifications
