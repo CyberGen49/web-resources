@@ -555,9 +555,12 @@ input[type="date"], input[type="time"], input[type="datetime-local"], select {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
+}
+.context > .item > .label,
+.context > .item > .label * {
     white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .context > .item > .icon {
     font-family: var(--fontIcons);
