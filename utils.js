@@ -238,7 +238,7 @@ function getRelativeDate(target, anchor = Date.now()) {
  * @returns {string} The human-readable size string
  */
 function formatSize(bytes) {
-    if (bytes < 1000) return `${bytes} Bytes`;
+    if (bytes < 1000) return `${bytes} B`;
     bytes /= 1024;
     if (bytes < (1000)) return `${roundSmart(bytes, 0)} KB`;
     bytes /= 1024;
