@@ -68,7 +68,7 @@ class PopupBuilder {
         this.#elCont.appendChild(this.el);
         // Add title
         this.#elTitle = document.createElement('div');
-        this.#elTitle.classList.add('title flex-no-shrink');
+        this.#elTitle.classList.add('title', 'flex-no-shrink');
         this.#elTitle.innerText = 'Popup';
         this.el.appendChild(this.#elTitle);
         // Add body
@@ -76,7 +76,7 @@ class PopupBuilder {
         this.#elBody.classList.add('body');
         this.el.appendChild(this.#elBody);
         // Add actions container
-        this.#elActions = document.createElement('div flex-no-shrink');
+        this.#elActions = document.createElement('div', 'flex-no-shrink');
         this.#elActions.classList.add('actions');
         this.el.appendChild(this.#elActions);
         // Set up listeners
