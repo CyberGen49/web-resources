@@ -76,8 +76,8 @@ class PopupBuilder {
         this.#elBody.classList.add('body');
         this.el.appendChild(this.#elBody);
         // Add actions container
-        this.#elActions = document.createElement('div', 'flex-no-shrink');
-        this.#elActions.classList.add('actions');
+        this.#elActions = document.createElement('div');
+        this.#elActions.classList.add('actions', 'flex-no-shrink');
         this.el.appendChild(this.#elActions);
         // Set up listeners
         this.#elCont.addEventListener('click', () => {
