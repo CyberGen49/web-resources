@@ -659,20 +659,26 @@ document.addEventListener('domChange', () => {
         const show = () => {
             hide();
             timeout = setTimeout(() => {
+                // After 200ms, remove transitions and reset scale
                 tooltip.style.transition = 'none';
                 tooltip.style.scale = '1';
+                // Set the tooltip's content
                 tooltip.innerHTML = el.dataset.tooltip;
-                setTimeout(() => {
+                timeout = setTimeout(() => {
+                    // After 50ms, position the tooltip and add transitions
                     positionElement(tooltip, mouse.x+5, mouse.y);
                     tooltip.style.scale = '';
                     tooltip.style.transition = '';
                     timeout = setTimeout(() => {
+                        // After 300ms, show the tooltip if the mouse
+                        // is still over the element
                         if (!isMouseOver || !isElementVisible(el)) return;
                         tooltip.classList.add('visible');
                         timeout = setTimeout(() => {
+                            // After 10 seconds, hide the tooltip
                             hide();
                         }, 10000);
-                    }, 500);
+                    }, 300);
                 }, 50);
             }, 200);
         };
