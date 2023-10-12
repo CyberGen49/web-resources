@@ -139,6 +139,11 @@ pre code {
     line-height: 1.4;
     font-size: 16px;
 }
+.cm-header,
+.cm-comment,
+.cm-meta,
+.cm-qualifier,
+.cm-hr,
 code .token.comment,
 code .token.deleted,
 code .token.prolog,
@@ -146,6 +151,8 @@ code .token.doctype,
 code .token.cdata {
     color: var(--syntax-comment)
 }
+.cm-number,
+.cm-builtin,
 code .token.builtin,
 code .token.property,
 code .token.attr-name,
@@ -154,16 +161,19 @@ code .token.number,
 code .token.constant {
     color: var(--syntax-constant)
 }
+.cm-def,
 code .token.function,
 code .token.symbol,
 code .token.entity {
     color: var(--syntax-entity)
 }
+.cm-tag,
 code .token.class-name,
 code .token.selector,
 code .token.tag {
     color: var(--syntax-entity-tag)
 }
+.cm-keyword,
 code .token.important,
 code .token.keyword,
 code .token.operator,
@@ -171,6 +181,9 @@ code .token.atrule,
 code .token.unit {
     color: var(--syntax-keyword)
 }
+.cm-quote,
+.cm-string, .cm-string-2,
+.cm-link,
 code .token.string,
 code .token.char,
 code .token.regex,
@@ -178,18 +191,32 @@ code .token.url,
 code .token.attr-value {
     color: var(--syntax-string)
 }
+.cm-variable,
+.cm-variable-2, .cm-variable-3, .cm-s-default .cm-type
 code .token.color,
 code .token.variable {
     color: var(--syntax-variable)
 }
+.cm-positive,
+.cm-negative,
+.cm-atom,
+.cm-bracket,
+.cm-error,
+.cm-invalidchar,
 code .token.punctuation,
 code .token.inserted,
 code .token.interpolation-punctuation {
     color: var(--f1)
 }
-code .token.bold { font-weight: bold; }
-code .token.italic { font-style: italic }
-code .token.namespace { color: var(--f3) }
+code .token.bold {
+    font-weight: bold;
+}
+code .token.italic {
+    font-style: italic
+}
+code .token.namespace {
+    color: var(--f3)
+}
 
 *:not(div):first-child {
     margin-top: 0px;
