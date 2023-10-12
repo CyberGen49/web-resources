@@ -157,6 +157,7 @@ code .token.cdata {
 .cm-builtin,
 .cm-atom,
 .cm-qualifier,
+.cm-attribute,
 code .token.builtin,
 code .token.property,
 code .token.attr-name,
