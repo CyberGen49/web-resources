@@ -225,8 +225,6 @@ code .token.namespace {
 }
 
 .CodeMirror {
-    width: 1200px;
-    height: 100%;
     background: var(--b0);
     border: none;
     border-left: 1px solid var(--b2);
