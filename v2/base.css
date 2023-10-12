@@ -149,7 +149,7 @@ code .token.deleted,
 code .token.prolog,
 code .token.doctype,
 code .token.cdata {
-    color: var(--syntax-comment)
+    color: var(--syntax-comment) !important
 }
 .cm-number,
 .cm-builtin,
@@ -159,19 +159,19 @@ code .token.attr-name,
 code .token.boolean,
 code .token.number,
 code .token.constant {
-    color: var(--syntax-constant)
+    color: var(--syntax-constant) !important
 }
 .cm-def,
 code .token.function,
 code .token.symbol,
 code .token.entity {
-    color: var(--syntax-entity)
+    color: var(--syntax-entity) !important
 }
 .cm-tag,
 code .token.class-name,
 code .token.selector,
 code .token.tag {
-    color: var(--syntax-entity-tag)
+    color: var(--syntax-entity-tag) !important
 }
 .cm-keyword,
 code .token.important,
@@ -179,7 +179,7 @@ code .token.keyword,
 code .token.operator,
 code .token.atrule,
 code .token.unit {
-    color: var(--syntax-keyword)
+    color: var(--syntax-keyword) !important
 }
 .cm-quote,
 .cm-string, .cm-string-2,
@@ -189,13 +189,13 @@ code .token.char,
 code .token.regex,
 code .token.url,
 code .token.attr-value {
-    color: var(--syntax-string)
+    color: var(--syntax-string) !important
 }
 .cm-variable,
 .cm-variable-2, .cm-variable-3, .cm-s-default .cm-type
 code .token.color,
 code .token.variable {
-    color: var(--syntax-variable)
+    color: var(--syntax-variable) !important
 }
 .cm-positive,
 .cm-negative,
