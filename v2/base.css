@@ -224,6 +224,41 @@ code .token.namespace {
     color: var(--f3)
 }
 
+.CodeMirror {
+    width: 1200px;
+    height: 100%;
+    background: var(--b0);
+    border: none;
+    border-left: 1px solid var(--b2);
+    border-right: 1px solid var(--b2);
+    color: var(--f1);
+    font-family: 'Cascadia Code';
+    font-size: 18px;
+    line-height: 1.3;
+}
+.CodeMirror-gutters {
+    border: none;
+    background: none;
+}
+.CodeMirror-linenumbers {
+    background: var(--b0);
+    padding: 0px 10px;
+}
+.CodeMirror-linenumber {
+    color: var(--f3);
+}
+.CodeMirror-selected,
+.CodeMirror-selectedtext,
+.CodeMirror *::selection {
+    background: var(--b3);
+}
+.CodeMirror-activeline-background {
+    background: var(--b2);
+}
+.CodeMirror-cursor {
+    border-color: var(--f1);
+}
+
 *:not(div):first-child {
     margin-top: 0px;
 }
