@@ -246,7 +246,7 @@ code .token.namespace {
 .CodeMirror-selected,
 .CodeMirror-selectedtext,
 .CodeMirror *::selection {
-    background: var(--b3);
+    background: var(--b3) !important;
 }
 .CodeMirror-activeline-background {
     background: var(--b2);
