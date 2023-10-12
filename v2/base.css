@@ -226,7 +226,6 @@ code .token.namespace {
 
 .CodeMirror {
     background: var(--b0);
-    border: none;
     border: 1px solid var(--b2);
     color: var(--f1);
     font-family: 'Cascadia Code';
