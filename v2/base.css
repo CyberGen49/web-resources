@@ -151,6 +151,7 @@ code .token.doctype,
 code .token.cdata {
     color: var(--syntax-comment) !important
 }
+.cm-variable,
 .cm-number,
 .cm-builtin,
 .cm-def,
@@ -163,7 +164,6 @@ code .token.number,
 code .token.constant {
     color: var(--syntax-constant) !important
 }
-.cm-variable,
 code .token.function,
 code .token.symbol,
 code .token.entity {
@@ -194,13 +194,13 @@ code .token.url,
 code .token.attr-value {
     color: var(--syntax-string) !important
 }
-.cm-variable-2,
 .cm-variable-3,
 .cm-type,
 code .token.color,
 code .token.variable {
     color: var(--syntax-variable) !important
 }
+.cm-variable-2,
 .cm-positive,
 .cm-negative,
 .cm-bracket,
