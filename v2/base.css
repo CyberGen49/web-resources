@@ -139,7 +139,6 @@ pre code {
     line-height: 1.4;
     font-size: 16px;
 }
-.cm-header,
 .cm-comment,
 .cm-meta,
 .cm-hr,
@@ -150,6 +149,7 @@ code .token.doctype,
 code .token.cdata {
     color: var(--syntax-comment) !important
 }
+.cm-header,
 .cm-def,
 .cm-variable,
 .cm-variable-3,
