@@ -631,13 +631,13 @@ let tooltipTimeout;
 const showTooltip = el => {
     hideTooltip();
     tooltipTimeout = setTimeout(() => {
-        console.log(`Removing tooltip transition and updating innerHTML`)
+        //console.log(`Removing tooltip transition and updating innerHTML`)
         // After 200ms, remove transitions and reset scale
         tooltip.style.transition = 'none';
         // Set the tooltip's content
         tooltip.innerHTML = el.dataset.tooltip;
         setTimeout(() => {
-            console.log(`Positioning tooltip`)
+            //console.log(`Positioning tooltip`)
             // Position the tooltip and add transitions
             positionElement(tooltip, mouse.x+5, mouse.y);
             tooltip.style.transition = '';
@@ -646,7 +646,7 @@ const showTooltip = el => {
                 console.log(isElementVisible(el))
                 const isMouseOver = el.dataset.isMouseOver === 'true';
                 if (!isMouseOver || !isElementVisible(el)) return;
-                console.log(`Showing tooltip`)
+                //console.log(`Showing tooltip`)
                 tooltip.classList.add('visible');
             }, 200);
         }, 50);
