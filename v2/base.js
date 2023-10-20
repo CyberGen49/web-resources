@@ -631,22 +631,18 @@ let tooltipTimeout;
 const showTooltip = el => {
     hideTooltip();
     tooltipTimeout = setTimeout(() => {
-        //console.log(`Removing tooltip transition and updating innerHTML`)
         // After 200ms, remove transitions and reset scale
         tooltip.style.transition = 'none';
         // Set the tooltip's content
         tooltip.innerHTML = el.dataset.tooltip;
         setTimeout(() => {
-            //console.log(`Positioning tooltip`)
             // Position the tooltip and add transitions
             positionElement(tooltip, mouse.x+5, mouse.y);
             tooltip.style.transition = '';
             tooltipTimeout = setTimeout(() => {
                 // Show the tooltip if the mouse is still over the element
-                console.log(isElementVisible(el))
                 const isMouseOver = el.dataset.isMouseOver === 'true';
                 if (!isMouseOver || !isElementVisible(el)) return;
-                //console.log(`Showing tooltip`)
                 tooltip.classList.add('visible');
             }, 200);
         }, 50);
@@ -665,7 +661,6 @@ window.addEventListener('mousemove', (e) => {
     mouse.y = e.clientY;
     // Show or hide the tooltip accordingly
     if (tooltip.classList.contains('visible')) {
-        console.log(`Hiding tooltip`)
         hideTooltip();
     }
     if (activeTooltipElement) {
