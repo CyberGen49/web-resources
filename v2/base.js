@@ -646,10 +646,6 @@ const showTooltip = el => {
                 // is still over the element
                 if (!el.dataset.isMouseOver || !isElementVisible(el)) return;
                 tooltip.classList.add('visible');
-                tooltipTimeout = setTimeout(() => {
-                    // After 10 seconds, hide the tooltip
-                    hideTooltip();
-                }, 10000);
             }, 300);
         }, 1);
     }, 200);
@@ -667,7 +663,7 @@ window.addEventListener('mousemove', (e) => {
     mouse.y = e.clientY;
     tooltipTimeout = setTimeout(() => {
         hideTooltip();
-    }, 100);
+    }, 500);
 });
 
 // Handle dynamic changes
@@ -689,7 +685,8 @@ document.addEventListener('domChange', () => {
     for (const el of tooltipEls) {
         el.dataset.isMouseOver = false;
         // On mouse move
-        el.addEventListener('mousemove', () => {
+        el.addEventListener('mousemove', (e) => {
+            e.stopPropagation();
             el.dataset.isMouseOver = true;
             showTooltip(el);
         });
