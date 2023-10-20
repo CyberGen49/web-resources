@@ -46,8 +46,7 @@ function isElementVisible(el) {
         return false;
     }
     const rect = el.getBoundingClientRect();
-    const viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
-    return !(rect.bottom < 0 || rect.top - viewHeight >= 0);
+    return !!(rect.width || rect.height);
 }
 
 /**
@@ -625,29 +624,32 @@ tooltip.classList.add('tooltip');
 tooltip.role = 'tooltip';
 tooltip.id = Date.now();
 document.body.appendChild(tooltip);
+let activeTooltipElement = null;
 
 // Functions for the tooltip
 let tooltipTimeout;
 const showTooltip = el => {
     hideTooltip();
     tooltipTimeout = setTimeout(() => {
+        console.log(`Removing tooltip transition and updating innerHTML`)
         // After 200ms, remove transitions and reset scale
         tooltip.style.transition = 'none';
-        tooltip.style.scale = '1';
         // Set the tooltip's content
         tooltip.innerHTML = el.dataset.tooltip;
-        tooltipTimeout = setTimeout(() => {
-            // After a small delay, position the tooltip and add transitions
+        setTimeout(() => {
+            console.log(`Positioning tooltip`)
+            // Position the tooltip and add transitions
             positionElement(tooltip, mouse.x+5, mouse.y);
-            tooltip.style.scale = '';
             tooltip.style.transition = '';
             tooltipTimeout = setTimeout(() => {
-                // After 300ms, show the tooltip if the mouse
-                // is still over the element
-                if (!el.dataset.isMouseOver || !isElementVisible(el)) return;
+                // Show the tooltip if the mouse is still over the element
+                console.log(isElementVisible(el))
+                const isMouseOver = el.dataset.isMouseOver === 'true';
+                if (!isMouseOver || !isElementVisible(el)) return;
+                console.log(`Showing tooltip`)
                 tooltip.classList.add('visible');
-            }, 300);
-        }, 1);
+            }, 200);
+        }, 50);
     }, 200);
 }
 
@@ -661,9 +663,14 @@ const mouse = { x: 0, y: 0 };
 window.addEventListener('mousemove', (e) => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
-    tooltipTimeout = setTimeout(() => {
+    // Show or hide the tooltip accordingly
+    if (tooltip.classList.contains('visible')) {
+        console.log(`Hiding tooltip`)
         hideTooltip();
-    }, 500);
+    }
+    if (activeTooltipElement) {
+        showTooltip(activeTooltipElement);
+    }
 });
 
 // Handle dynamic changes
@@ -684,20 +691,18 @@ document.addEventListener('domChange', () => {
     // Loop through 'em
     for (const el of tooltipEls) {
         el.dataset.isMouseOver = false;
-        // On mouse move
-        el.addEventListener('mousemove', (e) => {
-            e.stopPropagation();
+        const show = () => {
             el.dataset.isMouseOver = true;
-            showTooltip(el);
-        });
-        // On mouse leave
-        el.addEventListener('mouseleave', () => {
+            activeTooltipElement = el;
+        };
+        const hide = () => {
             el.dataset.isMouseOver = false;
-            hideTooltip();
-        });
-        // On mouse click
-        el.addEventListener('mousedown', hideTooltip);
-        el.addEventListener('mouseup', hideTooltip);
+            activeTooltipElement = null;
+        };
+        el.addEventListener('mousemove', show);
+        el.addEventListener('mouseleave', hide);
+        el.addEventListener('mousedown', hide);
+        el.addEventListener('mouseup', hide);
         // Mark the tooltip as added
         el.dataset.hasTooltip = true;
     }
@@ -803,9 +808,7 @@ mutationObs.observe(document.documentElement, {
     attributes: true,
     characterData: true,
     childList: true,
-    subtree: true,
-    attributeOldValue: true,
-    characterDataOldValue: true
+    subtree: true
 });
 window.addEventListener('domcontentloaded', () => {
     document.dispatchEvent(new Event('domChange'));
