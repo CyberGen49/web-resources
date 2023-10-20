@@ -619,21 +619,58 @@ function promptUrlDownload(url, name) {
     a.click();
 }
 
-// Continuously save mouse position
-const mouse = { x: 0, y: 0 };
-window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-});
-
 // Create and append the tooltip element
 const tooltip = document.createElement('div');
 tooltip.classList.add('tooltip');
 tooltip.role = 'tooltip';
 tooltip.id = Date.now();
 document.body.appendChild(tooltip);
+
+// Functions for the tooltip
+let tooltipTimeout;
+const showTooltip = el => {
+    hideTooltip();
+    tooltipTimeout = setTimeout(() => {
+        // After 200ms, remove transitions and reset scale
+        tooltip.style.transition = 'none';
+        tooltip.style.scale = '1';
+        // Set the tooltip's content
+        tooltip.innerHTML = el.dataset.tooltip;
+        tooltipTimeout = setTimeout(() => {
+            // After a small delay, position the tooltip and add transitions
+            positionElement(tooltip, mouse.x+5, mouse.y);
+            tooltip.style.scale = '';
+            tooltip.style.transition = '';
+            tooltipTimeout = setTimeout(() => {
+                // After 300ms, show the tooltip if the mouse
+                // is still over the element
+                if (!el.dataset.isMouseOver || !isElementVisible(el)) return;
+                tooltip.classList.add('visible');
+                tooltipTimeout = setTimeout(() => {
+                    // After 10 seconds, hide the tooltip
+                    hideTooltip();
+                }, 10000);
+            }, 300);
+        }, 1);
+    }, 200);
+}
+
+const hideTooltip = () => {
+    clearTimeout(tooltipTimeout);
+    tooltip.classList.remove('visible');
+};
+
+// Continuously save mouse position
+const mouse = { x: 0, y: 0 };
+window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    hideTooltip();
+});
+
 // Handle dynamic changes
 document.addEventListener('domChange', () => {
+
     // Get elements with a title attribute
     const titleEls = $$('[title]:not([data-no-tooltip])');
     for (const el of titleEls) {
@@ -648,53 +685,20 @@ document.addEventListener('domChange', () => {
     const tooltipEls = $$('[data-tooltip]:not([data-has-tooltip])');
     // Loop through 'em
     for (const el of tooltipEls) {
-        let isMouseOver = false;
-        let timeout;
-        // Hide the tooltip
-        const hide = () => {
-            clearTimeout(timeout);
-            tooltip.classList.remove('visible');
-        };
-        // Show the tooltip
-        const show = () => {
-            hide();
-            timeout = setTimeout(() => {
-                // After 200ms, remove transitions and reset scale
-                tooltip.style.transition = 'none';
-                tooltip.style.scale = '1';
-                // Set the tooltip's content
-                tooltip.innerHTML = el.dataset.tooltip;
-                timeout = setTimeout(() => {
-                    // After 50ms, position the tooltip and add transitions
-                    positionElement(tooltip, mouse.x+5, mouse.y);
-                    tooltip.style.scale = '';
-                    tooltip.style.transition = '';
-                    timeout = setTimeout(() => {
-                        // After 300ms, show the tooltip if the mouse
-                        // is still over the element
-                        if (!isMouseOver || !isElementVisible(el)) return;
-                        tooltip.classList.add('visible');
-                        timeout = setTimeout(() => {
-                            // After 10 seconds, hide the tooltip
-                            hide();
-                        }, 10000);
-                    }, 300);
-                }, 50);
-            }, 200);
-        };
+        el.dataset.isMouseOver = false;
         // On mouse move
         el.addEventListener('mousemove', () => {
-            isMouseOver = true;
-            show();
+            el.dataset.isMouseOver = true;
+            showTooltip(el);
         });
         // On mouse leave
         el.addEventListener('mouseleave', () => {
-            isMouseOver = false;
-            hide();
+            el.dataset.isMouseOver = false;
+            hideTooltip();
         });
         // On mouse click
         el.addEventListener('click', () => {
-            hide();
+            hideTooltip();
         });
         // Mark the tooltip as added
         el.dataset.hasTooltip = true;
@@ -790,6 +794,7 @@ document.addEventListener('domChange', () => {
         });
         textarea.dataset.modified = true;
     }
+    
 });
     
 // Handle DOM mutations and dispatching the domChange event
