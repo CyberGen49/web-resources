@@ -665,7 +665,9 @@ const mouse = { x: 0, y: 0 };
 window.addEventListener('mousemove', (e) => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
-    hideTooltip();
+    tooltipTimeout = setTimeout(() => {
+        hideTooltip();
+    }, 100);
 });
 
 // Handle dynamic changes
@@ -697,9 +699,8 @@ document.addEventListener('domChange', () => {
             hideTooltip();
         });
         // On mouse click
-        el.addEventListener('click', () => {
-            hideTooltip();
-        });
+        el.addEventListener('mousedown', hideTooltip);
+        el.addEventListener('mouseup', hideTooltip);
         // Mark the tooltip as added
         el.dataset.hasTooltip = true;
     }
@@ -794,7 +795,7 @@ document.addEventListener('domChange', () => {
         });
         textarea.dataset.modified = true;
     }
-    
+
 });
     
 // Handle DOM mutations and dispatching the domChange event
