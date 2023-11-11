@@ -255,10 +255,10 @@ code .token.namespace {
     border-color: var(--f1);
 }
 
-*:not(div):first-child {
+*:not(div):not(ul):not(ol):first-child {
     margin-top: 0px;
 }
-*:not(div):last-child {
+*:not(div):not(ul):not(ol):last-child {
     margin-bottom: 0px;
 }
 
