@@ -133,8 +133,9 @@ window.addEventListener('load', () => {
         btnVolume.classList.toggle('text-danger', vid.muted);
         btnVolume.dataset.volume = level;
         btnVolume.title = `Volume ${Math.ceil(vid.volume*100)}%`;
+        window.localStorage.setItem('volume', vid.volume);
     }
-    updateVolume(vid.volume);
+    updateVolume(parseInt(window.localStorage.getItem('volume')) || vid.volume);
     // Video events
     vid.addEventListener('loadedmetadata', () => {
         if (savedProgress[vid.src]) vid.currentTime = savedProgress[vid.src];
