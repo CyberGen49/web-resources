@@ -341,6 +341,10 @@ window.addEventListener('load', () => {
             .setLabel('Open player in new tab')
             .setClickHandler(() => window.open(window.location.href, '_blank')))
         .addItem(item => item
+            .setIcon('open_in_new')
+            .setLabel('Open player in new window')
+            .setClickHandler(() => window.open(window.location.href, 'player', 'width=1280,height=720')))
+        .addItem(item => item
             .setIcon('refresh')
             .setLabel('Reload player')
             .setClickHandler(() => window.location.reload()));
