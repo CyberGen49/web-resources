@@ -305,7 +305,7 @@ const showContextMenu = (options, shouldPosition = true) => {
     setTimeout(() => {
         elMenu.style.transition = '';
         elMenu.classList.add('visible');
-    }, 20);
+    }, 50);
     return elMenu;
 };
 
