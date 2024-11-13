@@ -22,6 +22,7 @@ const getTimezoneString = () => {
 };
 
 const resizeTextArea = (textarea) => {
+    if (!textarea.scrollHeight) return;
     textarea.style.height = 'auto';
     const fontSize = 15;
     const lineHeight = 1.4;
@@ -76,36 +77,6 @@ const getAvgImgColor = async (url) => {
     b = Math.floor(b / count);
     return [r, g, b];
 }
-
-const getProfileCardElement = (user) => {
-    const card = document.createElement('div');
-    card.classList.add('profileCard');
-    card.innerHTML = /*html*/`
-        <div class="foreground flex row wrap gap-12">
-            <div class="flex row gap-12 grow align-center">
-                <img src="${user.avatar}" class="avatar">
-                <div class="text flex col gap-4">
-                    <span class="name">${user.name}</span>
-                    <small class="tag">@${user.tag}</small>
-                    <small class="membershipTime">Member for ${user.first_activity_human}</small>
-                </div>
-            </div>
-            <div class="flex col justify-center">
-                <div class="flex row gap-8 wrap">
-                    <a href="/session/login" class="btn smaller secondary">Switch accounts</a>
-                    <a href="/session/logout" class="btn smaller danger">Sign out</a>
-                </div>
-            </div>
-        </div>
-    `;
-    getAvgImgColor(user.avatar).then(color => {
-        card.style.backgroundColor = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
-    });
-    if (user.banner) {
-        card.style.backgroundImage = `url(${user.banner})`;
-    }
-    return card;
-};
 
 const modalActionTemplate = {
     done: {
