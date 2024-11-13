@@ -23,14 +23,14 @@ const getTimezoneString = () => {
 
 const resizeTextArea = (textarea) => {
     if (!textarea.scrollHeight) return;
+    if (textarea.dataset.noResize) return;
     textarea.style.height = 'auto';
-    const fontSize = 15;
-    const lineHeight = 1.4;
-    const minLineCount = 1;
-    const maxLineCount = 20;
+    const fontSize = textarea.dataset.fontSize || 15;
+    const lineHeight = textarea.dataset.lineHeight || 1.4;
+    const minLineCount = textarea.dataset.minLines || 1;
+    const maxLineCount = textarea.dataset.maxLines || 25;
     const minHeight = (fontSize * lineHeight) * minLineCount;
-    //const maxHeight = (fontSize * lineHeight) * maxLineCount;
-    const maxHeight = Infinity;
+    const maxHeight = (fontSize * lineHeight) * maxLineCount;
     textarea.style.height = Math.max(minHeight, Math.min(maxHeight, textarea.scrollHeight)) + 'px';
 };
 
