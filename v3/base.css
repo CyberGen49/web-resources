@@ -573,7 +573,7 @@ progress::-moz-progress-bar {
     color: var(--textLighter);
 }
 .modal > .content > .body {
-    padding: 12px 0px;
+    padding: 0px 16px;
     color: var(--textMain);
     font-family: 'Inter';
     line-height: 1.4;
