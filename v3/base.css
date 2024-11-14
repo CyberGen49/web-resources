@@ -140,7 +140,7 @@ pre {
     line-height: 1.2;
     color: var(--textMain);
     background: var(--bgDarker);
-    padding: 8px 6px;
+    padding: 8px;
     border-radius: 4px;
     overflow: auto;
     white-space: pre-wrap;
