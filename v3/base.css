@@ -145,6 +145,8 @@ code:not(pre code) {
 }
 
 pre {
+    margin: 0px;
+    margin-bottom: 1em;
     font-size: 14px;
     line-height: 1.2;
     color: var(--textMain);
