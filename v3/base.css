@@ -183,6 +183,7 @@ code .token.cdata {
 code .token.builtin,
 code .token.property,
 code .token.attr-name,
+code .token.name,
 code .token.boolean,
 code .token.number,
 code .token.constant {
@@ -234,7 +235,7 @@ code .token.attr-value {
 code .token.punctuation,
 code .token.inserted,
 code .token.interpolation-punctuation {
-    color: var(--f1) !important
+    color: var(--textLightest) !important
 }
 code .token.bold {
     font-weight: bold;
@@ -243,7 +244,7 @@ code .token.italic {
     font-style: italic
 }
 code .token.namespace {
-    color: var(--f3)
+    color: var(--textDarker)
 }
 
 ::selection {
