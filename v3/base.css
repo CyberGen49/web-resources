@@ -133,6 +133,7 @@ hr {
 
 code {
     font-family: 'Cascadia Code', monospace;
+    font-weight: 350;
 }
 
 code:not(pre code) {
@@ -153,6 +154,11 @@ pre {
     overflow: auto;
     white-space: pre-wrap;
     border: 1px solid var(--bgDarkest);
+}
+
+pre code {
+    line-height: 1.4;
+    font-size: 15px;
 }
 
 .cm-comment,
