@@ -65,12 +65,14 @@ h4 { font-size: 20px; }
 h5 { font-size: 18px; }
 h6 { font-size: 16px; }
 
-p {
+p, li {
     margin: 0px;
-    margin-bottom: 0.8em;
     padding: 0px;
     line-height: 1.5;
     color: var(--textMain);
+}
+p, ul, ol {
+    margin-bottom: 0.8em;
 }
 
 p:first-child, h1:first-child, h2:first-child,
@@ -121,13 +123,15 @@ hr {
 }
 
 code:not(pre code) {
+    line-height: 1.2;
+    font-family: monospace;
     background: var(--bgDarker);
     border: 1px solid var(--bgLighter);
     border-radius: 4px;
     padding: 2px 4px;
 }
 
-pre code {
+pre {
     font-family: monospace;
     font-size: 14px;
     line-height: 1.2;
