@@ -47,6 +47,14 @@ body {
     --accentInfoMain: hsl(190, 70%, 45%);
     --accentInfoDarker: hsl(190, 60%, 40%);
     --accentInfoDarkest: hsl(190, 55%, 35%);
+    --syntax-comment: #8b949e;
+    --syntax-constant: #79c0ff;
+    --syntax-entity: #d2a8ff;
+    --syntax-storage-modifier-import: #c9d1d9;
+    --syntax-entity-tag: #7ee787;
+    --syntax-keyword: #ff7b72;
+    --syntax-string: #a5d6ff;
+    --syntax-variable: #ffa657;
     background: var(--bgMain);
     color: var(--textMain);
 }
@@ -145,6 +153,91 @@ pre {
     overflow: auto;
     white-space: pre-wrap;
     border: 1px solid var(--bgDarkest);
+}
+
+.cm-comment,
+.cm-meta,
+.cm-hr,
+code .token.comment,
+code .token.deleted,
+code .token.prolog,
+code .token.doctype,
+code .token.cdata {
+    color: var(--syntax-comment) !important
+}
+.cm-header,
+.cm-def,
+.cm-variable,
+.cm-variable-3,
+.cm-number,
+.cm-builtin,
+.cm-atom,
+.cm-qualifier,
+.cm-attribute,
+code .token.builtin,
+code .token.property,
+code .token.attr-name,
+code .token.boolean,
+code .token.number,
+code .token.constant {
+    color: var(--syntax-constant) !important
+}
+.cm-variable-2,
+.cm-type,
+code .token.color,
+code .token.variable {
+    color: var(--syntax-variable) !important
+}
+.cm-calle,
+code .token.function,
+code .token.symbol,
+code .token.entity {
+    color: var(--syntax-entity) !important
+}
+.cm-tag,
+code .token.class-name,
+code .token.selector,
+code .token.tag {
+    color: var(--syntax-entity-tag) !important
+}
+.cm-keyword,
+.cm-operator,
+code .token.important,
+code .token.keyword,
+code .token.operator,
+code .token.atrule,
+code .token.unit {
+    color: var(--syntax-keyword) !important
+}
+.cm-quote,
+.cm-string, .cm-string-2,
+.cm-link,
+code .token.string,
+code .token.char,
+code .token.regex,
+code .token.url,
+code .token.attr-value {
+    color: var(--syntax-string) !important
+}
+.cm-property,
+.cm-positive,
+.cm-negative,
+.cm-bracket,
+.cm-error,
+.cm-invalidchar,
+code .token.punctuation,
+code .token.inserted,
+code .token.interpolation-punctuation {
+    color: var(--f1) !important
+}
+code .token.bold {
+    font-weight: bold;
+}
+code .token.italic {
+    font-style: italic
+}
+code .token.namespace {
+    color: var(--f3)
 }
 
 ::selection {
