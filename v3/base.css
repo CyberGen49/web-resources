@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0..1,0');
+@import url('/fonts/cascadia-code.css');
 
 * {
     box-sizing: border-box;
@@ -124,7 +125,7 @@ hr {
 
 code:not(pre code) {
     line-height: 1.2;
-    font-family: monospace;
+    font-family: 'Cascadia Code', monospace;
     background: var(--bgDarker);
     border: 1px solid var(--bgLighter);
     border-radius: 4px;
@@ -132,7 +133,7 @@ code:not(pre code) {
 }
 
 pre {
-    font-family: monospace;
+    font-family: 'Cascadia Code', monospace;
     font-size: 15px;
     line-height: 1.2;
     color: var(--textMain);
