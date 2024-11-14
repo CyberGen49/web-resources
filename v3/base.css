@@ -134,7 +134,7 @@ code:not(pre code) {
 
 pre {
     font-family: 'Cascadia Code', monospace;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.2;
     color: var(--textMain);
     background: var(--bgDarker);
