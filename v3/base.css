@@ -123,9 +123,12 @@ hr {
     border-top: 1px solid var(--bgLighter);
 }
 
+code {
+    font-family: 'Cascadia Code', monospace;
+}
+
 code:not(pre code) {
     line-height: 1.2;
-    font-family: 'Cascadia Code', monospace;
     background: var(--bgDarker);
     border: 1px solid var(--bgLighter);
     border-radius: 4px;
@@ -133,7 +136,6 @@ code:not(pre code) {
 }
 
 pre {
-    font-family: 'Cascadia Code', monospace;
     font-size: 14px;
     line-height: 1.2;
     color: var(--textMain);
